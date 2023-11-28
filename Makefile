@@ -6,7 +6,7 @@
 #    By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2023/11/28 15:41:27 by OrioPrisc        ###   ########.fr        #
+#    Updated: 2023/11/28 16:28:38 by OrioPrisc        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ $(SUBMODULES) :
 	git submodule update --init --recursive
 
 %.a: | $(SUBMODULES)
-	make -C $(@D)
+	make -C $(@D) MAKEFLAGS=
 
 $(NAME): $(LIBS) $(OBJS) | $(SUBMODULES)
 	$(CC) $(CFLAGS) $(OBJS) $(LFLAGS) -o $@
