@@ -1,0 +1,14 @@
+name: Lint
+
+on: [pull_request]
+
+jobs:
+  norminete:
+
+    runs-on: ubuntu-22.04
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: alexandregv/norminette-action@v3
+      with:
+        flags: '.'

@@ -1,0 +1,17 @@
+name: Build
+
+on: [pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-22.04
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: 'recursive'
+    - name: Make deps
+      run: make -C libft && make -C minilibx-linux
+    - name: Make minishell
+      run: make
