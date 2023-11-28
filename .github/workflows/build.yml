@@ -11,7 +11,11 @@ jobs:
     - uses: actions/checkout@v3
       with:
         submodules: 'recursive'
+    - uses: awalsh128/cache-apt-pkgs-action@latest
+      with:
+        packages: libbsd-dev
+        version: 1.0
     - name: Make deps
       run: make -C libft && make -C minilibx-linux
-    - name: Make minishell
+    - name: Make cub3d
       run: make
