@@ -13,5 +13,5 @@ jobs:
         submodules: 'recursive'
     - name: Make deps
       run: make -C libft && make -C minilibx-linux
-    - name: Make minishell
+    - name: Make cub3d
       run: make
