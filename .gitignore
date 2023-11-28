@@ -1,0 +1,9 @@
+objs/
+cub3d
+compile_commands.json
+*.swp
+*.swo
+.gdb_history
+.nfs*
+.cache/
+gdb.txt
