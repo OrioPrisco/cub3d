@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:52:33 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/11/29 15:28:05 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/11/30 19:34:26 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,57 @@ bool	ray_line_intesect(t_coord *out_point,
 	return (intersec);
 }
 
+double	distance2(const t_coord *a, const t_coord *b)
+{
+	double	x_diff;
+	double	y_diff;
+
+	x_diff = a->x - b->x;
+	y_diff = a->y - b->y;
+	return (x_diff * x_diff + y_diff * y_diff);
+}
+
+//returns index of line (-1 for none) and the intersection point
+int	ray_lines_intesect(t_coord *out_point,
+	const t_line *line, const t_line *ray, size_t n)
+{
+	t_coord	best;
+	t_coord	current;
+	int		best_index;
+	size_t	i;
+
+	best = (t_coord){INFINITY, INFINITY};
+	best_index = -1;
+	i = 0;
+	while (i < n)
+	{
+		if (ray_line_intesect(&current, line + i, ray))
+		{
+			if (distance2(&ray->start, &current)
+				< distance2(&ray->start, &best))
+			{
+				best = current;
+				best_index = i;
+			}
+		}
+		i++;
+	}
+	if (best_index >= 0)
+		*out_point = best;
+	return (best_index);
+}
+
 /*
 
 #include <stdio.h>
 
 int main()
 {
-	t_line line = {{-1, 10}, {1, 10}};
-	t_line ray = {{0,0}, {1, 0}};
+	t_line lines[] = {{{-1, 10}, {1, 10}}, {{-2,10}, {-1,10}}, {{-10,4},{10, 5}} };
+	t_line ray = {{0,0}, {1, 1}};
 	t_coord point = {-1,-1};
-	bool foo;
-	foo = ray_line_intesect(&point, &line, &ray);
+	int foo;
+	foo=ray_lines_intesect(&point, &lines[0], &ray, sizeof(lines)/sizeof(lines[0]));
 	printf("intersec : %d\npoint : %lf;%lf\n", foo, point.x, point.y);
 }
 */

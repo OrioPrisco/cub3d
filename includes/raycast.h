@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:11:59 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/11/29 15:27:56 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/11/30 19:35:09 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define RAYCAST_H
 
 # include <stdbool.h>
+# include <stddef.h>
 
 typedef struct s_coord {
 	double	x;
@@ -34,4 +35,6 @@ typedef struct s_slope {
 t_slope	get_slope(const t_line *line);
 bool	ray_line_intesect(t_coord *out_point,
 			const t_line *line, const t_line *ray);
+int		ray_lines_intesect(t_coord *out_point,
+			const t_line *line, const t_line *ray, size_t n);
 #endif
