@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   messages.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 10:17:19 by mpeulet           #+#    #+#             */
-/*   Updated: 2023/11/29 14:33:29 by mpeulet          ###   ########.fr       */
+/*   Created: 2023/11/29 13:48:17 by mpeulet           #+#    #+#             */
+/*   Updated: 2023/11/29 13:49:31 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef MESSAGES_H
+# define MESSAGES_H
 
-# include "messages.h"
+# define INVALID_MAP "Invalid map\n"
 
-#endif /* *** CUB3D_H *** */
+#endif
