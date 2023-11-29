@@ -6,13 +6,14 @@
 #    By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2023/12/01 13:21:32 by OrioPrisc        ###   ########.fr        #
+#    Updated: 2023/11/29 15:15:14 by OrioPrisc        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC				=	cc
 
 SRC				=	main.c \
+					raycast.c \
 
 NAME			=	cub3d
 
