@@ -6,13 +6,22 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:52:33 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/11/30 21:16:31 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2023/11/30 23:02:09 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "raycast.h"
 #include "math_utils.h"
+
+// returns the intersection points between a perpendicular line
+// and a regular line
+static t_point	line_line_intersect_perpendicular(
+			const t_line *perpendicular, const t_slope *slope)
+{
+	return ((t_point){perpendicular->start.x,
+		slope->m * perpendicular->start.x + slope->b});
+}
 
 bool	ray_line_intesect(t_point *out_point,
 	const t_line *line, const t_line *ray)
@@ -29,6 +38,10 @@ bool	ray_line_intesect(t_point *out_point,
 	point.x = (slope_ray.b - slope_line.b)
 		/ (slope_line.m - slope_ray.m);
 	point.y = slope_ray.m * point.x + slope_ray.b;
+	if (slope_line.m == INFINITY)
+		point = line_line_intersect_perpendicular(line, &slope_ray);
+	if (slope_ray.m == INFINITY)
+		point = line_line_intersect_perpendicular(ray, &slope_line);
 	intersec = is_between(point.x, line->start.x, line->end.x)
 		&& is_between(point.y, line->start.y, line->end.y);
 	if (intersec)
