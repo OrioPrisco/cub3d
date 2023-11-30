@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users.nor  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:51:23 by OrioPrisco        #+#    #+#             */
-/*   Updated: 2023/11/30 20:10:37 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2023/12/01 00:04:03 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,12 @@ t_slope	get_slope(const t_line *line)
 		slope.m = INFINITY;
 	slope.b = line->start.y - line->start.x * slope.m;
 	return (slope);
+}
+
+bool	is_between(double value, double bound1, double bound2)
+{
+	if (bound1 < bound2)
+		return (bound1 <= value && value <= bound2);
+	else
+		return (bound2 <= value && value <= bound1);
 }

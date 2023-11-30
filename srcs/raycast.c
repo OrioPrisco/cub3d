@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:52:33 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/11/30 19:54:31 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2023/11/30 21:16:31 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,8 @@ bool	ray_line_intesect(t_point *out_point,
 	point.x = (slope_ray.b - slope_line.b)
 		/ (slope_line.m - slope_ray.m);
 	point.y = slope_ray.m * point.x + slope_ray.b;
-	if (line->start.x < line->end.x)
-		intersec = (point.x > line->start.x && point.x < line->end.x);
-	else
-		intersec = (point.x < line->start.x && point.x > line->end.x);
+	intersec = is_between(point.x, line->start.x, line->end.x)
+		&& is_between(point.y, line->start.y, line->end.y);
 	if (intersec)
 		*out_point = point;
 	return (intersec);
