@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:52:33 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/11/30 19:34:26 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2023/11/30 19:40:57 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ t_slope	get_slope(const t_line *line)
 	return (slope);
 }
 
-bool	ray_line_intesect(t_coord *out_point,
+bool	ray_line_intesect(t_point *out_point,
 	const t_line *line, const t_line *ray)
 {
 	t_slope	slope_line;
 	t_slope	slope_ray;
-	t_coord	point;
+	t_point	point;
 	bool	intersec;
 
 	slope_line = get_slope(line);
@@ -47,7 +47,7 @@ bool	ray_line_intesect(t_coord *out_point,
 	return (intersec);
 }
 
-double	distance2(const t_coord *a, const t_coord *b)
+double	distance2(const t_point *a, const t_point *b)
 {
 	double	x_diff;
 	double	y_diff;
@@ -58,15 +58,15 @@ double	distance2(const t_coord *a, const t_coord *b)
 }
 
 //returns index of line (-1 for none) and the intersection point
-int	ray_lines_intesect(t_coord *out_point,
+int	ray_lines_intesect(t_point *out_point,
 	const t_line *line, const t_line *ray, size_t n)
 {
-	t_coord	best;
-	t_coord	current;
+	t_point	best;
+	t_point	current;
 	int		best_index;
 	size_t	i;
 
-	best = (t_coord){INFINITY, INFINITY};
+	best = (t_point){INFINITY, INFINITY};
 	best_index = -1;
 	i = 0;
 	while (i < n)
@@ -93,9 +93,14 @@ int	ray_lines_intesect(t_coord *out_point,
 
 int main()
 {
-	t_line lines[] = {{{-1, 10}, {1, 10}}, {{-2,10}, {-1,10}}, {{-10,4},{10, 5}} };
+	t_line lines[] = {
+		{{-1, 10}, {1, 10}},
+		{{-2,10}, {-1,10}},
+		{{-10,4},{10, 5}},
+		{{10,-10},{10,10}}
+	};
 	t_line ray = {{0,0}, {1, 1}};
-	t_coord point = {-1,-1};
+	t_point point = {-1,-1};
 	int foo;
 	foo=ray_lines_intesect(&point, &lines[0], &ray, sizeof(lines)/sizeof(lines[0]));
 	printf("intersec : %d\npoint : %lf;%lf\n", foo, point.x, point.y);

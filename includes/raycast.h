@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:11:59 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/11/30 19:35:09 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2023/11/30 19:37:50 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 # include <stdbool.h>
 # include <stddef.h>
 
-typedef struct s_coord {
+typedef struct s_point {
 	double	x;
 	double	y;
-}	t_coord;
+}	t_point;
 
 typedef struct s_line {
-	t_coord	start;
-	t_coord	end;
+	t_point	start;
+	t_point	end;
 }	t_line;
 
 // y = mx + b
@@ -33,8 +33,8 @@ typedef struct s_slope {
 }	t_slope;
 
 t_slope	get_slope(const t_line *line);
-bool	ray_line_intesect(t_coord *out_point,
+bool	ray_line_intesect(t_point *out_point,
 			const t_line *line, const t_line *ray);
-int		ray_lines_intesect(t_coord *out_point,
+int		ray_lines_intesect(t_point *out_point,
 			const t_line *line, const t_line *ray, size_t n);
 #endif
