@@ -6,22 +6,13 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:52:33 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/11/30 19:40:57 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2023/11/30 19:54:31 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "raycast.h"
-
-t_slope	get_slope(const t_line *line)
-{
-	t_slope	slope;
-
-	slope.m = fabs(line->start.y - line->end.y)
-		/ fabs(line->start.x - line->end.x);
-	slope.b = line->start.y - line->start.x * slope.m;
-	return (slope);
-}
+#include "math_utils.h"
 
 bool	ray_line_intesect(t_point *out_point,
 	const t_line *line, const t_line *ray)
@@ -45,16 +36,6 @@ bool	ray_line_intesect(t_point *out_point,
 	if (intersec)
 		*out_point = point;
 	return (intersec);
-}
-
-double	distance2(const t_point *a, const t_point *b)
-{
-	double	x_diff;
-	double	y_diff;
-
-	x_diff = a->x - b->x;
-	y_diff = a->y - b->y;
-	return (x_diff * x_diff + y_diff * y_diff);
 }
 
 //returns index of line (-1 for none) and the intersection point
