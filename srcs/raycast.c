@@ -19,7 +19,7 @@ t_slope	get_slope(const t_line *line)
 
 	slope.m = fabs(line->start.y - line->end.y)
 		/ fabs(line->start.x - line->end.x);
-	slope.b = line->start.y;
+	slope.b = line->start.y - line->start.x * slope.m;
 	return (slope);
 }
 
