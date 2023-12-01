@@ -6,7 +6,7 @@
 #    By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2023/11/28 16:28:38 by OrioPrisc        ###   ########.fr        #
+#    Updated: 2023/12/01 13:21:32 by OrioPrisc        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ SUBMODULES		=	libft/.git\
 					libft/getnextline/.git\
 					minilibx-linux/.git\
 
-LFLAGS			=	-Llibft -Lminilibx-linux -lreadline -lftprintf -lvector -lgetnextline -lft -lmlx -lXext -lX11 -lm -lbsd
+LFLAGS			=	-Llibft -Lminilibx-linux -lftprintf -lvector -lgetnextline -lft -lmlx -lXext -lX11 -lm -lbsd
 
 DEPENDS		:=	$(patsubst %.c,$(OBJ_FOLDER)%.d,$(SRC))
 OBJS		:=	$(patsubst %.c,$(OBJ_FOLDER)%.o,$(SRC))
