@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users.nor  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:51:23 by OrioPrisco        #+#    #+#             */
-/*   Updated: 2023/12/01 00:04:03 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2023/12/01 15:58:57 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ t_slope	get_slope(const t_line *line)
 {
 	t_slope	slope;
 
-	slope.m = fabs(line->start.y - line->end.y)
-		/ fabs(line->start.x - line->end.x);
+	slope.m = (line->start.y - line->end.y)
+		/ (line->start.x - line->end.x);
 	if (slope.m == -INFINITY)
 		slope.m = INFINITY;
 	slope.b = line->start.y - line->start.x * slope.m;
