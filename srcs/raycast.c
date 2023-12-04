@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:52:33 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/11/30 23:02:09 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2023/12/04 15:37:59 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ static t_point	line_line_intersect_perpendicular(
 {
 	return ((t_point){perpendicular->start.x,
 		slope->m * perpendicular->start.x + slope->b});
+}
+
+static bool	ray_looks_at_point(const t_line *ray, const t_point *point)
+{
+	return (!(is_between(ray->start.x, point->x, ray->end.x)
+			&& is_between(ray->start.y, point->y, ray->end.y)));
 }
 
 bool	ray_line_intesect(t_point *out_point,
@@ -43,7 +49,8 @@ bool	ray_line_intesect(t_point *out_point,
 	if (slope_ray.m == INFINITY)
 		point = line_line_intersect_perpendicular(ray, &slope_line);
 	intersec = is_between(point.x, line->start.x, line->end.x)
-		&& is_between(point.y, line->start.y, line->end.y);
+		&& is_between(point.y, line->start.y, line->end.y)
+		&& ray_looks_at_point(ray, &point);
 	if (intersec)
 		*out_point = point;
 	return (intersec);
