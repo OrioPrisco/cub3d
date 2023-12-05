@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:11:59 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/11/30 19:50:34 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2023/12/05 13:07:15 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ typedef struct s_point	t_point;
 typedef struct s_line	t_line;
 typedef struct s_slope	t_slope;
 
-bool	ray_line_intesect(t_point *out_point,
+bool	ray_line_intersect(t_point *out_point,
 			const t_line *line, const t_line *ray);
-int		ray_lines_intesect(t_point *out_point,
+int		ray_lines_intersect(t_point *out_point,
 			const t_line *line, const t_line *ray, size_t n);
 #endif
