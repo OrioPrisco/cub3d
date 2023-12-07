@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users.nor  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:06:07 by OrioPrisco        #+#    #+#             */
-/*   Updated: 2023/11/30 20:34:02 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2023/12/07 14:19:01 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,5 @@ double	distance2(const t_point *a, const t_point *b);
 t_slope	get_slope(const t_line *line);
 // checks that value is between the unordered bound 1 & 2
 bool	is_between(double value, double bound1, double bound2);
+double	orth_distance(const t_line *line, const t_point *point);
 #endif

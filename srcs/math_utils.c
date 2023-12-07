@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users.nor  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:51:23 by OrioPrisco        #+#    #+#             */
-/*   Updated: 2023/12/06 14:33:42 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/12/07 16:05:46 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,23 @@ double	distance2(const t_point *a, const t_point *b)
 	x_diff = a->x - b->x;
 	y_diff = a->y - b->y;
 	return (x_diff * x_diff + y_diff * y_diff);
+}
+
+// projects the point on the given line and calculates it's distance
+// to line.start
+double	orth_distance(const t_line *line, const t_point *point)
+{
+	t_point	line_vec;
+	t_point	point_vec;
+	double	dot_product;
+	double	result;
+
+	line_vec = (t_point)
+	{line->end.x - line->start.x, line->end.y - line->start.y};
+	point_vec = (t_point){point->x - line->start.x, point->y - line->start.y};
+	dot_product = line_vec.x * point_vec.x + line_vec.y * point_vec.y;
+	result = dot_product / sqrt(distance2(&line->start, &line->end));
+	return (result);
 }
 
 t_slope	get_slope(const t_line *line)
