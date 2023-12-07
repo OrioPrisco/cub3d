@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users.nor  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:51:23 by OrioPrisco        #+#    #+#             */
-/*   Updated: 2023/12/01 15:58:57 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/12/06 14:33:42 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,17 @@ t_slope	get_slope(const t_line *line)
 	return (slope);
 }
 
+static const double	g_epsilon = 0.001;
+
+bool	less_than(double a, double b)
+{
+	return ((a - b) <= g_epsilon);
+}
+
 bool	is_between(double value, double bound1, double bound2)
 {
 	if (bound1 < bound2)
-		return (bound1 <= value && value <= bound2);
+		return (less_than(bound1, value) && less_than(value, bound2));
 	else
-		return (bound2 <= value && value <= bound1);
+		return (less_than(bound2, value) && less_than(value, bound1));
 }
