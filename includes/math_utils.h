@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users.nor  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:06:07 by OrioPrisco        #+#    #+#             */
-/*   Updated: 2023/12/07 14:19:01 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/12/07 18:53:25 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ typedef struct s_point {
 	double	x;
 	double	y;
 }	t_point;
+
+typedef t_point	t_vec2d;
 
 typedef struct s_line {
 	t_point	start;
