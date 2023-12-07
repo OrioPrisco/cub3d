@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users.nor  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:51:23 by OrioPrisco        #+#    #+#             */
-/*   Updated: 2023/12/07 16:05:46 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/12/07 18:54:30 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ double	distance2(const t_point *a, const t_point *b)
 // to line.start
 double	orth_distance(const t_line *line, const t_point *point)
 {
-	t_point	line_vec;
-	t_point	point_vec;
+	t_vec2d	line_vec;
+	t_vec2d	point_vec;
 	double	dot_product;
 	double	result;
 
