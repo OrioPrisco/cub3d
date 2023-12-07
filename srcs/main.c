@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:24:35 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/09 17:30:13 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/09 17:37:11 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,30 +28,30 @@ static const t_line	g_lines[] = {
 
 static const size_t	g_num_lines = sizeof(g_lines) / sizeof(g_lines[0]);
 
-static double	distance(const t_point *a, const t_point *b)
-{
-	return (sqrt(distance2(a, b)));
-}
-
 static void	draw_column(char screen[HEIGHT][WIDTH],
 			const t_line *ray, const t_line *lines, int i)
 {
 	int		j;
 	double	dist;
+	double	draw_height;
 	int		hit;
 	t_point	point;
 
 	j = 0;
 	hit = ray_lines_intersect(&point, lines, ray, g_num_lines);
+	draw_height = 0;
 	dist = -1;
 	if (hit >= 0)
-		dist = distance(&ray->start, &point) * 3;
+	{
+		dist = orth_distance(&(t_line){{0, -8}, {0, -7}}, &point);
+		draw_height = pow(0.95, dist) * HEIGHT;
+	}
 	while (j < HEIGHT)
 	{
-		if (j <= dist || hit == -1)
-			screen[j][i] = ' ';
+		if (j >= draw_height || hit == -1)
+			screen[HEIGHT - 1 - j][i] = ' ';
 		else
-			screen[j][i] = hit + '0';
+			screen[HEIGHT - 1 - j][i] = hit + '0';
 		j++;
 	}
 }
