@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2023/12/05 18:21:07 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/04 16:41:23 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct s_textures
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
+	char	*f_color;
+	char	*c_color;
 }		t_textures;
 
 typedef struct s_map
@@ -49,6 +51,8 @@ int		rgb_to_int(char *rgb);
 
 void	free_str(void *data);
 int		cub_to_vector(t_vector	*cub, int fd);
+int		clear_empty_lines(t_vector *cub);
+int		extract_colors(t_vector *cub, t_textures *textures);
 
 /* *** parse_utils.c *** */
 

@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 14:36:13 by mpeulet           #+#    #+#             */
-/*   Updated: 2023/12/03 16:17:51 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/04 16:40:40 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,9 @@ int	rgb_to_int(char *rgb)
 	if 
 	free_tab(r_g_b);
 	return (0);
+}
+
+bool	is_color_f(char *color)
+{
+	return (true);
 }
