@@ -6,10 +6,9 @@
 #    By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2024/01/11 13:47:46 by mpeulet          ###   ########.fr        #
+#    Updated: 2024/01/11 13:48:03 by mpeulet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 CC				=	cc
 
@@ -17,6 +16,9 @@ SRC				=	main.c \
 					raycast.c \
 					math_utils.c \
 					vec2d.c \
+					parsing/parse_extension.c \
+					parsing/convert_cub_to_vector.c \
+					parsing/colors.c \
 
 NAME			=	cub3d
 

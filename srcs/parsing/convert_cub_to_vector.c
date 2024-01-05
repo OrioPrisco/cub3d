@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:02:39 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/04 16:45:55 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/05 17:16:51 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,26 @@ int	clear_empty_lines(t_vector *cub)
 			free(tmp);
 		}
 		else
-			i++;		
+			i++;
 	}
 	return (1);
+}
+
+int	vector_to_int(char *color_line, t_textures *textures)
+{
+	char	**rgb;
+	char	*res;
+
+	color_line++;
+	res = ft_strdup(ft_next_non_match(color_line, ft_isspace));
+	rgb = rgb_to_int(res);
+	if (!rgb)
+		return (-1);
+	textures->f_color = convert_rgb(rgb[0], rgb[1], rgb[2]);
+	printf("%d\n", textures->f_color);
+	free_tab(rgb);
+	free(res);
+	return (0);
 }
 
 int	extract_colors(t_vector *cub, t_textures *textures)
@@ -103,28 +120,27 @@ int	extract_colors(t_vector *cub, t_textures *textures)
 	size_t	i;
 	size_t	tmp_size;
 
-	i = 0;
+	i = -1;
 	tmp_size = cub->size;
-	while (i < 6)
+	while (++i < 6)
 	{
 		if (!ft_strncmp(((char **)cub->data)[i], "F ", 2))
 		{
-			vector_pop(cub, i, &textures->f_color);
-			break;
+			vector_to_int(((char **)cub->data)[i], textures);
+			// vector_pop(cub, i, &textures->f_color);
+			break ;
 		}
-		i++;
 	}
-	i = 0;
-	while (i < 5)
+	i = -1;
+	while (++i < 5)
 	{
 		if (!ft_strncmp(((char **)cub->data)[i], "C ", 2))
 		{
 			vector_pop(cub, i, &textures->c_color);
-			break;
+			break ;
 		}
-		i++;
 	}
 	if (cub->size != tmp_size - 2)
-		return (0);
+		return (printf("No C or F found\n"), 0);
 	return (1);
 }

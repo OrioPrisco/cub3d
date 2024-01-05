@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/04 16:41:23 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/05 16:30:19 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ typedef struct s_textures
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
-	char	*f_color;
-	char	*c_color;
+	int		f_color;
+	int		c_color;
 }		t_textures;
 
 typedef struct s_map
@@ -45,7 +45,7 @@ typedef struct s_map
 void	free_tab(char **tab);
 int		tab_size(char **tab);
 int		convert_rgb(char *r, char *g, char *b);
-int		rgb_to_int(char *rgb);
+char**	rgb_to_int(char *rgb);
 
 /* *** convert_cub_to_vector.c *** */
 

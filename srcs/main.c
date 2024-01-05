@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:24:35 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/04 16:45:22 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/05 14:14:00 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,16 @@ int	main(int ac, char **av)
     i = 0;
     while (i < test.size)
 		printf("%s", ((char **)test.data)[i++]);
-    printf("\n%zu\n", test.size);
+    printf("--------------------------------------------\n");
+    printf("[%zu]\n", test.size);
     printf("--------------------------------------------\n");
     extract_colors(&test, &text_test);
     i = 0;
     while (i < test.size)
 		printf("%s", ((char **)test.data)[i++]);
-    printf("\n--------------------------------------------\n");
-	printf("%zu\n", test.size);
+    printf("--------------------------------------------\n");
+	printf("[%zu]\n", test.size);
+    printf("--------------------------------------------\n");
 	vector_free(&test, &free_str);
     return (0);
 }
