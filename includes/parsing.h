@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/05 16:30:19 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/08 13:46:47 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ typedef struct s_textures
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
-	int		f_color;
-	int		c_color;
+	int		colors[2];
 }		t_textures;
 
 typedef struct s_map
