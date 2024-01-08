@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:11:59 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/12/05 13:07:15 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/09 16:36:08 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,6 @@ bool	ray_line_intersect(t_point *out_point,
 			const t_line *line, const t_line *ray);
 int		ray_lines_intersect(t_point *out_point,
 			const t_line *line, const t_line *ray, size_t n);
+void	calculate_angles(size_t width, double angles[width],
+			double fov, double plane_dist);
 #endif

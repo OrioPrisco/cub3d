@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:52:33 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/12/05 13:07:53 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/09 16:57:34 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,22 @@ int	ray_lines_intersect(t_point *out_point,
 	return (best_index);
 }
 
+void	calculate_angles(size_t width, double angles[width],
+			double fov, double plane_dist)
+{
+	size_t	i;
+	double	screen_hlen;
+	double	seg_len;
+
+	screen_hlen = plane_dist * tan(fov / 2);
+	seg_len = screen_hlen / (width / 2);
+	i = 0;
+	while (i < width)
+	{
+		angles[i] = atan((seg_len * i - screen_hlen) / plane_dist);
+		i++;
+	}
+}
 /*
 
 #include <stdio.h>
