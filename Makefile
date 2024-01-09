@@ -6,7 +6,7 @@
 #    By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2023/12/07 19:30:04 by OrioPrisco       ###   ########.fr        #
+#    Updated: 2024/01/05 17:02:22 by OrioPrisc        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ SRC				=	main.c \
 					raycast.c \
 					math_utils.c \
 					vec2d.c \
+					env.c\
+					image.c\
 
 NAME			=	cub3d
 
@@ -27,6 +29,7 @@ SRC_FOLDER		=	srcs/
 
 HEADERS_FOLDER	=	includes/\
 					libft/includes/\
+					minilibx-linux/\
 
 LIBS			=	libft/libft.a\
 					libft/libftprintf.a\
