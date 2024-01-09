@@ -6,7 +6,7 @@
 #    By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2024/01/11 13:49:36 by mpeulet          ###   ########.fr        #
+#    Updated: 2024/01/11 14:25:30 by OrioPrisc        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ SRC				=	main.c \
 					raycast.c \
 					math_utils.c \
 					vec2d.c \
+					env.c \
+					image.c \
 					parsing/convert_cub_to_vector.c \
 					parsing/extract_colors.c \
 					parsing/extract_textures.c \
@@ -33,6 +35,7 @@ SRC_FOLDER		=	srcs/
 
 HEADERS_FOLDER	=	includes/\
 					libft/includes/\
+					minilibx-linux/\
 
 LIBS			=	libft/libft.a\
 					libft/libftprintf.a\
