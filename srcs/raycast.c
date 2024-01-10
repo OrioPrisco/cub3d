@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:52:33 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/09 16:57:34 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/10 23:29:30 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,20 @@
 // returns the intersection points between a perpendicular line
 // and a regular line
 static t_point	line_line_intersect_perpendicular(
-			const t_line *perpendicular, const t_slope *slope)
+			t_line perpendicular, t_slope slope)
 {
-	return ((t_point){perpendicular->start.x,
-		slope->m * perpendicular->start.x + slope->b});
+	return ((t_point){perpendicular.start.x,
+		slope.m * perpendicular.start.x + slope.b});
 }
 
-static bool	ray_looks_at_point(const t_line *ray, const t_point *point)
+static bool	ray_looks_at_point(t_line ray, t_point point)
 {
-	return (!(is_between(ray->start.x, point->x, ray->end.x)
-			&& is_between(ray->start.y, point->y, ray->end.y)));
+	return (!(is_between(ray.start.x, point.x, ray.end.x)
+			&& is_between(ray.start.y, point.y, ray.end.y)));
 }
 
 bool	ray_line_intersect(t_point *out_point,
-	const t_line *line, const t_line *ray)
+	t_line line, t_line ray)
 {
 	t_slope	slope_line;
 	t_slope	slope_ray;
@@ -45,12 +45,12 @@ bool	ray_line_intersect(t_point *out_point,
 		/ (slope_line.m - slope_ray.m);
 	point.y = slope_ray.m * point.x + slope_ray.b;
 	if (slope_line.m == INFINITY)
-		point = line_line_intersect_perpendicular(line, &slope_ray);
+		point = line_line_intersect_perpendicular(line, slope_ray);
 	if (slope_ray.m == INFINITY)
-		point = line_line_intersect_perpendicular(ray, &slope_line);
-	intersec = (is_between(point.x, line->start.x, line->end.x)
-			&& is_between(point.y, line->start.y, line->end.y)
-			&& ray_looks_at_point(ray, &point));
+		point = line_line_intersect_perpendicular(ray, slope_line);
+	intersec = (is_between(point.x, line.start.x, line.end.x)
+			&& is_between(point.y, line.start.y, line.end.y)
+			&& ray_looks_at_point(ray, point));
 	if (intersec)
 		*out_point = point;
 	return (intersec);
@@ -58,7 +58,7 @@ bool	ray_line_intersect(t_point *out_point,
 
 //returns index of line (-1 for none) and the intersection point
 int	ray_lines_intersect(t_point *out_point,
-	const t_line *line, const t_line *ray, size_t n)
+	const t_line *lines, t_line ray, size_t n)
 {
 	t_point	best;
 	t_point	current;
@@ -70,10 +70,10 @@ int	ray_lines_intersect(t_point *out_point,
 	i = 0;
 	while (i < n)
 	{
-		if (ray_line_intersect(&current, line + i, ray))
+		if (ray_line_intersect(&current, lines[i], ray))
 		{
-			if (distance2(&ray->start, &current)
-				< distance2(&ray->start, &best))
+			if (distance2(ray.start, current)
+				< distance2(ray.start, best))
 			{
 				best = current;
 				best_index = i;
