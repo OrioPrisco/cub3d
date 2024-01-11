@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   extract_textures.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 10:17:19 by mpeulet           #+#    #+#             */
-/*   Updated: 2023/12/05 18:18:22 by mpeulet          ###   ########.fr       */
+/*   Created: 2024/01/09 18:23:59 by mpeulet           #+#    #+#             */
+/*   Updated: 2024/01/11 11:41:57 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "parsing.h"
 
-# include "messages.h"
-
-#endif /* *** CUB3D_H *** */
+int	extract_textures(t_vector *cub, t_textures *textures)
+{
+	
+}
