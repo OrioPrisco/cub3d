@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:34:02 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/09 19:12:59 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/11 17:10:37 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,5 @@ void			my_mlx_pixel_put(t_img *img, size_t x, size_t y, int color);
 void			cpy_img(t_img *dest, const t_img *src);
 void			img_put_graph_line(t_img *img, t_graph_line line);
 int				init_img(t_env *env, t_img *img, int width, int height);
+int				load_xpm(void *mlx, const char *file, t_img *img);
 #endif

@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:27:52 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/11 16:50:29 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/11 17:08:37 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,17 @@ int	init_img(t_env *env, t_img *img, int width, int height)
 			&img->bits_per_pixel, &img->line_length, &img->endian);
 	img->height = height;
 	img->width = width;
+	return (0);
+}
+
+int	load_xpm(void *mlx, const char *file, t_img *img)
+{
+	img->img = mlx_xpm_file_to_image
+		(mlx, (char *)file, &img->width, &img->height);
+	if (!img->img)
+		return (1);
+	img->data = (unsigned char *)mlx_get_data_addr(img->img,
+			&img->bits_per_pixel, &img->line_length, &img->endian);
 	return (0);
 }
 
