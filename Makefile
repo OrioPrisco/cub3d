@@ -6,7 +6,7 @@
 #    By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2024/01/11 14:27:07 by OrioPrisc        ###   ########.fr        #
+#    Updated: 2024/01/11 16:21:27 by OrioPrisc        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC				=	main.c \
 					image.c \
 					draw.c \
 					deal_key.c \
+					hooks.c \
 					parsing/convert_cub_to_vector.c \
 					parsing/extract_colors.c \
 					parsing/extract_textures.c \
