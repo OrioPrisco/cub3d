@@ -1,13 +1,9 @@
-
-
 NO ./textures/testNO.xpm
 SO ./textures/testSO.xpm
 WE ./textures/testWE.xpm
 EA ./textures/testEA.xpm
 F 220,100,0
 C 225,30,0
-
-
 111
 1N1
 111

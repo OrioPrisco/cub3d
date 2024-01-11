@@ -6,9 +6,10 @@
 #    By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2024/01/11 13:48:55 by mpeulet          ###   ########.fr        #
+#    Updated: 2024/01/11 13:49:36 by mpeulet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 CC				=	cc
 
@@ -17,6 +18,8 @@ SRC				=	main.c \
 					math_utils.c \
 					vec2d.c \
 					parsing/convert_cub_to_vector.c \
+					parsing/extract_colors.c \
+					parsing/extract_textures.c \
 					parsing/parse_utils.c \
 					parsing/small_utils.c \
 

@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/09 18:17:22 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/11 11:42:34 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ int		extract_colors_utils(t_vector *cub, int i, t_textures *textures,
 			int color);
 int		extract_colors(t_vector *cub, t_textures *textures,
 			size_t size, size_t i);
+
+/* *** extract_textures.c *** */
+
+int		extract_textures(t_vector *cub, t_textures *textures);
 
 /* *** parse_utils.c *** */
 
