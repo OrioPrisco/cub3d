@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:27:52 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/09 19:14:13 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/11 16:50:29 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,6 @@ void	my_mlx_pixel_put(t_img *img, size_t x, size_t y, int color)
 
 	dest = img->data + (y * img->line_length + x * (img->bits_per_pixel / 8));
 	*(int *)dest = color;
-}
-
-t_graph_line	line(size_t x, size_t y, size_t size, int color)
-{
-	t_graph_line	line;
-
-	line.x = x;
-	line.y = y;
-	line.size = size;
-	line.color = color;
-	return (line);
 }
 
 //TODO : optimizations for line of different sizes
