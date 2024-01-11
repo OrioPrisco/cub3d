@@ -6,13 +6,13 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 14:36:13 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/09 18:42:01 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/11 14:14:56 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-int	convert_rgb(char *r, char *g, char *b)
+int	convert_rgb(const char *r, const char *g, const char *b)
 {
 	long	int_r;
 	long	int_g;
@@ -35,7 +35,7 @@ int	convert_rgb(char *r, char *g, char *b)
 	return ((int_r << 16) | (int_g << 8) | int_b);
 }
 
-char	**rgb_to_int(char *rgb)
+char	**rgb_to_int(const char *rgb)
 {
 	char	**r_g_b;
 
@@ -47,10 +47,10 @@ char	**rgb_to_int(char *rgb)
 	return (r_g_b);
 }
 
-int	vector_to_int(char *color_line, t_textures *textures, int color)
+int	vector_to_int(const char *color_line, t_textures *textures, int color)
 {
-	char		**rgb;
-	char		*res;
+	char			**rgb;
+	const char		*res;
 
 	color_line++;
 	res = ft_next_non_match(color_line, ft_isspace);

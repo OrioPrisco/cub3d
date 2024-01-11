@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/11 11:42:34 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/11 14:14:30 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ int		clear_empty_lines(t_vector *cub);
 
 /* *** extract_colors.c *** */
 
-int		convert_rgb(char *r, char *g, char *b);
-char	**rgb_to_int(char *rgb);
-int		vector_to_int(char *color_line, t_textures *textures, int color);
+int		convert_rgb(const char *r, const char *g, const char *b);
+char	**rgb_to_int(const char *rgb);
+int		vector_to_int(const char *color_line, t_textures *textures, int color);
 int		extract_colors_utils(t_vector *cub, int i, t_textures *textures,
 			int color);
 int		extract_colors(t_vector *cub, t_textures *textures,
@@ -59,11 +59,11 @@ int		extract_textures(t_vector *cub, t_textures *textures);
 
 /* *** parse_utils.c *** */
 
-int		line_identifier(char *line, char *identifier);
-int		is_file_readable(char *file);
-bool	is_cub(char *file);
-bool	is_xpm(char *file);
-bool	is_directory(char *file);
+int		line_identifier(const char *line, const char *identifier);
+int		is_file_readable(const char *file);
+bool	is_cub(const char *file);
+bool	is_xpm(const char *file);
+bool	is_directory(const char *file);
 
 /* *** small_utils.c *** */
 

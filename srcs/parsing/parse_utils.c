@@ -6,13 +6,13 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:00:22 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/09 18:09:45 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/11 14:13:32 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-int	line_identifier(char *line, char *identifier)
+int	line_identifier(const char *line, const char *identifier)
 {
 	const char	*tmp;
 
@@ -23,7 +23,7 @@ int	line_identifier(char *line, char *identifier)
 }
 
 //TODO : don't forget to close the fd
-int	is_file_readable(char *file)
+int	is_file_readable(const char *file)
 {
 	int	fd;
 
@@ -34,10 +34,10 @@ int	is_file_readable(char *file)
 }
 
 //should foo.cub.cub work ?
-bool	is_cub(char *file)
+bool	is_cub(const char *file)
 {
-	int		len;
-	char	*s;
+	int			len;
+	const char	*s;
 
 	len = ft_strlen(file);
 	s = ft_strnstr(file, ".cub", len);
@@ -47,10 +47,10 @@ bool	is_cub(char *file)
 }
 
 //should foo.xpm.xpm work ?
-bool	is_xpm(char *file)
+bool	is_xpm(const char *file)
 {
-	int		len;
-	char	*s;
+	int			len;
+	const char	*s;
 
 	len = ft_strlen(file);
 	s = ft_strnstr(file, ".xpm", len);
@@ -59,7 +59,7 @@ bool	is_xpm(char *file)
 	return (false);
 }
 
-bool	is_directory(char *file)
+bool	is_directory(const char *file)
 {
 	int	fd;
 
