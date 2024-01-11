@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users.nor  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 18:20:04 by OrioPrisco        #+#    #+#             */
-/*   Updated: 2024/01/10 23:23:10 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2024/01/11 15:40:52 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,28 @@
 #include "math_utils.h"
 #include "vector.h"
 #include "draw.h"
+#include "env.h"
+
+void	draw_screen(t_img image[static 1], const t_player player[static 1],
+		const t_vector lines[static 1],
+		const double angles[image->width])
+{
+	int		i;
+	t_vec2d	ray_vec;
+	t_line	ray;
+	t_line	player_look;
+
+	i = 0;
+	player_look = (t_line)
+	{player->pos, point_add_vec2d(player->pos, player->look)};
+	while (i < image->width)
+	{
+		ray_vec = vec2d_rotate(player->look, angles[i]);
+		ray = (t_line){player->pos, point_add_vec2d(player->pos, ray_vec)};
+		draw_column((t_column){image, i}, ray, player_look, lines);
+		i++;
+	}
+}
 
 //TODO : color using texture, ceiling and floor color
 void	draw_column(t_column column, t_line ray,
