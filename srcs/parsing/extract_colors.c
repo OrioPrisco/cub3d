@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 14:36:13 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/11 14:14:56 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/12 13:29:27 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ char	**rgb_to_int(const char *rgb)
 {
 	char	**r_g_b;
 
+	printf("%s\n", rgb);
 	r_g_b = ft_split(rgb, ',');
 	if (!r_g_b)
 		return (NULL);
@@ -52,8 +53,9 @@ int	vector_to_int(const char *color_line, t_textures *textures, int color)
 	char			**rgb;
 	const char		*res;
 
-	color_line++;
-	res = ft_next_non_match(color_line, ft_isspace);
+	res = ft_next_non_space(color_line);
+	res++;
+	res = ft_next_non_space(res);
 	rgb = rgb_to_int(res);
 	if (!rgb)
 		return (0);
@@ -74,7 +76,7 @@ int	extract_colors_utils(t_vector *cub, int i, t_textures *textures, int color)
 		vector_pop(cub, i, &tmp);
 		free(tmp);
 		tmp = 0;
-		return (printf("error\nInvalid int color\n"), 0);
+		return (0);
 	}
 	vector_pop(cub, i, &tmp);
 	free(tmp);
@@ -82,11 +84,12 @@ int	extract_colors_utils(t_vector *cub, int i, t_textures *textures, int color)
 	return (1);
 }
 
+//
 int	extract_colors(t_vector *cub, t_textures *textures, size_t size, size_t i)
 {
 	while (++i < 6)
 	{
-		if (line_identifier(((char **)cub->data)[i], "F"))
+		if (line_identifier(((char **)cub->data)[i], "F") != NULL)
 		{
 			if (!extract_colors_utils(cub, i, textures, 0))
 				return (0);
@@ -98,7 +101,7 @@ int	extract_colors(t_vector *cub, t_textures *textures, size_t size, size_t i)
 	i = -1;
 	while (++i < 5)
 	{
-		if (line_identifier(((char **)cub->data)[i], "C"))
+		if (line_identifier(((char **)cub->data)[i], "C") != 0)
 		{
 			if (!extract_colors_utils(cub, i, textures, 1))
 				return (0);

@@ -6,20 +6,35 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:00:22 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/11 14:13:32 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/12 17:46:10 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-int	line_identifier(const char *line, const char *identifier)
+const char	*line_identifier(const char *line, const char *identifier)
 {
-	const char	*tmp;
+	size_t			len;
+	size_t			line_len;
+	const char		*tmp;
 
 	tmp = ft_next_non_space(line);
-	if (ft_strncmp(tmp, identifier, ft_strlen(identifier)))
+	if (ft_strlen(tmp) <= len)
 		return (0);
-	return (1);
+	if (ft_strncmp(tmp, identifier, len))
+		return (0);
+	return (ft_next_non_space(tmp + len));
+}
+
+bool	is_file_readable2(const char *file)
+{
+	int	fd;
+
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		return (false);
+	close(fd);
+	return (true);
 }
 
 //TODO : don't forget to close the fd
@@ -33,30 +48,20 @@ int	is_file_readable(const char *file)
 	return (fd);
 }
 
-//should foo.cub.cub work ?
-bool	is_cub(const char *file)
+bool	is_extension(const char *file, const char *ext)
 {
-	int			len;
-	const char	*s;
+	int	len;
+	int	len_ext;
 
+	if (!file || !ext)
+		return (false);
+	len_ext = ft_strlen(ext);
 	len = ft_strlen(file);
-	s = ft_strnstr(file, ".cub", len);
-	if (s && s == file + len - 4)
-		return (true);
-	return (false);
-}
-
-//should foo.xpm.xpm work ?
-bool	is_xpm(const char *file)
-{
-	int			len;
-	const char	*s;
-
-	len = ft_strlen(file);
-	s = ft_strnstr(file, ".xpm", len);
-	if (s && s == file + len - 4)
-		return (true);
-	return (false);
+	if (len < 5)
+		return (false);
+	file += len;
+	file -= len_ext;
+	return (!ft_strcmp(file, ext));
 }
 
 bool	is_directory(const char *file)
