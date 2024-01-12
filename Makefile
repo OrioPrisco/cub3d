@@ -6,7 +6,7 @@
 #    By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2024/01/11 16:21:27 by OrioPrisc        ###   ########.fr        #
+#    Updated: 2024/01/12 18:09:45 by OrioPrisc        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRC				=	main.c \
 					vec2d.c \
 					env.c \
 					image.c \
+					image2.c \
 					draw.c \
 					deal_key.c \
 					hooks.c \
