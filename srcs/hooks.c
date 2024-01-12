@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:09:40 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/11 16:17:58 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/12 17:01:41 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 int	my_loop_hook(t_env *env)
 {
 	switch_frame(env);
-	draw_screen(env->frame, &env->player, &env->lines, env->angles);
+	draw_screen(env->frame, &env->player, env);
 	mlx_put_image_to_window(env->mlx, env->win, env->frame->img, 0, 0);
 	return (0);
 }

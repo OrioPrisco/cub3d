@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:33:21 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/11 16:36:02 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/12 17:02:13 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@
 # include "image.h"
 # include <stdbool.h>
 # include "math_utils.h"
+
+typedef struct s_graphics {
+	t_vector	textures;
+	t_vector	line_textures_id;
+	int			ceil_col;
+	int			floor_col;
+}	t_graphics;
 
 typedef struct s_player {
 	t_point	pos;
@@ -34,6 +41,7 @@ typedef struct s_env
 	t_img			frame2;
 	t_player		player;
 	t_vector		lines;
+	t_graphics		graphics;
 	double			angles[WIDTH];
 }	t_env;
 
