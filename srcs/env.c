@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:29:17 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/15 14:54:53 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/15 15:38:20 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
@@ -60,7 +60,9 @@ void	destroy_env(t_env *env)
 		mlx_destroy_image(env->mlx, image->img);
 		i++;
 	}
+	vector_clear(&env->graphics.textures);
+	if (env->win)
+		mlx_destroy_window(env->mlx, env->win);
 	mlx_destroy_display(env->mlx);
 	free(env->mlx);
-	return ;
 }
