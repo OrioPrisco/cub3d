@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/15 17:10:50 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/15 17:25:20 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,38 +40,40 @@ typedef struct s_map
 
 /* *** convert_cub_to_vector.c *** */
 
-int		cub_to_vector(t_vector	*cub, int fd);
-int		clear_empty_lines(t_vector *cub);
+int			cub_to_vector(t_vector	*cub, int fd);
+int			clear_empty_lines(t_vector *cub);
 
 /* *** extract_colors.c *** */
 
-int		convert_rgb(const char *r, const char *g, const char *b);
-char	**rgb_to_int(const char *rgb);
-int		vector_to_int(const char *color_line, t_textures *textures, int color);
-int		extract_colors_utils(t_vector *cub, int i, t_textures *textures,
-			int color);
-int		extract_colors(t_vector *cub, t_textures *textures,
-			size_t size, size_t i);
+int			convert_rgb(const char *r, const char *g, const char *b);
+char		**rgb_to_int(const char *rgb);
+int			vector_to_int(const char *color_line,
+				t_textures *textures, int color);
+int			extract_colors_utils(t_vector *cub, int i, t_textures *textures,
+				int color);
+int			extract_colors(t_vector *cub, t_textures *textures,
+				size_t size, size_t i);
 
 /* *** extract_textures.c *** */
 
-int		extract_textures_utils(t_vector *cub, const char *id, char **dest, int i);
-int		extract_textures(t_vector *cub, t_textures *textures, size_t size);
+int			extract_textures_utils(t_vector *cub, const char *id,
+				char **dest, int i);
+int			extract_textures(t_vector *cub, t_textures *textures, size_t size);
 
 /* *** parse_utils.c *** */
 
 const char	*line_identifier(const char *line, const char *identifier);
-int		is_file_readable(const char *file);
-bool	is_file_readable2(const char *file);
-bool	is_extension(const char *file, const char ext[5]);
-bool	is_directory(const char *file);
+int			is_file_readable(const char *file);
+bool		is_file_readable2(const char *file);
+bool		is_extension(const char *file, const char *ext);
+bool		is_directory(const char *file);
 
 /* *** small_utils.c *** */
 
-char	*trim_line(char *s);
-void	free_tab(char **tab);
-int		tab_size(char **tab);
-void	free_str(void *data);
-int		clean_close(t_vector *cub, int fd);
+char		*trim_line(char *s);
+void		free_tab(char **tab);
+int			tab_size(char **tab);
+void		free_str(void *data);
+int			clean_close(t_vector *cub, int fd);
 
 #endif
