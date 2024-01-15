@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:24:35 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/12 17:45:34 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/15 17:09:50 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,27 +32,32 @@ int	main(int ac, char **av)
 	clear_empty_lines(&test);
 	if (test.size < 9)
 		return (vector_free(&test, &free_str), 0);
-	i = 0;
-	/*while (i < test.size)
-		printf("%s", ((char **)test.data)[i++]);
+	/*i = 0;
+	while (i < test.size)
+		printf("%s\n", ((char **)test.data)[i++]);
 	printf("--------------------------------------------\n");
 	printf("[%zu]\n", test.size);
 	printf("--------------------------------------------\n");*/
-	/*if (!extract_colors(&test, &text_test, test.size, -1))
-		return (vector_free(&test, &free_str), 0);*/
+	if (!extract_colors(&test, &text_test, test.size, -1))
+		return (vector_free(&test, &free_str), 0);
+	if (!extract_textures(&test, &text_test, test.size))
+	{
+		free(text_test.no_path);
+		free(text_test.so_path);
+		free(text_test.we_path);
+		free(text_test.ea_path);
+		return (vector_free(&test, &free_str), 0);
+	}
 	i = 0;
 	while (i < test.size)
-		printf("%s", ((char **)test.data)[i++]);
+		printf("%s\n", ((char **)test.data)[i++]);
 	printf("--------------------------------------------\n");
 	printf("[%zu]\n", test.size);
 	printf("--------------------------------------------\n");
-	if (!extract_textures(&test, &text_test))
-	{
-		free((char *)text_test.no_path);
-		vector_free(&test, &free_str);
-	}
-	printf("%s\n", text_test.no_path);
 	vector_free(&test, &free_str);
-	free((char *)text_test.no_path);
+	free(text_test.no_path);
+	free(text_test.so_path);
+	free(text_test.we_path);
+	free(text_test.ea_path);
 	return (0);
 }

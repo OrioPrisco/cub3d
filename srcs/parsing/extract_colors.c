@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 14:36:13 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/12 13:29:27 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/15 13:12:44 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ char	**rgb_to_int(const char *rgb)
 {
 	char	**r_g_b;
 
-	printf("%s\n", rgb);
 	r_g_b = ft_split(rgb, ',');
 	if (!r_g_b)
 		return (NULL);
@@ -84,7 +83,6 @@ int	extract_colors_utils(t_vector *cub, int i, t_textures *textures, int color)
 	return (1);
 }
 
-//
 int	extract_colors(t_vector *cub, t_textures *textures, size_t size, size_t i)
 {
 	while (++i < 6)

@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:00:22 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/12 17:46:10 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/15 13:34:46 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 const char	*line_identifier(const char *line, const char *identifier)
 {
 	size_t			len;
-	size_t			line_len;
 	const char		*tmp;
 
+	len = ft_strlen(identifier);
 	tmp = ft_next_non_space(line);
 	if (ft_strlen(tmp) <= len)
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/12 17:38:14 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/15 17:10:50 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@
 
 typedef struct s_textures
 {
-	const char	*no_path;
-	const char	*so_path;
-	const char	*we_path;
-	const char	*ea_path;
-	int			colors[2];
+	char	*no_path;
+	char	*so_path;
+	char	*we_path;
+	char	*ea_path;
+	int		colors[2];
 }		t_textures;
 
 typedef struct s_map
@@ -55,7 +55,8 @@ int		extract_colors(t_vector *cub, t_textures *textures,
 
 /* *** extract_textures.c *** */
 
-int		extract_textures(t_vector *cub, t_textures *textures);
+int		extract_textures_utils(t_vector *cub, const char *id, char **dest, int i);
+int		extract_textures(t_vector *cub, t_textures *textures, size_t size);
 
 /* *** parse_utils.c *** */
 
@@ -67,6 +68,7 @@ bool	is_directory(const char *file);
 
 /* *** small_utils.c *** */
 
+char	*trim_line(char *s);
 void	free_tab(char **tab);
 int		tab_size(char **tab);
 void	free_str(void *data);
