@@ -6,11 +6,21 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:56:45 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/11 14:53:11 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/15 13:34:58 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+
+char	*trim_line(char *s)
+{
+	int	len;
+
+	len = ft_strlen(s);
+	if (len > 0 && s[len - 1] == '\n')
+		s[len - 1] = '\0';
+	return (s);
+}
 
 void	free_tab(char **tab)
 {

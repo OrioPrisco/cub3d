@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:02:39 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/09 18:03:37 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/15 12:50:21 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	cub_to_vector(t_vector	*cub, int fd)
 	line = get_next_line(fd);
 	while (line)
 	{
+		line = trim_line(line);
 		if (vector_append(cub, &line))
 			return (0);
 		line = get_next_line(fd);
@@ -37,7 +38,7 @@ int	clear_empty_lines(t_vector *cub)
 	tmp = 0;
 	while (i < cub->size)
 	{
-		if (!ft_strcmp(((char **)cub->data)[i], "\n"))
+		if (!ft_strcmp(((char **)cub->data)[i], "\0"))
 		{
 			vector_pop(cub, i, &tmp);
 			free(tmp);
