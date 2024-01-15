@@ -13,8 +13,8 @@
 #ifndef ENV_H
 # define ENV_H
 
-# define WIDTH 800
-# define HEIGHT 1200
+# define WIDTH 1900
+# define HEIGHT 1100
 # include "vector.h"
 # include "image.h"
 # include <stdbool.h>

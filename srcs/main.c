@@ -3,54 +3,67 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:24:35 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/24 15:39:56 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/26 12:43:05 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include "parsing.h"
-#include "vector.h"
+#include "raycast.h"
+#include "math_utils.h"
 #include "libft.h"
-#include <stdlib.h>
-#include "utils.h"
+#include "env.h"
+#include "mlx.h"
+#include "draw.h"
+#include "hooks.h"
+#include <X11/X.h>
 
-static int	parse_cub(t_vector *cub, t_player_info *player,
-				t_textures *textures)
+//#define WIDTH 210
+//#define HEIGHT 100
+
+static const t_line	g_lines[] = {
+{{-10, 10}, {10, 10}},
+{{10, 10}, {10, -10}},
+{{10, -10}, {-10, -10}},
+{{-10, -10}, {-10, 10}},
+{{-9, 9}, {-5, 9}},
+{{9, 9}, {9, 8}},
+{{9, -9}, {-8, -9}},
+{{-9, -9}, {-9, -8}},
+};
+
+static const size_t	g_num_lines = sizeof(g_lines) / sizeof(g_lines[0]);
+
+static const size_t	g_texture_id[] = {
+	0,
+	1,
+	0,
+	1,
+	0,
+	1,
+	0,
+	1,
+};
+
+int	main(void)
 {
-	char	**map;
+	t_env		env;
+	t_img		tmp;
 
-	map = 0;
-	if (!extract_colors(cub, textures))
-		return (vector_free(cub, &free_str), 0);
-	if (!extract_textures(cub, textures, cub->size)
-		||!find_player(cub, player))
-		return (free_textures(textures), vector_free(cub, &free_str), 0);
-	map = copy_vector(cub, player);
-	if (!map)
-		return (free_textures(textures),
-			vector_free(cub, &free_str), 0);
-	if (!flood_fill(map, player))
-		return (free_tab(map), vector_free(cub, &free_str),
-			free_textures(textures), 0);
-	free_tab(map);
-	return (1);
-}
-
-int	main(int ac, char **av)
-{
-	t_vector		cub;
-	t_textures		textures;
-	t_player_info	player;
-
-	ft_memset(&textures, 0, sizeof(t_textures));
-	ft_bzero(&player, sizeof(t_player_info));
-	exit_wrong_input(ac, av[1]);
-	init_cub_vector(&cub, av[1]);
-	if (!parse_cub(&cub, &player, &textures))
-		exit(1);
-	return (vector_free(&cub, &free_str),
-		free_textures(&textures), 0);
+	ft_bzero(&env, sizeof(env));
+	init_env(&env);
+	vector_copy_n(&env.lines, g_lines, g_num_lines, sizeof(g_lines[0]));
+	load_xpm(env.mlx, "textures/ball.xpm", &tmp);
+	vector_append(&env.graphics.textures, &tmp);
+	load_xpm(env.mlx, "textures/test.xpm", &tmp);
+	vector_append(&env.graphics.textures, &tmp);
+	vector_copy_n(&env.graphics.line_textures_id, g_texture_id, g_num_lines, sizeof(g_texture_id[0]));
+	env.player.look.x = 1;
+	calculate_angles(WIDTH, env.angles, 90, 1);
+	mlx_expose_hook(env.win, my_expose, &env);
+	mlx_hook(env.win, DestroyNotify, StructureNotifyMask, &quit_prg, &env);
+	mlx_loop_hook(env.mlx, my_loop_hook, &env);
+	mlx_hook(env.win, KeyPress, KeyPressMask, &deal_key, &env);
+	mlx_loop(env.mlx);
 }
