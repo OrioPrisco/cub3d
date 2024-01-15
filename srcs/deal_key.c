@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users.nor  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:51:37 by OrioPrisco        #+#    #+#             */
-/*   Updated: 2024/01/11 16:35:02 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/15 15:47:47 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <X11/keysym.h>
 #undef __STRICT_ANSI__
 #include "math.h"
+#include "hooks.h"
 
 #define STEP 0.1
 
@@ -35,5 +36,7 @@ int	deal_key(int key, t_env *env)
 	if (key == XK_d)
 		env->player.pos = point_add_vec2d(env->player.pos,
 				vec2d_mul(vec2d_rotate(env->player.look, M_PI / 2), STEP));
+	if (key == XK_Escape)
+		quit_prg(env);
 	return (0);
 }
