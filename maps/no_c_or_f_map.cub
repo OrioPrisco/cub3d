@@ -10,7 +10,7 @@ WE ./textures/testWE.xpm
           F 32,255,3
 
 
-               EA ./textures/testWE.xpm
+               SO          ./textures/testWE.xpm
 
 C 111,111,111
 

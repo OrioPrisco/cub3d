@@ -7,3 +7,5 @@ compile_commands.json
 .nfs*
 .cache/
 gdb.txt
+map.txt
+textures.txt

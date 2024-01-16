@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:56:45 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/15 13:34:58 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/16 15:21:40 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,4 @@ void	free_str(void *data)
 	str = data;
 	if (*str)
 		free(*str);
-}
-
-int	clean_close(t_vector *cub, int fd)
-{
-	vector_free(cub, &free_str);
-	close(fd);
-	return (1);
 }
