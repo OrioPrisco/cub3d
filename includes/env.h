@@ -32,6 +32,19 @@ typedef struct s_player {
 	t_vec2d	look;
 }	t_player;
 
+typedef enum e_held_keys {
+	Key_Left,
+	Key_Right,
+	Key_Up,
+	Key_Up_alt,
+	Key_Down,
+	Key_Down_alt,
+	Key_Rot_Left,
+	Key_Rot_Left_alt,
+	Key_Rot_Right,
+	Key_Rot_Right_alt,
+}	t_held_keys;
+
 typedef struct s_env
 {
 	void			*win;
@@ -42,6 +55,7 @@ typedef struct s_env
 	t_player		player;
 	t_vector		lines;
 	t_graphics		graphics;
+	t_held_keys		held_keys;
 	double			angles[WIDTH];
 }	t_env;
 
