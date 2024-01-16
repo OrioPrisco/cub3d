@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:09:40 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/15 15:52:27 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/16 15:37:52 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	quit_prg(t_env *env)
 
 void	register_hooks(t_env *env)
 {
-	mlx_expose_hook(env->win, my_expose, &env);
-	mlx_hook(env->win, DestroyNotify, StructureNotifyMask, &quit_prg, &env);
-	mlx_loop_hook(env->mlx, my_loop_hook, &env);
-	mlx_hook(env->win, KeyPress, KeyPressMask, &deal_key, &env);
+	mlx_expose_hook(env->win, my_expose, env);
+	mlx_hook(env->win, DestroyNotify, StructureNotifyMask, &quit_prg, env);
+	mlx_loop_hook(env->mlx, my_loop_hook, env);
+	mlx_hook(env->win, KeyPress, KeyPressMask, &deal_key, env);
 }
