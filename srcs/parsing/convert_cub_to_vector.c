@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:02:39 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/16 16:54:29 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/16 17:30:05 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,12 @@ void	init_cub_vector(t_vector *cub, const char *av_one)
 	if (cub->size < 9)
 	{
 		tmp = ft_itoa(cub->size);
-		print_error(1, INVALID_SIZE, tmp, 2);
+		if (!tmp)
+			print_error(1, "Itoa failed", "", 1);
+		else
+			print_error(1, INVALID_SIZE, tmp, 2);
 		free(tmp);
 		vector_free(cub, &free_str);
 		exit(1);
-	}	
+	}
 }
