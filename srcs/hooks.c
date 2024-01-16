@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:09:40 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/16 15:37:52 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/16 16:02:36 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 //TODO : only draw after something changes
 int	my_loop_hook(t_env *env)
 {
+	handle_held_keys(env);
 	switch_frame(env);
 	draw_screen(env->frame, &env->player, env);
 	mlx_put_image_to_window(env->mlx, env->win, env->frame->img, 0, 0);
@@ -42,6 +43,7 @@ void	register_hooks(t_env *env)
 {
 	mlx_expose_hook(env->win, my_expose, env);
 	mlx_hook(env->win, DestroyNotify, StructureNotifyMask, &quit_prg, env);
+	mlx_hook(env->win, KeyPress, KeyPressMask, &on_keypress, env);
+	mlx_hook(env->win, KeyRelease, KeyReleaseMask, &on_keyrelease, env);
 	mlx_loop_hook(env->mlx, my_loop_hook, env);
-	mlx_hook(env->win, KeyPress, KeyPressMask, &deal_key, env);
 }
