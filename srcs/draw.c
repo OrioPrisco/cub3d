@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users.nor  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 18:20:04 by OrioPrisco        #+#    #+#             */
-/*   Updated: 2024/01/12 19:04:01 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/16 14:04:52 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static void	draw_texture(t_column column, double draw_height,
 	const t_img	*texture;
 	size_t		text_index;
 
+	if (bs.hit == -1)
+		return ;
 	text_index = ((size_t *)graphics->line_textures_id.data)[bs.hit];
 	texture = &((t_img *)graphics->textures.data)[text_index];
 	text_y = fmax(0, draw_height - column.image->height)
@@ -38,11 +40,8 @@ static void	draw_texture(t_column column, double draw_height,
 	j = 0;
 	while (j < column.image->height)
 	{
-		if (bs.hit == -1
-			|| j * 2 >= column.image->height + draw_height
-			|| j * 2 <= column.image->height - draw_height)
-			my_mlx_pixel_put(column.image, column.col, j, 0x00);
-		else
+		if (!(j * 2 >= column.image->height + draw_height
+				|| j * 2 <= column.image->height - draw_height))
 		{
 			my_mlx_pixel_put(column.image, column.col, j,
 				get_pixel(texture, bs.text_x, text_y));
@@ -83,6 +82,23 @@ static void	draw_column(t_column column, t_bs2 bs2, const t_vector *lines,
 	draw_texture(column, draw_height, graphics, (t_bs){hit, text_x});
 }
 
+static void	draw_skybox(t_img *image, int ceil_col, int floor_col)
+{
+	int	i;
+	int	col;
+
+	i = 0;
+	while (i < image->height)
+	{
+		if (i * 2 > image->height)
+			col = ceil_col;
+		else
+			col = floor_col;
+		img_put_graph_line(image, (t_graph_line){0, i, image->width, col});
+		i++;
+	}
+}
+
 void	draw_screen(t_img *image, const t_player *player,
 			const t_env *env)
 {
@@ -94,6 +110,7 @@ void	draw_screen(t_img *image, const t_player *player,
 	i = 0;
 	player_look = (t_line)
 	{player->pos, point_add_vec2d(player->pos, player->look)};
+	draw_skybox(image, env->graphics.ceil_col, env->graphics.floor_col);
 	while (i < image->width)
 	{
 		ray_vec = vec2d_rotate(player->look, env->angles[i]);
