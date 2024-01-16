@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:00:22 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/15 17:25:31 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/16 16:56:24 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ const char	*line_identifier(const char *line, const char *identifier)
 	return (ft_next_non_space(tmp + len));
 }
 
-bool	is_file_readable2(const char *file)
+bool	is_file_readable(const char *file)
 {
 	int	fd;
 
@@ -37,14 +37,15 @@ bool	is_file_readable2(const char *file)
 	return (true);
 }
 
-//TODO : don't forget to close the fd
-int	is_file_readable(const char *file)
+/*fonction return passed as a parameter,
+if success on opening, following function closes fd*/
+int	is_file_readable_cub(const char *file)
 {
 	int	fd;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		return (perror("Opening file "), -42);
+		return (-42);
 	return (fd);
 }
 
