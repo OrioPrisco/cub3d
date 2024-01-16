@@ -60,6 +60,8 @@ int	main(void)
 	vector_append(&env.graphics.textures, &tmp);
 	vector_copy_n(&env.graphics.line_textures_id, g_texture_id, g_num_lines, sizeof(g_texture_id[0]));
 	env.player.look.x = 1;
+	env.graphics.ceil_col = 0xFF;
+	env.graphics.floor_col = 0xFF00;
 	calculate_angles(WIDTH, env.angles, 90, 1);
 	mlx_expose_hook(env.win, my_expose, &env);
 	mlx_hook(env.win, DestroyNotify, StructureNotifyMask, &quit_prg, &env);
