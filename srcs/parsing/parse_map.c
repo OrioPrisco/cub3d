@@ -6,13 +6,13 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:38:23 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/17 16:04:34 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/17 16:33:46 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-int	find_player_utils(t_vector *cub, t_player *player)
+static int	find_player_utils(t_vector *cub, t_player_info *player)
 {
 	if (player->nb_player == 0)
 		return (print_error(0, NO_PLAYER_FOUND, "", 1));
@@ -27,7 +27,7 @@ int	find_player_utils(t_vector *cub, t_player *player)
 	return (1);
 }
 
-int	find_player(t_vector *cub, t_player *player, size_t i, size_t j)
+int	find_player(t_vector *cub, t_player_info *player, size_t i, size_t j)
 {
 	while (++i < cub->size)
 	{
