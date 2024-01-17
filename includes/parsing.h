@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/17 16:35:56 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/17 16:38:32 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ void		init_cub_vector(t_vector *cub, const char *av_one);
 void		print_vector_fd3(const t_vector *cub, int fd);
 void		int_to_rgb(int value, int *r, int *g, int *b);
 void		print_t_textures(const t_textures *textures, int fd);
-void		print_player(const t_vector *cub, const t_player_info *player, int fd);
+void		print_player(const t_vector *cub,
+				const t_player_info *player, int fd);
 
 /* *** extract_colors.c *** */
 
@@ -86,7 +87,8 @@ void		free_textures(t_textures *textures);
 
 /* *** parse_map.c *** */
 
-int			find_player(t_vector *cub, t_player_info *player, size_t i, size_t j);
+int			find_player(t_vector *cub, t_player_info *player, size_t i,
+				size_t j);
 
 /* *** parse_utils.c *** */
 
