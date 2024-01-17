@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users.nor  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:51:37 by OrioPrisco        #+#    #+#             */
-/*   Updated: 2024/01/16 16:01:55 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/17 17:27:22 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 #undef __STRICT_ANSI__
 #include "math.h"
 #include "hooks.h"
-
-#define STEP 0.1
+#include "collision.h"
 
 typedef struct s_xkey_cubkey_map_entry {
 	int	xkey;
@@ -73,15 +72,15 @@ void	handle_held_keys(t_env *env)
 	if (env->held_keys & ((1 << Key_Rot_Right) | (1 << Key_Rot_Right_alt)))
 		env->player.look = vec2d_rotate(env->player.look, M_PI / 180);
 	if (env->held_keys & ((1 << Key_Up) | (1 << Key_Up_alt)))
-		env->player.pos = point_add_vec2d
-			(env->player.pos, vec2d_mul(env->player.look, STEP));
+		move_player(&env->player, &env->lines, env->bonus,
+			vec2d_mul(env->player.look, STEP));
 	if (env->held_keys & ((1 << Key_Down) | (1 << Key_Down_alt)))
-		env->player.pos = point_add_vec2d(env->player.pos,
-				vec2d_mul(vec2d_rotate(env->player.look, M_PI), STEP));
+		move_player(&env->player, &env->lines, env->bonus,
+			vec2d_mul(vec2d_rotate(env->player.look, M_PI), STEP));
 	if (env->held_keys & (1 << Key_Left))
-		env->player.pos = point_add_vec2d(env->player.pos,
-				vec2d_mul(vec2d_rotate(env->player.look, -M_PI / 2), STEP));
+		move_player(&env->player, &env->lines, env->bonus,
+			vec2d_mul(vec2d_rotate(env->player.look, -M_PI / 2), STEP));
 	if (env->held_keys & (1 << Key_Right))
-		env->player.pos = point_add_vec2d(env->player.pos,
-				vec2d_mul(vec2d_rotate(env->player.look, M_PI / 2), STEP));
+		move_player(&env->player, &env->lines, env->bonus,
+			vec2d_mul(vec2d_rotate(env->player.look, M_PI / 2), STEP));
 }
