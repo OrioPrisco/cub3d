@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:33:21 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/12 17:02:13 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/17 13:17:39 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_env
 	t_graphics		graphics;
 	t_held_keys		held_keys;
 	double			angles[WIDTH];
+	bool			bonus;
 }	t_env;
 
 int		init_env(t_env *env);

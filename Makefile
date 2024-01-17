@@ -6,7 +6,7 @@
 #    By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2024/01/17 17:35:50 by mpeulet          ###   ########.fr        #
+#    Updated: 2024/01/22 13:28:39 by OrioPrisc        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC				=	main.c \
 					draw.c \
 					deal_key.c \
 					hooks.c \
+					collision.c \
 					parsing/convert_cub_to_vector.c \
 					parsing/debug_print_cub.c \
 					parsing/error_management.c \
