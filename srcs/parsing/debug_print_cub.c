@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0202/01/16 13:39:05 by  mpeulet          #+#    #+#             */
-/*   Updated: 2024/01/17 13:20:18 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/17 16:33:14 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	print_t_textures(const t_textures *textures, int fd)
 		textures->colors[1], r, g, b);
 }
 
-void	print_player(const t_vector *cub, const t_player *player, int fd)
+void	print_player(const t_vector *cub, const t_player_info *player, int fd)
 {
 	ft_dprintf(fd, "Map size : [%d] x [%d]\n", cub->size, player->max_x);
 	ft_dprintf(fd, "--------------------------------------------\n");

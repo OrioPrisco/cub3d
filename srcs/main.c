@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:24:35 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/17 13:18:33 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/17 16:34:37 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 int	main(int ac, char **av)
 {
-	t_vector	cub;
-	t_textures	textures;
-	t_player	player;
+	t_vector		cub;
+	t_textures		textures;
+	t_player_info	player;
 
-	ft_bzero(&player, sizeof(t_player));
+	ft_bzero(&player, sizeof(t_player_info));
 	ft_memset(&textures, 0, sizeof(t_textures));
 	exit_wrong_input(ac, av[1]);
 	init_cub_vector(&cub, av[1]);
