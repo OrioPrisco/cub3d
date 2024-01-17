@@ -6,7 +6,7 @@
 #    By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2024/01/16 17:39:07 by mpeulet          ###   ########.fr        #
+#    Updated: 2024/01/17 17:35:50 by mpeulet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC				=	main.c \
 					parsing/debug_print_cub.c \
 					parsing/error_management.c \
 					parsing/extract_colors.c \
+					parsing/is_map_playable.c \
 					parsing/extract_textures.c \
 					parsing/parse_map.c \
 					parsing/parse_utils.c \
@@ -39,6 +40,8 @@ OBJ_FOLDER		=	objs/
 CFLAGS			=	-Wall -Wextra -Werror -g
 
 SRC_FOLDER		=	srcs/
+
+INC_FOLDER		=	includes/
 
 HEADERS_FOLDER	=	includes/\
 					libft/includes/\
@@ -102,7 +105,10 @@ fclean: clean | $(SUBMODULES)
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+norm:
+	@norminette $(SRC_FOLDER) $(INC_FOLDER) | grep -A1 -B1 Error | grep -v 'OK!' || true
+
+.PHONY: all clean fclean re norm bonus
 .SUFFIXES:
 MAKEFLAGS += --warn-undefined-variables
 MAKEFLAGS += --no-builtin-rules
