@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 13:48:17 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/16 16:58:24 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/17 15:47:32 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,13 @@ EA ./textures/EA.xpm\nF 220,100,0\nC 225,30,0\n 1\n1N1\n 1\n\033[0;39m\
 # define SO_MISSING "Line containing path to SO texture is missing."
 # define WE_MISSING "Line containing path to WE texture is missing."
 # define EA_MISSING "Line containing path to EA texture is missing."
+
+# define INV_CHAR "Invalid character found in the map.\nFirst invalid \
+character found in the map :"
+
+# define NO_PLAYER_FOUND "Player is missing in the map."
+# define TOO_MANY_PLAYER "There are too many players found in the map.\nNumber \
+of player found : "
+# define MAP_EDGE "Player is on the edge of the map."
 
 #endif

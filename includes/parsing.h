@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/16 16:07:34 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/17 16:00:11 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,16 @@ typedef struct s_textures
 	int		colors[2];
 }		t_textures;
 
+typedef struct s_player
+{
+	char	facing;
+	size_t	y;
+	size_t	x;
+	size_t	x_line_len;
+	size_t	max_x;
+	size_t	nb_player;
+}	t_player;
+
 /* *** convert_cub_to_vector.c *** */
 
 int			cub_to_vector(t_vector	*cub, int fd);
@@ -45,9 +55,10 @@ void		init_cub_vector(t_vector *cub, const char *av_one);
 
 /* *** debug_print_cub.c *** */
 
-void		print_vector_fd3(const t_vector *cub);
+void		print_vector_fd3(const t_vector *cub, int fd);
 void		int_to_rgb(int value, int *r, int *g, int *b);
-void		print_t_textures(const t_textures *textures);
+void		print_t_textures(const t_textures *textures, int fd);
+void		print_player(const t_vector *cub, const t_player *player, int fd);
 
 /* *** extract_colors.c *** */
 
@@ -72,6 +83,10 @@ int			extract_textures_utils(t_vector *cub, const char *id,
 				char **dest, int i);
 int			extract_textures(t_vector *cub, t_textures *textures, size_t size);
 void		free_textures(t_textures *textures);
+
+/* *** parse_map.c *** */
+
+int			find_player(t_vector *cub, t_player *player, size_t i, size_t j);
 
 /* *** parse_utils.c *** */
 
