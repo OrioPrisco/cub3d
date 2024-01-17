@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 14:36:13 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/16 16:34:19 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/17 15:03:23 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,7 @@ int	extract_colors_utils(t_vector *cub, int i, t_textures *textures, int color)
 
 	tmp = 0;
 	if (!vector_to_int(((char **)cub->data)[i], textures, color))
-	{
-		vector_pop(cub, i, &tmp);
-		free(tmp);
-		tmp = 0;
 		return (0);
-	}
 	vector_pop(cub, i, &tmp);
 	free(tmp);
 	tmp = 0;

@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:33:42 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/16 14:49:57 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/17 15:21:18 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	print_error(int ret_value, const char *message,
 		ft_dprintf(2, "%s\n", message);
 	if (option == 2)
 		ft_dprintf(2, "%s %s\n", message, value);
+	if (option == 3)
+		ft_dprintf(2, "%s %c\n", message, *value);
 	return (ret_value);
 }
 

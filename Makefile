@@ -6,7 +6,7 @@
 #    By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2024/01/16 14:51:27 by mpeulet          ###   ########.fr        #
+#    Updated: 2024/01/16 17:39:07 by mpeulet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC				=	main.c \
 					parsing/error_management.c \
 					parsing/extract_colors.c \
 					parsing/extract_textures.c \
+					parsing/parse_map.c \
 					parsing/parse_utils.c \
 					parsing/small_utils.c \
 
