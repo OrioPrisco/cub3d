@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0202/01/16 13:39:05 by  mpeulet          #+#    #+#             */
-/*   Updated: 2024/01/17 16:33:14 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/18 11:17:50 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,16 @@ void	print_player(const t_vector *cub, const t_player_info *player, int fd)
 	ft_dprintf(fd, "--------------------------------------------\n");
 	ft_dprintf(fd, "Player y : [%d]\n", player->y);
 	ft_dprintf(fd, "Player x : [%d]\n", player->x);
+}
+
+void	print_map_copy(const char **map, int fd)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		ft_dprintf(fd, "[%s] | len : [%d]\n", map[i], ft_strlen(map[i]));
+		i++;
+	}
 }
