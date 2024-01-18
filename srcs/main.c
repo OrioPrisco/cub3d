@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:24:35 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/17 16:34:37 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/18 12:24:53 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int ac, char **av)
 	t_vector		cub;
 	t_textures		textures;
 	t_player_info	player;
+	char			**map;
 
 	ft_bzero(&player, sizeof(t_player_info));
 	ft_memset(&textures, 0, sizeof(t_textures));
@@ -25,14 +26,17 @@ int	main(int ac, char **av)
 	init_cub_vector(&cub, av[1]);
 	if (!extract_colors(&cub, &textures, cub.size, -1))
 		return (vector_free(&cub, &free_str), 1);
-	if (!extract_textures(&cub, &textures, cub.size))
+	if (!extract_textures(&cub, &textures, cub.size)
+		||!find_player(&cub, &player, -1, 0))
 	{
 		free_textures(&textures);
 		return (vector_free(&cub, &free_str), 1);
 	}
-	find_player(&cub, &player, -1, 0);
-	print_player(&cub, &player, 2);
-	vector_free(&cub, &free_str);
-	free_textures(&textures);
-	return (0);
+	map = copy_vector(&cub, &player);
+	if (!map)
+		return (free_textures(&textures),
+			vector_free(&cub, &free_str), 1);
+	print_map_copy((const char **)map, 2);
+	return (free_tab(map), vector_free(&cub, &free_str),
+		free_textures(&textures), 0);
 }
