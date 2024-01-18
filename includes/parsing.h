@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/17 16:38:32 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/18 11:32:54 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@
 # include "get_next_line.h"
 
 # include "messages.h"
+
+# define N 'N'
+# define S 'S'
+# define W 'W'
+# define E 'E'
 
 typedef struct s_textures
 {
@@ -60,6 +65,7 @@ void		int_to_rgb(int value, int *r, int *g, int *b);
 void		print_t_textures(const t_textures *textures, int fd);
 void		print_player(const t_vector *cub,
 				const t_player_info *player, int fd);
+void		print_map_copy(const char **map, int fd);
 
 /* *** extract_colors.c *** */
 
@@ -84,6 +90,10 @@ int			extract_textures_utils(t_vector *cub, const char *id,
 				char **dest, int i);
 int			extract_textures(t_vector *cub, t_textures *textures, size_t size);
 void		free_textures(t_textures *textures);
+
+/* *** is_map_playable.c *** */
+
+char		**copy_vector(t_vector *cub, t_player_info *player);
 
 /* *** parse_map.c *** */
 
