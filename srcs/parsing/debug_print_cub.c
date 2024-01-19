@@ -6,13 +6,13 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0202/01/16 13:39:05 by  mpeulet          #+#    #+#             */
-/*   Updated: 2024/01/18 11:17:50 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/19 14:58:55 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-void	print_vector_fd3(const t_vector *cub, int fd)
+void	print_vector_fd(const t_vector *cub, int fd)
 {
 	size_t	i;
 
