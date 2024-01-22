@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:38:23 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/22 13:20:48 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/22 15:44:18 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	find_player(const t_vector *c, t_player_info *player)
 				|| ((char **)c->data)[i][j] == 'E')
 				find_player_utils_update(c, player, i, j);
 			player->x_line_len = ft_strlen(((char **)c->data)[i]);
-			if (player->x == player->x_line_len - 1)
+			if (player->x + 1 == player->x_line_len)
 				return (print_error(0, MAP_EDGE, "", 1));
 			if (player->x_line_len > player->max_x)
 				player->max_x = player->x_line_len;

@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 13:48:17 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/17 15:47:32 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/22 14:31:12 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,12 @@ EA ./textures/EA.xpm\nF 220,100,0\nC 225,30,0\n 1\n1N1\n 1\n\033[0;39m\
 
 # define F_FORMAT "Format for floor color is invalid\nF line :"
 # define C_FORMAT "Format for ceiling color is invalid\nC line :"
-# define F_MISSING "Line F for floor color is missing in the file."
-# define C_MISSING "Line C for ceiling color is missing in the file."
+# define F_MISSING "Couldn't find F line in the first part of the file. \
+Please check if there is a valid format for F line and no invalid line in \
+the first 6 lines after clearing empty lines."
+# define C_MISSING "Couldn't find C line in the first part of the file. \
+Please check if there is a valid format for F line and no invalid line in \
+the first 6 lines after clearing empty lines."
 
 # define NO_MISSING "Line containing path to NO texture is missing."
 # define SO_MISSING "Line containing path to SO texture is missing."
@@ -54,5 +58,7 @@ character found in the map :"
 # define TOO_MANY_PLAYER "There are too many players found in the map.\nNumber \
 of player found : "
 # define MAP_EDGE "Player is on the edge of the map."
+
+# define NO_WALL "Map is invalid.\nA hole in the wall was found here :"
 
 #endif
