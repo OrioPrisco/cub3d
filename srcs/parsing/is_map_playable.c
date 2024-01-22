@@ -6,14 +6,14 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 17:19:48 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/22 13:00:14 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/22 13:02:34 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 #include "math_utils.h"
 
-char	**copy_vector(t_vector *cub, t_player_info *player)
+char	**copy_vector(const t_vector *cub, const t_player_info *player)
 {
 	size_t	i;
 	size_t	j;
