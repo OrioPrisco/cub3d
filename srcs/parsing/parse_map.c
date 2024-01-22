@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:38:23 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/22 13:08:31 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/22 13:20:48 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static int	find_player_utils(const t_vector *c, t_player_info *player)
 	if (player->y == 0 || player->y == c->size - 1
 		|| player->x == 0)
 		return (print_error(0, MAP_EDGE, "", 1));
+	player->max_y = c->size;
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:24:35 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/22 13:07:23 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/22 13:22:49 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int ac, char **av)
 		return (free_textures(&textures),
 			vector_free(&cub, &free_str), 1);
 	print_player(&cub, &player, 2);
-	if (!flood_fill(map, &player, &cub))
+	if (!flood_fill(map, &player))
 		return (free_tab(map), vector_free(&cub, &free_str),
 			free_textures(&textures), 1);
 	print_map_copy((const char **)map, 2);

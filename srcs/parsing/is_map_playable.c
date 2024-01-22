@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 17:19:48 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/22 13:16:33 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/22 13:22:27 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,10 @@ static int	fill(char **map, t_point_size_t p, const t_player_info *player,
 	return (1);
 }
 
-int	flood_fill(char **map, const t_player_info *player, const t_vector *cub)
+int	flood_fill(char **map, const t_player_info *player)
 {
 	t_point_size_t	p;
 
-	player->max_y = cub->size;
 	p.y = player->y;
 	p.x = player->x;
 	map[p.y][p.x] = '0';
