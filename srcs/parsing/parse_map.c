@@ -6,13 +6,13 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:38:23 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/22 12:59:54 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/22 13:08:31 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-static int	find_player_utils(t_vector *c, t_player_info *player)
+static int	find_player_utils(const t_vector *c, t_player_info *player)
 {
 	if (player->nb_player == 0)
 		return (print_error(0, NO_PLAYER_FOUND, "", 1));
@@ -27,7 +27,7 @@ static int	find_player_utils(t_vector *c, t_player_info *player)
 	return (1);
 }
 
-static void	find_player_utils_update(t_vector *c,
+static void	find_player_utils_update(const t_vector *c,
 				t_player_info *player, size_t i, size_t j)
 {
 	player->facing = ((char **)c->data)[i][j];
@@ -36,8 +36,12 @@ static void	find_player_utils_update(t_vector *c,
 	player->nb_player++;
 }
 
-int	find_player(t_vector *c, t_player_info *player, size_t i, size_t j)
+int	find_player(const t_vector *c, t_player_info *player)
 {
+	size_t	i;
+	size_t	j;
+
+	i = -1;
 	while (++i < c->size)
 	{
 		j = ft_strspn(((char **)c->data)[i], " 01NSWE");
