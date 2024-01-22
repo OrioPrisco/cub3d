@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/22 12:57:07 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/22 13:02:49 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void		free_textures(t_textures *textures);
 
 /* *** is_map_playable.c *** */
 
-char		**copy_vector(t_vector *cub, t_player_info *player);
+char		**copy_vector(const t_vector *cub, const t_player_info *player);
 
 /* *** parse_map.c *** */
 
