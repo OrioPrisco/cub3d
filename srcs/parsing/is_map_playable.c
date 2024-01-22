@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 17:19:48 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/22 13:22:27 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/22 15:52:28 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ static int	fill(char **map, t_point_size_t p, const t_player_info *player,
 	{
 		if (map[p.y][p.x] == 32)
 		{
-			printf("***la: y[%zu] x[%zu]\n", p.y, p.x);
+			print_error(0, NO_WALL, "", 2);
+			ft_dprintf(2, "Y:[%d] X:[%d]\n", p.y, p.x);
 			return (0);
 		}
 		return (1);
@@ -75,6 +76,6 @@ int	flood_fill(char **map, const t_player_info *player)
 	p.x = player->x;
 	map[p.y][p.x] = '0';
 	if (!fill(map, p, player, '0'))
-		return (print_error(0, "Map contient espace.", "", 1));
+		return (0);
 	return (1);
 }
