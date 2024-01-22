@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/19 14:59:15 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/22 12:57:07 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,10 @@
 
 # include "messages.h"
 
-# define N 'N'
-# define S 'S'
-# define W 'W'
-# define E 'E'
-
 typedef struct t_szt_point
 {
-	size_t	x;
-	size_t	y;
+	long	x;
+	long	y;
 }	t_point_size_t;
 
 typedef struct s_textures
@@ -50,13 +45,13 @@ typedef struct s_textures
 
 typedef struct s_player_info
 {
-	char		facing;
-	size_t		y;
-	size_t		x;
-	size_t		x_line_len;
-	size_t		max_x;
-	size_t		max_y;
-	size_t		nb_player;
+	char	facing;
+	size_t	y;
+	size_t	x;
+	size_t	x_line_len;
+	size_t	max_x;
+	size_t	max_y;
+	size_t	nb_player;
 }	t_player_info;
 
 /* *** convert_cub_to_vector.c *** */

@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 17:19:48 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/19 15:15:27 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/22 13:00:14 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ char	**copy_vector(t_vector *cub, t_player_info *player)
 static int	fill(char **map, t_point_size_t p, const t_player_info *player,
 				const char to_fill)
 {
-	if (p.y < 0 || p.y >= player->max_y - 1 || p.x < 0 || p.x >= player->max_x
+	if (p.y < 0 || p.y >= (long)player->max_y - 1 || p.x < 0
+		|| p.x >= (long)player->max_x
 		|| map[p.y][p.x] != to_fill)
 	{
 		if (map[p.y][p.x] == 32)

@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:38:23 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/18 11:33:29 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/22 12:59:54 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,15 @@ static int	find_player_utils(t_vector *c, t_player_info *player)
 	return (1);
 }
 
+static void	find_player_utils_update(t_vector *c,
+				t_player_info *player, size_t i, size_t j)
+{
+	player->facing = ((char **)c->data)[i][j];
+	player->y = i;
+	player->x = j;
+	player->nb_player++;
+}
+
 int	find_player(t_vector *c, t_player_info *player, size_t i, size_t j)
 {
 	while (++i < c->size)
@@ -37,15 +46,11 @@ int	find_player(t_vector *c, t_player_info *player, size_t i, size_t j)
 		j = -1;
 		while (((char **)c->data)[i][++j])
 		{
-			if (((char **)c->data)[i][j] == N || ((char **)c->data)[i][j] == S
-				|| ((char **)c->data)[i][j] == W
-				|| ((char **)c->data)[i][j] == E)
-			{
-				player->facing = ((char **)c->data)[i][j];
-				player->y = i;
-				player->x = j;
-				player->nb_player++;
-			}
+			if (((char **)c->data)[i][j] == 'N'
+				|| ((char **)c->data)[i][j] == 'S'
+				|| ((char **)c->data)[i][j] == 'W'
+				|| ((char **)c->data)[i][j] == 'E')
+				find_player_utils_update(c, player, i, j);
 			player->x_line_len = ft_strlen(((char **)c->data)[i]);
 			if (player->x == player->x_line_len - 1)
 				return (print_error(0, MAP_EDGE, "", 1));
