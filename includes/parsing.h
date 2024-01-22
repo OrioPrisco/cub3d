@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/22 13:02:49 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/22 13:07:40 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,7 @@ char		**copy_vector(const t_vector *cub, const t_player_info *player);
 
 /* *** parse_map.c *** */
 
-int			find_player(t_vector *cub, t_player_info *player, size_t i,
-				size_t j);
+int			find_player(const t_vector *cub, t_player_info *player);
 int			flood_fill(char **map, t_player_info *player, t_vector *cub);
 
 /* *** parse_utils.c *** */

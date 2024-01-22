@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:24:35 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/19 15:17:35 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/22 13:07:23 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int ac, char **av)
 	if (!extract_colors(&cub, &textures, cub.size, -1))
 		return (vector_free(&cub, &free_str), 1);
 	if (!extract_textures(&cub, &textures, cub.size)
-		||!find_player(&cub, &player, -1, 0))
+		||!find_player(&cub, &player))
 		return (free_textures(&textures), vector_free(&cub, &free_str), 1);
 	map = copy_vector(&cub, &player);
 	if (!map)
