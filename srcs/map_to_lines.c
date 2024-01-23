@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:31:32 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/23 13:14:42 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/23 13:36:23 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include "math_utils.h"
 
-static size_t	ft_strspn_dir(char **map, t_point point, t_point dir,
+static size_t	ft_strspn_dir(char **map, t_point point, t_vec2d dir,
 					const char *str)
 {
 	size_t	span;
@@ -37,7 +37,7 @@ typedef struct s_vectors {
 	t_vector	*textures;
 }	t_vectors;
 
-static bool	add_line(t_vectors out, t_point offset,
+static bool	add_line(t_vectors out, t_vec2d offset,
 				t_line line, size_t texture)
 {
 	line.start = point_add_vec2d(line.start, offset);
@@ -51,9 +51,9 @@ static bool	add_line(t_vectors out, t_point offset,
 
 typedef struct s_params {
 	size_t	texture_id[2];
-	t_point	offset[2];
+	t_vec2d	offset[2];
 	t_point	start_point;
-	t_point	dir;
+	t_vec2d	dir;
 }	t_params;
 
 // why not just use ft_strcpsn in a loop ?
