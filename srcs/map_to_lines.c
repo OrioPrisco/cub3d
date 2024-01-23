@@ -6,13 +6,14 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:31:32 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/23 13:36:23 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/23 17:42:33 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.h"
 #include "libft.h"
 #include "math_utils.h"
+#include "map.h"
 
 static size_t	ft_strspn_dir(char **map, t_point point, t_vec2d dir,
 					const char *str)
@@ -52,9 +53,21 @@ static bool	add_line(t_vectors out, t_vec2d offset,
 typedef struct s_params {
 	size_t	texture_id[2];
 	t_vec2d	offset[2];
+	t_vec2d	pointing[2];
 	t_point	start_point;
 	t_vec2d	dir;
 }	t_params;
+
+static bool	add_lines(char **map, t_vectors out, t_line line, t_params params)
+{
+	if (need_line(line, map, params.dir, params.pointing[0]))
+		if (add_line(out, params.offset[0], line, params.texture_id[0]))
+			return (1);
+	if (need_line(line, map, params.dir, params.pointing[1]))
+		if (add_line(out, params.offset[1], line, params.texture_id[1]))
+			return (1);
+	return (0);
+}
 
 // why not just use ft_strcpsn in a loop ?
 // because i need it vertically too
@@ -81,11 +94,8 @@ static bool	map_to_lines_impl(char **map, t_vector *lines,
 		if (!span)
 			return (0);
 		end = point_add_vec2d(start, vec2d_mul(params.dir, span));
-		if (0
-			|| add_line((t_vectors){lines, textures}, params.offset[0],
-			(t_line){start, end}, params.texture_id[0])
-			|| add_line((t_vectors){lines, textures}, params.offset[1],
-			(t_line){start, end}, params.texture_id[1]))
+		if (add_lines
+			(map, (t_vectors){lines, textures}, (t_line){start, end}, params))
 			return (1);
 		start = end;
 	}
@@ -93,8 +103,8 @@ static bool	map_to_lines_impl(char **map, t_vector *lines,
 }
 
 static const t_params	g_params[] = {
-{{0, 1}, {{0, 0}, {0, 1}}, {0, 0}, {1, 0}}, // North/South facing
-{{2, 3}, {{0, 0}, {1, 0}}, {0, 0}, {0, 1}}, // West/East facing
+{{0, 1}, {{0, 0}, {0, 1}}, {{0, -1}, {0, 1}}, {0, 0}, {1, 0}}, // N/S facing
+{{2, 3}, {{0, 0}, {1, 0}}, {{-1, 0}, {1, 0}}, {0, 0}, {0, 1}}, // W/E facing
 };
 
 // assumes map is a rectangle
