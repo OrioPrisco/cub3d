@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 17:19:48 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/22 15:52:28 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/23 11:27:56 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	**copy_vector(const t_vector *cub, const t_player_info *player)
 	char	**map;
 
 	i = -1;
-	map = ft_calloc(player->max_x + 1, sizeof(char *));
+	map = ft_calloc(player->max_y + 1, sizeof(char *));
 	if (!map)
 		return (NULL);
 	while (++i < cub->size)
@@ -45,8 +45,9 @@ static int	fill(char **map, t_point_size_t p, const t_player_info *player,
 				const char to_fill)
 {
 	if (p.y < 0 || p.y >= (long)player->max_y - 1 || p.x < 0
-		|| p.x >= (long)player->max_x
-		|| map[p.y][p.x] != to_fill)
+		|| p.x >= (long)player->max_x)
+		return (1);
+	if (map[p.y][p.x] != to_fill)
 	{
 		if (map[p.y][p.x] == 32)
 		{
