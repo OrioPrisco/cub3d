@@ -6,11 +6,14 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:23:59 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/16 16:59:22 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/24 12:44:43 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+#include "libft.h"
+#include "vector.h"
+#include "messages.h"
 
 int	extract_textures_utils(t_vector *cub, const char *id,
 	char **dest, int i)

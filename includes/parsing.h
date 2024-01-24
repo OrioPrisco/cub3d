@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/22 13:39:23 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/24 12:40:32 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,7 @@
 # include <string.h>
 # include <errno.h>
 
-# include "libft.h"
-# include "vector.h"
-# include "ft_printf.h"
-# include "get_next_line.h"
-
-# include "messages.h"
+typedef struct s_vector	t_vector;
 
 typedef struct t_szt_point
 {
