@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 14:36:13 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 13:14:01 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/24 13:35:23 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	convert_rgb(const char *r, const char *g, const char *b)
 	return ((int_r << 16) | (int_g << 8) | int_b);
 }
 
-char	**rgb_to_int(const char *rgb)
+char	**rgb_to_tab(const char *rgb)
 {
 	char	**r_g_b;
 
@@ -60,7 +60,7 @@ int	vector_to_int(const char *color_line, t_textures *textures, int color)
 	res = ft_next_non_space(color_line);
 	res++;
 	res = ft_next_non_space(res);
-	rgb = rgb_to_int(res);
+	rgb = rgb_to_tab(res);
 	if (!rgb)
 		return (0);
 	textures->colors[color] = convert_rgb(rgb[0], rgb[1], rgb[2]);
