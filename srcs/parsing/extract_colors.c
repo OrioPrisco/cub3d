@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 14:36:13 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 13:35:23 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/24 13:43:35 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	**rgb_to_tab(const char *rgb)
 	return (r_g_b);
 }
 
-int	vector_to_int(const char *color_line, t_textures *textures, int color)
+int	str_to_color(const char *color_line, int *out)
 {
 	char			**rgb;
 	const char		*res;
@@ -63,19 +63,19 @@ int	vector_to_int(const char *color_line, t_textures *textures, int color)
 	rgb = rgb_to_tab(res);
 	if (!rgb)
 		return (0);
-	textures->colors[color] = convert_rgb(rgb[0], rgb[1], rgb[2]);
-	if (textures->colors[color] == -1)
+	*out = convert_rgb(rgb[0], rgb[1], rgb[2]);
+	if (*out == -1)
 		return (free_tab(rgb), 0);
 	free_tab(rgb);
 	return (1);
 }
 
-int	extract_colors_utils(t_vector *cub, int i, t_textures *textures, int color)
+int	extract_colors_utils(t_vector *cub, int i, int *out)
 {
 	char	*tmp;
 
 	tmp = 0;
-	if (!vector_to_int(((char **)cub->data)[i], textures, color))
+	if (!str_to_color(((char **)cub->data)[i], out))
 		return (0);
 	vector_pop(cub, i, &tmp);
 	free(tmp);
@@ -89,7 +89,7 @@ int	extract_colors(t_vector *cub, t_textures *textures, size_t size, size_t i)
 	{
 		if (line_identifier(((char **)cub->data)[i], "F") != NULL)
 		{
-			if (!extract_colors_utils(cub, i, textures, 0))
+			if (!extract_colors_utils(cub, i, textures->colors + 0))
 				return (print_error(0, F_FORMAT, ((char **)cub->data)[i], 2));
 			break ;
 		}
@@ -101,7 +101,7 @@ int	extract_colors(t_vector *cub, t_textures *textures, size_t size, size_t i)
 	{
 		if (line_identifier(((char **)cub->data)[i], "C") != 0)
 		{
-			if (!extract_colors_utils(cub, i, textures, 1))
+			if (!extract_colors_utils(cub, i, textures->colors + 1))
 				return (print_error(0, C_FORMAT, ((char **)cub->data)[i], 2));
 			break ;
 		}
