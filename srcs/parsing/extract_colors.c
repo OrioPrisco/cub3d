@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 14:36:13 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 12:55:33 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/24 13:14:01 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libft.h"
 #include "vector.h"
 #include "messages.h"
+#include "utils.h"
 #include <stdlib.h>
 
 int	convert_rgb(const char *r, const char *g, const char *b)

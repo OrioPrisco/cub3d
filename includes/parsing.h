@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 12:53:56 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/24 13:11:44 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,13 +99,5 @@ int			is_file_readable_cub(const char *file);
 bool		is_file_readable(const char *file);
 bool		is_extension(const char *file, const char *ext);
 bool		is_directory(const char *file);
-
-/* *** small_utils.c *** */
-
-char		*trim_line(char *s);
-void		free_tab(char **tab);
-int			tab_size(char **tab);
-void		free_str(void *data);
-int			clean_close(t_vector *cub, int fd);
 
 #endif
