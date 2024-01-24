@@ -17,7 +17,7 @@
 #include "utils.h"
 #include <stdlib.h>
 
-int	convert_rgb(const char *r, const char *g, const char *b)
+static int	convert_rgb(const char *r, const char *g, const char *b)
 {
 	long	int_r;
 	long	int_g;
@@ -40,7 +40,7 @@ int	convert_rgb(const char *r, const char *g, const char *b)
 	return ((int_r << 16) | (int_g << 8) | int_b);
 }
 
-char	**rgb_to_tab(const char *rgb)
+static char	**rgb_to_tab(const char *rgb)
 {
 	char	**r_g_b;
 
@@ -52,7 +52,7 @@ char	**rgb_to_tab(const char *rgb)
 	return (r_g_b);
 }
 
-int	str_to_color(const char *color_line, int *out)
+static int	str_to_color(const char *color_line, int *out)
 {
 	char			**rgb;
 	const char		*res;
@@ -70,7 +70,7 @@ int	str_to_color(const char *color_line, int *out)
 	return (1);
 }
 
-int	extract_colors_utils(t_vector *cub, size_t i, int *out)
+static int	extract_colors_utils(t_vector *cub, size_t i, int *out)
 {
 	char	*tmp;
 
