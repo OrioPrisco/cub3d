@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 14:36:13 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 13:43:35 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/24 15:39:12 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,30 +83,25 @@ int	extract_colors_utils(t_vector *cub, int i, int *out)
 	return (1);
 }
 
-int	extract_colors(t_vector *cub, t_textures *textures, size_t size, size_t i)
+int	extract_colors(t_vector *cub, t_textures *textures)
 {
+	size_t	i;
+
+	i = -1;
 	while (++i < 6)
-	{
 		if (line_identifier(((char **)cub->data)[i], "F") != NULL)
-		{
-			if (!extract_colors_utils(cub, i, textures->colors + 0))
-				return (print_error(0, F_FORMAT, ((char **)cub->data)[i], 2));
 			break ;
-		}
-	}
 	if (i == 6)
 		return (print_error(0, F_MISSING, "", 1));
+	if (!extract_colors_utils(cub, i, textures->colors + 0))
+		return (print_error(0, F_FORMAT, ((char **)cub->data)[i], 2));
 	i = -1;
 	while (++i < 5)
-	{
 		if (line_identifier(((char **)cub->data)[i], "C") != 0)
-		{
-			if (!extract_colors_utils(cub, i, textures->colors + 1))
-				return (print_error(0, C_FORMAT, ((char **)cub->data)[i], 2));
 			break ;
-		}
-	}
-	if (cub->size != size - 2)
+	if (i == 5)
 		return (print_error(0, C_MISSING, "", 1));
+	if (!extract_colors_utils(cub, i, textures->colors + 1))
+		return (print_error(0, C_FORMAT, ((char **)cub->data)[i], 2));
 	return (1);
 }
