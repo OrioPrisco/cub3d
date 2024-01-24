@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 15:46:21 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/24 15:47:09 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ void		exit_wrong_input(int ac, const char *av_one);
 
 /* *** extract_textures.c *** */
 
-int			extract_textures_utils(t_vector *cub, const char *id,
-				char **dest, int i);
 int			extract_textures(t_vector *cub, t_textures *textures, size_t size);
 void		free_textures(t_textures *textures);
 
