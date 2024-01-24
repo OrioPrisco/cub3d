@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:02:39 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 14:17:24 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/24 14:19:22 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-int	cub_to_vector(t_vector *cub, int fd)
+static int	cub_to_vector(t_vector *cub, int fd)
 {
 	char	*line;
 
@@ -40,7 +40,7 @@ int	cub_to_vector(t_vector *cub, int fd)
 	return (1);
 }
 
-int	clear_empty_lines(t_vector *cub)
+static int	clear_empty_lines(t_vector *cub)
 {
 	size_t	i;
 	char	*tmp;

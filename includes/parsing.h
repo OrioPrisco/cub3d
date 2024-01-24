@@ -40,8 +40,6 @@ typedef struct s_player_info
 
 /* *** convert_cub_to_vector.c *** */
 
-int			cub_to_vector(t_vector	*cub, int fd);
-int			clear_empty_lines(t_vector *cub);
 void		init_cub_vector(t_vector *cub, const char *av_one);
 
 /* *** debug_print_cub.c *** */
