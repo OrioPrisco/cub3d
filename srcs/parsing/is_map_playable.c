@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 17:19:48 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 13:14:34 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/24 13:20:01 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 #include "messages.h"
 #include "ft_printf.h"
 #include "utils.h"
+
+typedef struct t_szt_point
+{
+	long	x;
+	long	y;
+}	t_point_size_t;
 
 char	**copy_vector(const t_vector *cub, const t_player_info *player)
 {
