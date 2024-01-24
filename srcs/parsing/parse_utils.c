@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:00:22 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 14:13:53 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/24 16:08:39 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-const char	*line_identifier(const char *line, const char *identifier)
+const char	*line_content(const char *line, const char *identifier)
 {
 	size_t			len;
 	const char		*tmp;
