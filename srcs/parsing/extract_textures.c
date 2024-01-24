@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:23:59 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 12:55:47 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/24 15:16:57 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "messages.h"
 #include <stdlib.h>
 
-int	extract_textures_utils(t_vector *cub, const char *id,
+static int	extract_textures_utils(t_vector *cub, const char *id,
 	char **dest, int i)
 {
 	const char			*tmp;
