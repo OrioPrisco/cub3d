@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 14:36:13 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 16:09:22 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/24 17:46:26 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,35 @@
 #include "utils.h"
 #include <stdlib.h>
 
-static int	convert_rgb(const char *r, const char *g, const char *b)
+static const char	*next(const char *str)
 {
-	long	int_r;
-	long	int_g;
-	long	int_b;
-	char	*endptr[3];
+	if (!*str)
+		return (str);
+	str = ft_next_non_space(str);
+	if (*str != ',')
+		return (str);
+	return (str + 1);
+}
 
-	int_r = ft_strtol(r, &endptr[0], 10);
-	int_g = ft_strtol(g, &endptr[1], 10);
-	int_b = ft_strtol(b, &endptr[2], 10);
-	if (ft_strtol_check_int(r, endptr[0], int_r)
-		|| *ft_next_non_space(endptr[0])
-		|| ft_strtol_check_int(g, endptr[1], int_g)
-		|| *ft_next_non_space(endptr[1])
-		|| ft_strtol_check_int(b, endptr[2], int_b)
+static int	convert_rgb(const char *line)
+{
+	long		int_r;
+	long		int_g;
+	long		int_b;
+	char		*endptr[3];
+	const char	*start[3];
+
+	start[0] = line;
+	int_r = ft_strtol(start[0], &endptr[0], 10);
+	start[1] = next(endptr[0]);
+	int_g = ft_strtol(start[1], &endptr[1], 10);
+	start[2] = next(endptr[1]);
+	int_b = ft_strtol(start[2], &endptr[2], 10);
+	if (ft_strtol_check_int(start[0], endptr[0], int_r)
+		|| *ft_next_non_space(endptr[0]) != ','
+		|| ft_strtol_check_int(start[1], endptr[1], int_g)
+		|| *ft_next_non_space(endptr[1]) != ','
+		|| ft_strtol_check_int(start[2], endptr[2], int_b)
 		|| *ft_next_non_space(endptr[2]))
 		return (-1);
 	if (int_r < 0 || int_g < 0 || int_b < 0 || int_r > 255
@@ -40,46 +54,19 @@ static int	convert_rgb(const char *r, const char *g, const char *b)
 	return ((int_r << 16) | (int_g << 8) | int_b);
 }
 
-static char	**rgb_to_tab(const char *rgb)
-{
-	char	**r_g_b;
-
-	r_g_b = ft_split(rgb, ',');
-	if (!r_g_b)
-		return (NULL);
-	if (tab_size(r_g_b) != 3)
-		return (free_tab(r_g_b), NULL);
-	return (r_g_b);
-}
-
-static int	str_to_color(const char *color_line, int *out)
-{
-	char			**rgb;
-	const char		*res;
-
-	res = ft_next_non_space(color_line);
-	res++;
-	res = ft_next_non_space(res);
-	rgb = rgb_to_tab(res);
-	if (!rgb)
-		return (0);
-	*out = convert_rgb(rgb[0], rgb[1], rgb[2]);
-	if (*out == -1)
-		return (free_tab(rgb), 0);
-	free_tab(rgb);
-	return (1);
-}
-
+//assumes the ith line is a Color line
 static int	extract_colors_utils(t_vector *cub, size_t i, int *out)
 {
 	char	*tmp;
+	int		color;
 
 	tmp = 0;
-	if (!str_to_color(((char **)cub->data)[i], out))
+	color = convert_rgb(ft_next_non_space(((char **)cub->data)[i]) + 1);
+	if (color == -1)
 		return (0);
+	*out = color;
 	vector_pop(cub, i, &tmp);
 	free(tmp);
-	tmp = 0;
 	return (1);
 }
 
