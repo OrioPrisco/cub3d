@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 13:19:56 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/24 13:35:00 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void		print_map_copy(const char **map, int fd);
 /* *** extract_colors.c *** */
 
 int			convert_rgb(const char *r, const char *g, const char *b);
-char		**rgb_to_int(const char *rgb);
+char		**rgb_to_tab(const char *rgb);
 int			vector_to_int(const char *color_line,
 				t_textures *textures, int color);
 int			extract_colors_utils(t_vector *cub, int i, t_textures *textures,
