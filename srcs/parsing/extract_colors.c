@@ -70,7 +70,7 @@ int	str_to_color(const char *color_line, int *out)
 	return (1);
 }
 
-int	extract_colors_utils(t_vector *cub, int i, int *out)
+int	extract_colors_utils(t_vector *cub, size_t i, int *out)
 {
 	char	*tmp;
 
