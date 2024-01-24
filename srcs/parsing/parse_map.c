@@ -6,11 +6,15 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:38:23 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/23 11:38:10 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/24 12:48:01 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+#include "messages.h"
+#include "ft_printf.h"
+#include "vector.h"
+#include "libft.h"
 
 static int	find_player_utils(const t_vector *c, t_player_info *player)
 {

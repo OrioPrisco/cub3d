@@ -6,11 +6,14 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 14:36:13 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/22 13:39:17 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/24 12:44:10 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+#include "libft.h"
+#include "vector.h"
+#include "messages.h"
 
 int	convert_rgb(const char *r, const char *g, const char *b)
 {

@@ -6,11 +6,12 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:00:22 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/22 14:57:04 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/24 12:50:06 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+#include "libft.h"
 
 const char	*line_identifier(const char *line, const char *identifier)
 {

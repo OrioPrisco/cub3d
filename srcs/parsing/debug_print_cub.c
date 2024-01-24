@@ -6,11 +6,14 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0202/01/16 13:39:05 by  mpeulet          #+#    #+#             */
-/*   Updated: 2024/01/19 14:58:55 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/24 12:42:08 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+#include "ft_printf.h"
+#include "vector.h"
+#include "libft.h"
 
 void	print_vector_fd(const t_vector *cub, int fd)
 {

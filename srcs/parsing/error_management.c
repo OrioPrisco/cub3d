@@ -6,11 +6,13 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:33:42 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/17 15:21:18 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/24 12:43:41 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+#include "messages.h"
+#include "ft_printf.h"
 
 int	print_error(int ret_value, const char *message,
 	const char *value, int option)

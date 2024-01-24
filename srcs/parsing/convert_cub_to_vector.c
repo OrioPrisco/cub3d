@@ -6,11 +6,15 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:02:39 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/22 15:22:29 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/24 12:41:39 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+#include "vector.h"
+#include "get_next_line.h"
+#include "messages.h"
+#include "libft.h"
 
 int	cub_to_vector(t_vector *cub, int fd)
 {
