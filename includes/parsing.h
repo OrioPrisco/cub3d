@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 15:45:34 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/24 15:46:21 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ int			flood_fill(char **map, const t_player_info *player);
 /* *** parse_utils.c *** */
 
 const char	*line_identifier(const char *line, const char *identifier);
-int			is_file_readable_cub(const char *file);
 bool		is_file_readable(const char *file);
 bool		is_extension(const char *file, const char *ext);
 bool		is_directory(const char *file);

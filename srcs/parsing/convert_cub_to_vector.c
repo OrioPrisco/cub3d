@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:02:39 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 13:13:42 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/24 14:14:54 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <errno.h>
 #include <string.h>
 #include <unistd.h>
+#include <fcntl.h>
 
 int	cub_to_vector(t_vector *cub, int fd)
 {
@@ -64,8 +65,12 @@ int	clear_empty_lines(t_vector *cub)
 void	init_cub_vector(t_vector *cub, const char *av_one)
 {
 	char	*tmp;
+	int		fd;
 
-	if (cub_to_vector(cub, is_file_readable_cub(av_one)) != 1)
+	fd = open(av_one, O_RDONLY);
+	if (fd == -1)
+		fd = -42;
+	if (cub_to_vector(cub, fd) != 1)
 		exit(1);
 	clear_empty_lines(cub);
 	if (cub->size < 9)
