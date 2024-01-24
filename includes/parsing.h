@@ -6,20 +6,15 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 12:40:32 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/24 12:53:56 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
-# include <stdio.h>
+# include <stddef.h>
 # include <stdbool.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include <stdlib.h>
-# include <string.h>
-# include <errno.h>
 
 typedef struct s_vector	t_vector;
 
