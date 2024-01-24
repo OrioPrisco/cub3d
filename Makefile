@@ -6,7 +6,7 @@
 #    By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2024/01/23 15:18:19 by OrioPrisc        ###   ########.fr        #
+#    Updated: 2024/01/24 13:12:34 by OrioPrisc        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC				=	main.c \
 					collision.c \
 					map_to_lines.c \
 					need_lines.c \
+					utils.c \
 					parsing/convert_cub_to_vector.c \
 					parsing/debug_print_cub.c \
 					parsing/error_management.c \
@@ -34,7 +35,6 @@ SRC				=	main.c \
 					parsing/extract_textures.c \
 					parsing/parse_map.c \
 					parsing/parse_utils.c \
-					parsing/small_utils.c \
 
 NAME			=	cub3d
 

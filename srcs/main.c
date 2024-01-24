@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:24:35 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/24 12:57:39 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/24 13:13:31 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "vector.h"
 #include "libft.h"
 #include <stdlib.h>
+#include "utils.h"
 
 static int	parse_cub(t_vector *cub, t_player_info *player,
 				t_textures *textures)
