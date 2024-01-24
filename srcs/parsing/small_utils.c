@@ -6,12 +6,13 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:56:45 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 12:50:37 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/24 12:57:09 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 #include "libft.h"
+#include <stdlib.h>
 
 char	*trim_line(char *s)
 {
