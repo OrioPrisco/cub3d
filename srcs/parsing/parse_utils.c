@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:00:22 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 12:56:56 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/24 14:13:53 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,6 @@ bool	is_file_readable(const char *file)
 		return (false);
 	close(fd);
 	return (true);
-}
-
-/*fonction return passed as a parameter,
-if success on opening, following function closes fd*/
-int	is_file_readable_cub(const char *file)
-{
-	int	fd;
-
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		return (-42);
-	return (fd);
 }
 
 bool	is_extension(const char *file, const char *ext)
