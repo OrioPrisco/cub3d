@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:23:59 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 15:16:57 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/24 16:09:44 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	extract_textures_utils(t_vector *cub, const char *id,
 	char				*final;
 
 	tmp = ft_next_non_space(((char **)cub->data)[i]);
-	tmp = line_identifier(tmp, id);
+	tmp = line_content(tmp, id);
 	if (!tmp)
 		return (0);
 	final = ft_strdup(tmp);

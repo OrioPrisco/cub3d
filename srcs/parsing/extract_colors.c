@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 14:36:13 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 15:39:12 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/24 16:09:22 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	extract_colors(t_vector *cub, t_textures *textures)
 
 	i = -1;
 	while (++i < 6)
-		if (line_identifier(((char **)cub->data)[i], "F") != NULL)
+		if (line_content(((char **)cub->data)[i], "F") != NULL)
 			break ;
 	if (i == 6)
 		return (print_error(0, F_MISSING, "", 1));
@@ -97,7 +97,7 @@ int	extract_colors(t_vector *cub, t_textures *textures)
 		return (print_error(0, F_FORMAT, ((char **)cub->data)[i], 2));
 	i = -1;
 	while (++i < 5)
-		if (line_identifier(((char **)cub->data)[i], "C") != 0)
+		if (line_content(((char **)cub->data)[i], "C") != 0)
 			break ;
 	if (i == 5)
 		return (print_error(0, C_MISSING, "", 1));
