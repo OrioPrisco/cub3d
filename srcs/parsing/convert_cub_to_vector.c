@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:02:39 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 14:14:54 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/24 14:17:24 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int	cub_to_vector(t_vector *cub, int fd)
 {
 	char	*line;
 
-	if (fd == -42)
-		exit(print_error(errno, strerror(errno), OPEN_CUB, 2));
 	vector_init(cub, sizeof(char **));
 	line = get_next_line(fd);
 	while (line)
@@ -69,7 +67,7 @@ void	init_cub_vector(t_vector *cub, const char *av_one)
 
 	fd = open(av_one, O_RDONLY);
 	if (fd == -1)
-		fd = -42;
+		exit(print_error(errno, strerror(errno), OPEN_CUB, 2));
 	if (cub_to_vector(cub, fd) != 1)
 		exit(1);
 	clear_empty_lines(cub);
