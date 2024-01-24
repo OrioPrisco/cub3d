@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 13:11:44 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/24 13:19:56 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,6 @@
 # include <stdbool.h>
 
 typedef struct s_vector	t_vector;
-
-typedef struct t_szt_point
-{
-	long	x;
-	long	y;
-}	t_point_size_t;
 
 typedef struct s_textures
 {
