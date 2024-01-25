@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 16:08:21 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/26 12:44:10 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ void		exit_wrong_input(int ac, const char *av_one);
 
 int			extract_textures(t_vector *cub, t_textures *textures, size_t size);
 void		free_textures(t_textures *textures);
+bool		load_textures(t_vector *texture_out, const t_textures *textures,
+				void *mlx);
 
 /* *** is_map_playable.c *** */
 
