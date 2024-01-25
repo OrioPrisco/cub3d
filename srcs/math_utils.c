@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users.nor  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:51:23 by OrioPrisco        #+#    #+#             */
-/*   Updated: 2024/01/10 23:25:40 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2024/01/25 14:37:34 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_slope	get_slope(t_line line)
 	return (slope);
 }
 
-static const double	g_epsilon = 0.001;
+static const long double	g_epsilon = 0.0000000001;
 
 bool	less_than(double a, double b)
 {
