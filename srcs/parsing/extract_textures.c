@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:23:59 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 16:09:44 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/26 12:46:44 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include "vector.h"
 #include "messages.h"
 #include <stdlib.h>
+#include "image.h"
+#include "mlx.h"
 
 static int	extract_textures_utils(t_vector *cub, const char *id,
 	char **dest, int i)
@@ -83,4 +85,30 @@ void	free_textures(t_textures *textures)
 	textures->so_path = 0;
 	textures->we_path = 0;
 	textures->ea_path = 0;
+}
+
+bool	load_textures(t_vector *texture_out, const t_textures *textures,
+			void *mlx)
+{
+	t_img	tmp;
+
+	if (0
+		|| (ft_bzero(&tmp, sizeof(tmp)), 0)
+		|| load_xpm(mlx, textures->no_path, &tmp)
+		|| vector_append(texture_out, &tmp)
+		|| (ft_bzero(&tmp, sizeof(tmp)), 0)
+		|| load_xpm(mlx, textures->so_path, &tmp)
+		|| vector_append(texture_out, &tmp)
+		|| (ft_bzero(&tmp, sizeof(tmp)), 0)
+		|| load_xpm(mlx, textures->we_path, &tmp)
+		|| vector_append(texture_out, &tmp)
+		|| (ft_bzero(&tmp, sizeof(tmp)), 0)
+		|| load_xpm(mlx, textures->ea_path, &tmp)
+		|| vector_append(texture_out, &tmp))
+	{
+		if (tmp.img)
+			mlx_destroy_image(mlx, tmp.img);
+		return (1);
+	}
+	return (0);
 }
