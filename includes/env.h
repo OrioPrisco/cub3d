@@ -6,15 +6,15 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:33:21 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/26 16:53:09 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/26 17:14:53 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ENV_H
 # define ENV_H
 
-# define WIDTH 800
-# define HEIGHT 1200
+# define WIDTH 1900
+# define HEIGHT 1000
 # include "vector.h"
 # include "image.h"
 # include <stdbool.h>
