@@ -6,7 +6,7 @@
 #    By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2024/01/24 13:12:34 by OrioPrisc        ###   ########.fr        #
+#    Updated: 2024/01/26 16:03:20 by OrioPrisc        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SRC				=	main.c \
 					parsing/extract_colors.c \
 					parsing/is_map_playable.c \
 					parsing/extract_textures.c \
-					parsing/parse_map.c \
+					parsing/find_player.c \
 					parsing/parse_utils.c \
 
 NAME			=	cub3d
