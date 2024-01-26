@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/26 16:02:09 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/26 16:02:51 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void		free_textures(t_textures *textures);
 char		**copy_vector(const t_vector *cub, size_t max_x);
 int			flood_fill(char **map, const t_player_info *player);
 
-/* *** parse_map.c *** */
+/* *** find_player.c *** */
 
 int			find_player(const t_vector *cub, t_player_info *player);
 
