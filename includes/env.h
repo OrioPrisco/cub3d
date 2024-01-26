@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:33:21 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/17 13:17:39 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/26 16:53:09 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include "image.h"
 # include <stdbool.h>
 # include "math_utils.h"
+
+typedef struct s_textures		t_textures;
+typedef struct s_player_info	t_player_info;
 
 typedef struct s_graphics {
 	t_vector	textures;
@@ -63,4 +66,6 @@ typedef struct s_env
 int		init_env(t_env *env);
 void	switch_frame(t_env *env);
 void	destroy_env(t_env *env);
+bool	load_into_env(t_env *env, const t_vector *cub,
+			const t_textures *textures, const t_player_info *player_info);
 #endif
