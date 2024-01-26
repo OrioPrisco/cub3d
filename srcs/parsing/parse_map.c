@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:38:23 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/26 14:51:15 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/26 14:53:28 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,11 @@ int	find_player(const t_vector *c, t_player_info *player)
 	nb_player = 0;
 	while (++i < c->size)
 	{
-		j = ft_strspn(((char **)c->data)[i], " 01NSWE");
-		if (j != ft_strlen(((char **)c->data)[i]))
-			return (print_error(0, INV_CHAR, &((char **)c->data)[i][j], 3));
 		j = -1;
 		while (((char **)c->data)[i][++j])
 		{
+			if (!ft_strchr("NSWE01 ", ((char **)c->data)[i][j]))
+				return (print_error(0, INV_CHAR, &((char **)c->data)[i][j], 3));
 			if (ft_strchr("NSWE", ((char **)c->data)[i][j]))
 			{
 				find_player_utils_update(c, player, i, j);
