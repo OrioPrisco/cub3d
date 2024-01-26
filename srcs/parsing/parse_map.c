@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:38:23 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/26 14:15:20 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/26 14:51:15 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,15 @@
 #include "vector.h"
 #include "libft.h"
 
-static int	find_player_utils(const t_vector *c, t_player_info *player)
+static int	find_player_utils(const t_vector *c,
+				t_player_info *player, size_t nb_player)
 {
-	if (player->nb_player == 0)
+	if (nb_player == 0)
 		return (print_error(0, NO_PLAYER_FOUND, "", 1));
-	if (player->nb_player > 1)
+	if (nb_player > 1)
 	{
 		print_error(0, TOO_MANY_PLAYER, "", 1);
-		return (ft_dprintf(2, "%d\n", player->nb_player), 0);
+		return (ft_dprintf(2, "%d\n", nb_player), 0);
 	}
 	if (player->y == 0 || player->y == c->size - 1
 		|| player->x == 0)
@@ -38,7 +39,6 @@ static void	find_player_utils_update(const t_vector *c,
 	player->facing = ((char **)c->data)[i][j];
 	player->y = i;
 	player->x = j;
-	player->nb_player++;
 }
 
 int	find_player(const t_vector *c, t_player_info *player)
@@ -46,8 +46,10 @@ int	find_player(const t_vector *c, t_player_info *player)
 	size_t	i;
 	size_t	j;
 	size_t	len;
+	size_t	nb_player;
 
 	i = -1;
+	nb_player = 0;
 	while (++i < c->size)
 	{
 		j = ft_strspn(((char **)c->data)[i], " 01NSWE");
@@ -57,7 +59,10 @@ int	find_player(const t_vector *c, t_player_info *player)
 		while (((char **)c->data)[i][++j])
 		{
 			if (ft_strchr("NSWE", ((char **)c->data)[i][j]))
+			{
 				find_player_utils_update(c, player, i, j);
+				nb_player++;
+			}
 			len = ft_strlen(((char **)c->data)[i]);
 			if (player->x + 1 == len)
 				return (print_error(0, MAP_EDGE, "", 1));
@@ -65,5 +70,5 @@ int	find_player(const t_vector *c, t_player_info *player)
 				player->max_x = len;
 		}
 	}
-	return (find_player_utils(c, player));
+	return (find_player_utils(c, player, nb_player));
 }
