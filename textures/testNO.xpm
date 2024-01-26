@@ -1,3 +1,15 @@
-bzdfzdfzdfb
-xcv
-bzdfzdfzdfbxcb
+/* XPM */
+static char * testNO_xpm[] = {
+"10 10 2 1",
+" 	c #FFFFFF",
+".	c #000000",
+"          ",
+"          ",
+" ..     . ",
+" . .    . ",
+" .  .   . ",
+" .   .  . ",
+" .    . . ",
+" .     .. ",
+" .      . ",
+"          "};
