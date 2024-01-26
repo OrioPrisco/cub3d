@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:38:23 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 12:48:01 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/26 14:13:45 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	find_player(const t_vector *c, t_player_info *player)
 {
 	size_t	i;
 	size_t	j;
+	size_t	len;
 
 	i = -1;
 	while (++i < c->size)
@@ -60,11 +61,11 @@ int	find_player(const t_vector *c, t_player_info *player)
 				|| ((char **)c->data)[i][j] == 'W'
 				|| ((char **)c->data)[i][j] == 'E')
 				find_player_utils_update(c, player, i, j);
-			player->x_line_len = ft_strlen(((char **)c->data)[i]);
-			if (player->x + 1 == player->x_line_len)
+			len = ft_strlen(((char **)c->data)[i]);
+			if (player->x + 1 == len)
 				return (print_error(0, MAP_EDGE, "", 1));
-			if (player->x_line_len > player->max_x)
-				player->max_x = player->x_line_len;
+			if (len > player->max_x)
+				player->max_x = len;
 		}
 	}
 	return (find_player_utils(c, player));
