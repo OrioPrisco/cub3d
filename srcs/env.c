@@ -6,13 +6,17 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:29:17 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/15 15:38:20 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/26 17:19:08 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
 #include "env.h"
 #include "libft.h"
 #include "mlx.h"
+#include "map.h"
+#include "parsing.h"
+#include "vector.h"
+#include "utils.h"
 
 int	init_env(t_env *env)
 {
@@ -65,4 +69,31 @@ void	destroy_env(t_env *env)
 		mlx_destroy_window(env->mlx, env->win);
 	mlx_destroy_display(env->mlx);
 	free(env->mlx);
+}
+
+bool	load_into_env(t_env *env, const t_vector *cub,
+			const t_textures *textures, const t_player_info *player_info)
+{
+	char	**map_copy;
+
+	env->player.pos = (t_point){player_info->x + 0.5, player_info->y + 0.5};
+	if (player_info->facing == 'N')
+		env->player.look = (t_vec2d){0, -1};
+	if (player_info->facing == 'S')
+		env->player.look = (t_vec2d){0, 1};
+	if (player_info->facing == 'W')
+		env->player.look = (t_vec2d){-1, 0};
+	if (player_info->facing == 'E')
+		env->player.look = (t_vec2d){1, 0};
+	env->graphics.floor_col = textures->colors[0];
+	env->graphics.ceil_col = textures->colors[1];
+	if (load_textures(&env->graphics.textures, textures, env->mlx))
+		return (1);
+	map_copy = vector_to_2dtab(cub, player_info->max_x);
+	if (!map_copy)
+		return (1);
+	if (map_to_lines(map_copy, &env->lines, &env->graphics.line_textures_id,
+			(t_point){player_info->max_x, player_info->max_y}))
+		return (free_tab(map_copy), 1);
+	return (free_tab(map_copy), 0);
 }
