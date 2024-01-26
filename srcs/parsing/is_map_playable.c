@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 17:19:48 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/26 13:55:03 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/26 16:31:14 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,34 +22,6 @@ typedef struct t_szt_point
 	long	x;
 	long	y;
 }	t_point_size_t;
-
-char	**copy_vector(const t_vector *cub, size_t max_x)
-{
-	size_t	i;
-	size_t	j;
-	char	**map;
-
-	i = -1;
-	map = ft_calloc(cub->size + 1, sizeof(char *));
-	if (!map)
-		return (NULL);
-	while (++i < cub->size)
-	{
-		map[i] = ft_calloc(max_x + 1, sizeof(char));
-		if (!map[i])
-			return (free_tab(map), NULL);
-		j = -1;
-		while (++j < ft_strlen(((char **)cub->data)[i]))
-		{
-			map[i][j] = ((char **)cub->data)[i][j];
-		}
-		while (j < max_x)
-			map[i][j++] = ' ';
-		map[i][j] = 0;
-	}
-	map[i] = 0;
-	return (map);
-}
 
 static int	fill(char **map, t_point_size_t p, const t_player_info *player,
 				const char to_fill)
