@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:24:35 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/24 15:39:56 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/26 13:55:52 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	parse_cub(t_vector *cub, t_player_info *player,
 	if (!extract_textures(cub, textures, cub->size)
 		||!find_player(cub, player))
 		return (free_textures(textures), vector_free(cub, &free_str), 0);
-	map = copy_vector(cub, player);
+	map = copy_vector(cub, player->max_x);
 	if (!map)
 		return (free_textures(textures),
 			vector_free(cub, &free_str), 0);
