@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/26 13:55:14 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/26 14:12:05 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct s_player_info
 	char	facing;
 	size_t	y;
 	size_t	x;
-	size_t	x_line_len;
 	size_t	max_x;
 	size_t	max_y;
 	size_t	nb_player;
