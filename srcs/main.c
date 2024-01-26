@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:24:35 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/26 16:29:27 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/26 17:05:58 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 #include "libft.h"
 #include <stdlib.h>
 #include "utils.h"
+#include "env.h"
+#include "raycast.h"
+#include "hooks.h"
+#include "mlx.h"
 
 static int	parse_cub(t_vector *cub, t_player_info *player,
 				t_textures *textures)
@@ -44,6 +48,7 @@ int	main(int ac, char **av)
 	t_vector		cub;
 	t_textures		textures;
 	t_player_info	player;
+	t_env			env;
 
 	ft_memset(&textures, 0, sizeof(t_textures));
 	ft_bzero(&player, sizeof(t_player_info));
@@ -51,6 +56,14 @@ int	main(int ac, char **av)
 	init_cub_vector(&cub, av[1]);
 	if (!parse_cub(&cub, &player, &textures))
 		exit(1);
-	return (vector_free(&cub, &free_str),
-		free_textures(&textures), 0);
+	ft_bzero(&env, sizeof(env));
+	calculate_angles(WIDTH, env.angles, 90, 1);
+	if (init_env(&env)
+		|| load_into_env(&env, &cub, &textures, &player))
+		return (vector_free(&cub, &free_str),
+			free_textures(&textures), destroy_env(&env), 1);
+	vector_free(&cub, &free_str);
+	free_textures(&textures);
+	register_hooks(&env);
+	mlx_loop(env.mlx);
 }
