@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_map_playable.c                                  :+:      :+:    :+:   */
+/*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 17:19:48 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/26 16:31:14 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/29 13:41:33 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct t_szt_point
 static int	fill(char **map, t_point_size_t p, const t_player_info *player,
 				const char to_fill)
 {
-	if (p.y < 0 || p.y >= (long)player->max_y - 1 || p.x < 0
+	if (p.y < 0 || p.y >= (long)player->max_y || p.x < 0
 		|| p.x >= (long)player->max_x)
 		return (1);
 	if (map[p.y][p.x] != to_fill)
