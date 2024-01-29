@@ -6,7 +6,7 @@
 #    By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2024/01/26 16:33:40 by OrioPrisc        ###   ########.fr        #
+#    Updated: 2024/01/29 14:03:23 by mpeulet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC				=	main.c \
 					need_lines.c \
 					utils.c \
 					vector_to_2dtab.c \
+					mini_map/mini_map.c \
 					parsing/convert_cub_to_vector.c \
 					parsing/debug_print_cub.c \
 					parsing/error_management.c \
