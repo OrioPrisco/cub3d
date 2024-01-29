@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:36:45 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/29 16:33:08 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/29 16:39:29 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	render_mini_map(t_player_info *p_info, t_img *mini,
 		while (j < mini->width)
 		{
 			my_mlx_pixel_put(mini, j, i, char_to_color(char_at_map(map, p_info,
-				((float)i) / mini->height * p_info->max_y + player->pos.y,
-				((float)j) / mini->width * p_info->max_x + player->pos.x
+				((float)i - mini->height / 2) / mini->height * p_info->max_y + player->pos.y,
+				((float)j - mini->width / 2) / mini->width * p_info->max_x + player->pos.x
 			)));
 			j++;
 		}
