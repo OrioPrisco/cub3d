@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:31:32 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/29 12:38:05 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/29 12:46:15 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ static bool	add_lines(char **map, t_vectors out, t_line line, t_params params)
 		if (add_line(out, params.offset[0], line, params.texture_id[0]))
 			return (1);
 	if (need_line(line, map, params.dir, params.pointing[1]))
-		if (add_line(out, params.offset[1], (t_line){line.end, line.start}, params.texture_id[1]))
+		if (add_line(out, params.offset[1],
+				(t_line){line.end, line.start}, params.texture_id[1]))
 			return (1);
 	return (0);
 }
