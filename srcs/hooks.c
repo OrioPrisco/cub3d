@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
+/*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:09:40 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/16 16:02:36 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/29 16:32:25 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,17 @@
 #include "mlx.h"
 #include <X11/X.h>
 #include <stdlib.h>
+#include "mini_map.h"
 
 //TODO : only draw after something changes
 int	my_loop_hook(t_env *env)
 {
 	handle_held_keys(env);
 	switch_frame(env);
-	draw_screen(env->frame, &env->player, env);
+	if (env->held_keys & (1 << Key_Map))
+		render_mini_map(&env->p_info, env->frame, 0xFF, env->map, &env->player);
+	else
+		draw_screen(env->frame, &env->player, env);
 	mlx_put_image_to_window(env->mlx, env->win, env->frame->img, 0, 0);
 	return (0);
 }

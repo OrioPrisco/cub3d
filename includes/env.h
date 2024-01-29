@@ -47,6 +47,7 @@ typedef enum e_held_keys {
 	Key_Rot_Left_alt,
 	Key_Rot_Right,
 	Key_Rot_Right_alt,
+	Key_Map,
 }	t_held_keys;
 
 typedef struct s_env
