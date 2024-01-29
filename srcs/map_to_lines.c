@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:31:32 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/29 12:46:15 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/29 17:13:41 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 #include "math_utils.h"
 #include "map.h"
 
-static size_t	ft_strspn_dir(char **map, t_point point, t_vec2d dir,
+static size_t	ft_strspn_dir(const t_map *map, t_point point, t_vec2d dir,
 					const char *str)
 {
 	size_t	span;
 
 	span = 0;
 	while (point.y >= 0 && point.x >= 0
-		&& map[(int)point.y] && map[(int)point.y][(int)point.x])
+		&& point.x < map->width && point.y < map->width)
 	{
-		if (!ft_strchr(str, map[(int)point.y][(int)point.x]))
+		if (!ft_strchr(str, map->map[(int)point.y][(int)point.x]))
 			return (span);
 		span++;
 		point.x += dir.x;
@@ -58,7 +58,8 @@ typedef struct s_params {
 	t_vec2d	dir;
 }	t_params;
 
-static bool	add_lines(char **map, t_vectors out, t_line line, t_params params)
+static bool	add_lines(const t_map *map, t_vectors out,
+	t_line line, t_params params)
 {
 	if (need_line(line, map, params.dir, params.pointing[0]))
 		if (add_line(out, params.offset[0], line, params.texture_id[0]))
@@ -78,7 +79,7 @@ static bool	add_lines(char **map, t_vectors out, t_line line, t_params params)
 //"000111000"
 // the line generated will be
 //"000------"
-static bool	map_to_lines_impl(char **map, t_vector *lines,
+static bool	map_to_lines_impl(const t_map *map, t_vector *lines,
 				t_vector *textures, const t_params params)
 {
 	t_point	start;
@@ -87,7 +88,7 @@ static bool	map_to_lines_impl(char **map, t_vector *lines,
 
 	start = params.start_point;
 	while (start.x >= 0 && start.y >= 0
-		&& map[(int)start.y] && map[(int)start.y][(int)start.x])
+		&& start.x < map->width && start.y < map->width)
 	{
 		start = point_add_vec2d(start, vec2d_mul(params.dir,
 					ft_strspn_dir(map, start, params.dir, "NSWE0 ")));
@@ -109,15 +110,15 @@ static const t_params	g_params[] = {
 };
 
 // assumes map is a rectangle
-bool	map_to_lines(char **map, t_vector *out_lines, t_vector *out_texture,
-			t_point size)
+bool	map_to_lines(const t_map *map, t_vector *out_lines,
+			t_vector *out_texture)
 {
 	t_params	params;
 	size_t		i;
 
 	params = g_params[0];
 	i = 0;
-	while (i < size.y)
+	while (i < map->height)
 	{
 		params.start_point.y = i++;
 		if (map_to_lines_impl(map, out_lines, out_texture, params))
@@ -125,7 +126,7 @@ bool	map_to_lines(char **map, t_vector *out_lines, t_vector *out_texture,
 	}
 	params = g_params[1];
 	i = 0;
-	while (i < size.x)
+	while (i < map->width)
 	{
 		params.start_point.x = i++;
 		if (map_to_lines_impl(map, out_lines, out_texture, params))
