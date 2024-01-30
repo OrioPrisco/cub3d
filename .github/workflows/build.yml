@@ -19,3 +19,5 @@ jobs:
       run: make -C libft && make -C minilibx-linux
     - name: Make cub3d
       run: make
+    - name: Make cub3d bonus
+      run: make bonus
