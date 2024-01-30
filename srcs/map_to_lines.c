@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:31:32 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/30 12:51:20 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/30 15:17:26 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,18 @@ typedef struct s_params {
 	t_vec2d	pointing[2];
 	t_point	start_point;
 	t_vec2d	dir;
+	bool	bonus;
 }	t_params;
 
 static bool	add_lines(const t_map *map, t_vectors out,
 	t_line line, t_params params)
 {
-	if (need_line(line, map, params.dir, params.pointing[0]))
+	if (!params.bonus
+		|| need_line(line, map, params.dir, params.pointing[0]))
 		if (add_line(out, params.offset[0], line, params.texture_id[0]))
 			return (1);
-	if (need_line(line, map, params.dir, params.pointing[1]))
+	if (!params.bonus
+		|| need_line(line, map, params.dir, params.pointing[1]))
 		if (add_line(out, params.offset[1],
 				(t_line){line.end, line.start}, params.texture_id[1]))
 			return (1);
@@ -88,7 +91,10 @@ static bool	map_to_lines_impl(const t_map *map, t_vector *lines,
 	{
 		start = point_add_vec2d(start, vec2d_mul(params.dir,
 					ft_strspn_dir(map, start, params.dir, "NSWE0 ")));
-		span = ft_strspn_dir(map, start, params.dir, " 1");
+		if (params.bonus)
+			span = ft_strspn_dir(map, start, params.dir, " 1");
+		else
+			span = ft_strspn_dir(map, start, params.dir, "1");
 		if (!span)
 			return (0);
 		end = point_add_vec2d(start, vec2d_mul(params.dir, span));
@@ -101,18 +107,19 @@ static bool	map_to_lines_impl(const t_map *map, t_vector *lines,
 }
 
 static const t_params	g_params[] = {
-{{0, 1}, {{0, 1}, {0, 0}}, {{0, 1}, {0, -1}}, {0, 0}, {1, 0}}, // N/S facing
-{{3, 2}, {{0, 0}, {1, 0}}, {{-1, 0}, {1, 0}}, {0, 0}, {0, 1}}, // W/E facing
+{{0, 1}, {{0, 1}, {0, 0}}, {{0, 1}, {0, -1}}, {0, 0}, {1, 0}, 0}, // N/S facing
+{{3, 2}, {{0, 0}, {1, 0}}, {{-1, 0}, {1, 0}}, {0, 0}, {0, 1}, 0}, // W/E facing
 };
 
 // assumes map is a rectangle
 bool	map_to_lines(const t_map *map, t_vector *out_lines,
-			t_vector *out_texture)
+			t_vector *out_texture, bool bonus)
 {
 	t_params	params;
 	size_t		i;
 
 	params = g_params[0];
+	params.bonus = bonus;
 	i = 0;
 	while (i < map->height)
 	{
@@ -121,6 +128,7 @@ bool	map_to_lines(const t_map *map, t_vector *out_lines,
 			return (vector_clear(out_lines), vector_clear(out_texture), 1);
 	}
 	params = g_params[1];
+	params.bonus = bonus;
 	i = 0;
 	while (i < map->width)
 	{

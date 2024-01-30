@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:24:35 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/30 13:01:47 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/30 15:12:45 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ static int	parse_cub(t_vector *cub, t_player_info *player,
 	return (1);
 }
 
+#ifndef BONUS
+# define BONUS 0
+#endif
+
 int	main(int ac, char **av)
 {
 	t_vector		cub;
@@ -53,6 +57,7 @@ int	main(int ac, char **av)
 	ft_memset(&textures, 0, sizeof(t_textures));
 	ft_bzero(&env, sizeof(env));
 	ft_bzero(&p_info, sizeof(p_info));
+	env.bonus = BONUS;
 	exit_wrong_input(ac, av[1]);
 	init_cub_vector(&cub, av[1]);
 	if (!parse_cub(&cub, &p_info, &textures))

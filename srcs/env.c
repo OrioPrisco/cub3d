@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:29:17 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/30 12:56:57 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/30 15:11:59 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ bool	load_into_env(t_env *env, const t_vector *cub,
 	if (!map_copy)
 		return (1);
 	if (map_to_lines(&(t_map){map_copy, player_info->max_x, player_info->max_y},
-		&env->lines, &env->graphics.line_textures_id))
+		&env->lines, &env->graphics.line_textures_id, env->bonus))
 		return (free_tab(map_copy), 1);
 	env->map = (t_map){map_copy, player_info->max_x, player_info->max_y};
 	return (0);
