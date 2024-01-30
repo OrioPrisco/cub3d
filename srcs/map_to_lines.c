@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:31:32 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/29 17:13:41 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/30 12:51:20 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static size_t	ft_strspn_dir(const t_map *map, t_point point, t_vec2d dir,
 
 	span = 0;
 	while (point.y >= 0 && point.x >= 0
-		&& point.x < map->width && point.y < map->width)
+		&& point.x < map->width && point.y < map->height)
 	{
 		if (!ft_strchr(str, map->map[(int)point.y][(int)point.x]))
 			return (span);
@@ -88,7 +88,7 @@ static bool	map_to_lines_impl(const t_map *map, t_vector *lines,
 
 	start = params.start_point;
 	while (start.x >= 0 && start.y >= 0
-		&& start.x < map->width && start.y < map->width)
+		&& start.x < map->width && start.y < map->height)
 	{
 		start = point_add_vec2d(start, vec2d_mul(params.dir,
 					ft_strspn_dir(map, start, params.dir, "NSWE0 ")));
