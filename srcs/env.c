@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:29:17 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/29 17:11:23 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/30 12:56:57 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	destroy_env(t_env *env)
 
 	vector_clear(&env->lines);
 	vector_clear(&env->graphics.line_textures_id);
-	free_tab(env->map);
+	free_tab(env->map.map);
 	if (!env->mlx)
 		return ;
 	if (env->frame1.img)
@@ -97,6 +97,6 @@ bool	load_into_env(t_env *env, const t_vector *cub,
 	if (map_to_lines(&(t_map){map_copy, player_info->max_x, player_info->max_y},
 		&env->lines, &env->graphics.line_textures_id))
 		return (free_tab(map_copy), 1);
-	env->map = map_copy;
+	env->map = (t_map){map_copy, player_info->max_x, player_info->max_y};
 	return (0);
 }

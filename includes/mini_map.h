@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 17:43:29 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/30 10:17:54 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/30 13:00:56 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 /* *** mini_map.h *** */
 
-void	render_mini_map(const t_player_info *p_info, t_img *mini, char **map,
+void	render_mini_map(t_img *mini, const t_map *map,
 			const t_player *player);
 
 #endif /* *** MINI_MAP_H *** */

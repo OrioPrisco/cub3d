@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:33:21 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/29 16:31:53 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/30 12:55:57 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "image.h"
 # include <stdbool.h>
 # include "math_utils.h"
-# include "parsing.h"
+# include "map.h"
 
 typedef struct s_textures		t_textures;
 typedef struct s_player_info	t_player_info;
@@ -63,8 +63,7 @@ typedef struct s_env
 	t_held_keys		held_keys;
 	double			angles[WIDTH];
 	bool			bonus;
-	char			**map;
-	t_player_info	p_info;
+	t_map			map;
 }	t_env;
 
 int		init_env(t_env *env);
