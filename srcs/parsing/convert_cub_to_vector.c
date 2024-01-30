@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:02:39 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 14:19:22 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/30 17:52:59 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ static int	clear_empty_lines(t_vector *cub)
 
 	i = 0;
 	tmp = 0;
-	while (i < cub->size)
+	while (i < cub->size && i < 6)
 	{
-		if (!*(((char **)cub->data)[i]))
+		if (!*ft_next_non_space(((char **)cub->data)[i]))
 		{
 			vector_pop(cub, i, &tmp);
 			free(tmp);
