@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:56:45 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 13:07:51 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/30 12:27:06 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	free_tab(char **tab)
 	int	i;
 
 	i = -1;
+	if (!tab)
+		return ;
 	while (tab[++i])
 		free(tab[i]);
 	free(tab);
