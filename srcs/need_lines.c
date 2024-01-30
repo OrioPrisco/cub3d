@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:00:19 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/29 17:09:01 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/30 12:51:51 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static bool	contains_zero_or_player(t_line line, const t_map *map, t_vec2d dir)
 
 	point = line.start;
 	while (point.y >= 0 && point.x >= 0
-		&& point.x < map->width && point.y < map->width)
+		&& point.x < map->width && point.y < map->height)
 	{
 		if (ft_strchr("0NSWE", map->map[(int)point.y][(int)point.x]))
 			return (1);
