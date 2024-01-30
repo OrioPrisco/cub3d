@@ -71,10 +71,6 @@ static bool	add_lines(const t_map *map, t_vectors out,
 	return (0);
 }
 
-// why not just use ft_strcpsn in a loop ?
-// because i need it vertically too
-// then just make str_cspn with dir
-
 //if a line is like 
 //"000111000"
 // the line generated will be
