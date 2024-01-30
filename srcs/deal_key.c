@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   deal_key.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: OrioPrisco <47635210+OrioPrisco@users.nor  +#+  +:+       +#+        */
+/*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:51:37 by OrioPrisco        #+#    #+#             */
-/*   Updated: 2024/01/17 17:30:28 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/30 10:19:25 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static const t_xkey_cubkey_map_entry	g_keymap[] = {
 {XK_Down, Key_Down_alt},
 {XK_a, Key_Left},
 {XK_d, Key_Right},
+{XK_m, Key_Map,},
 };
 
 int	on_keypress(int key, t_env *env)

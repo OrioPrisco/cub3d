@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
+/*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:33:21 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/26 17:14:53 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/29 16:31:53 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "image.h"
 # include <stdbool.h>
 # include "math_utils.h"
+# include "parsing.h"
 
 typedef struct s_textures		t_textures;
 typedef struct s_player_info	t_player_info;
@@ -46,6 +47,7 @@ typedef enum e_held_keys {
 	Key_Rot_Left_alt,
 	Key_Rot_Right,
 	Key_Rot_Right_alt,
+	Key_Map,
 }	t_held_keys;
 
 typedef struct s_env
@@ -61,6 +63,8 @@ typedef struct s_env
 	t_held_keys		held_keys;
 	double			angles[WIDTH];
 	bool			bonus;
+	char			**map;
+	t_player_info	p_info;
 }	t_env;
 
 int		init_env(t_env *env);
