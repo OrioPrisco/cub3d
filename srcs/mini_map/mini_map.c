@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:36:45 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/30 13:00:17 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/30 13:05:08 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "map.h"
 #include "mini_map.h"
 
-int	char_to_color(char c)
+static int	char_to_color(char c)
 {
 	if (c == '1')
 		return (0xFF);
@@ -26,7 +26,7 @@ int	char_to_color(char c)
 	return (0xFF00);
 }
 
-char	char_at_map(const t_map *map, int y, int x)
+static char	char_at_map(const t_map *map, int y, int x)
 {
 	if (x < 0 || y < 0 || (size_t)x >= map->width || (size_t)y >= map->height)
 		return (' ');
