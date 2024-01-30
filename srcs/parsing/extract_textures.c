@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:23:59 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/26 12:46:44 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/30 11:13:30 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	extract_textures_utils(t_vector *cub, const char *id,
 		return (0);
 	final = ft_strdup(tmp);
 	if (!final)
-		return (0);
+		return (print_error(0, TEXT_MALLOC_FAIL, "", 4));
 	if (!is_extension(final, ".xpm") || is_directory(final)
 		|| !is_file_readable(final))
 	{

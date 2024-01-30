@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 13:48:17 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/22 14:31:12 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/30 11:10:28 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ the first 6 lines after clearing empty lines."
 # define SO_MISSING "Line containing path to SO texture is missing."
 # define WE_MISSING "Line containing path to WE texture is missing."
 # define EA_MISSING "Line containing path to EA texture is missing."
+
+# define TEXT_MALLOC_FAIL "Malloc failed in texture_utils fn resulting \
+in program malfunction."
 
 # define INV_CHAR "Invalid character found in the map.\nFirst invalid \
 character found in the map :"

@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:33:42 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/24 12:55:17 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/30 11:12:43 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 int	print_error(int ret_value, const char *message,
 	const char *value, int option)
 {
+	if (option == 4)
+		return (ft_dprintf(2, "%s\n", message), ret_value);
 	printf("Error\n");
 	if (option == 1)
 		ft_dprintf(2, "%s\n", message);
