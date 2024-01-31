@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:24:35 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/30 18:48:46 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/01/31 13:05:51 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include "raycast.h"
 #include "hooks.h"
 #include "mlx.h"
+#include "messages.h"
 
 #ifndef BONUS
 # define BONUS 0
@@ -55,6 +56,16 @@ static int	parse_cub(t_vector *cub, t_player_info *player,
 	return (1);
 }
 
+static int	check_bonus_xpm(t_env *env)
+{
+	env->graphics.door_texture = "./textures/bonus/door.xpm";
+	env->graphics.animated_texture = "./textures/bonus/animated.xpm";
+	if (!is_file_readable(env->graphics.door_texture)
+		|| !is_file_readable(env->graphics.animated_texture))
+		return (print_error(0, BONUS_XPM_ERR, "", 1));
+	return (1);
+}
+
 int	main(int ac, char **av)
 {
 	t_vector		cub;
@@ -66,6 +77,9 @@ int	main(int ac, char **av)
 	ft_bzero(&env, sizeof(env));
 	ft_bzero(&p_info, sizeof(p_info));
 	env.bonus = BONUS;
+	if (env.bonus)
+		if (!check_bonus_xpm(&env))
+			exit(1);
 	exit_wrong_input(ac, av[1]);
 	init_cub_vector(&cub, av[1]);
 	if (!parse_cub(&cub, &p_info, &textures))
