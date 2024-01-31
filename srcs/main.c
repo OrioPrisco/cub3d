@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:24:35 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/30 15:12:45 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/01/30 18:48:46 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,18 @@
 #include "hooks.h"
 #include "mlx.h"
 
+#ifndef BONUS
+# define BONUS 0
+#endif
+
+#if BONUS == 1
+
+static const char	*g_valid = "NSWE01 DB";
+#else
+
+static const char	*g_valid = "NSWE01 ";
+#endif
+
 static int	parse_cub(t_vector *cub, t_player_info *player,
 				t_textures *textures)
 {
@@ -30,7 +42,7 @@ static int	parse_cub(t_vector *cub, t_player_info *player,
 	if (!extract_colors(cub, textures))
 		return (vector_free(cub, &free_str), 0);
 	if (!extract_textures(cub, textures, cub->size)
-		||!find_player(cub, player))
+		||!find_player(cub, player, g_valid))
 		return (free_textures(textures), vector_free(cub, &free_str), 0);
 	map = vector_to_2dtab(cub, player->max_x);
 	if (!map)
@@ -42,10 +54,6 @@ static int	parse_cub(t_vector *cub, t_player_info *player,
 	free_tab(map);
 	return (1);
 }
-
-#ifndef BONUS
-# define BONUS 0
-#endif
 
 int	main(int ac, char **av)
 {
