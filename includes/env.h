@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:33:21 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/30 12:55:57 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/01 13:01:57 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_env
 	t_img			*frame;
 	t_img			frame1;
 	t_img			frame2;
+	t_img			mini_map;
 	t_player		player;
 	t_vector		lines;
 	t_graphics		graphics;

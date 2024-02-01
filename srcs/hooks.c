@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:09:40 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/30 14:27:22 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/01 13:36:54 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,11 @@ int	my_loop_hook(t_env *env)
 	if (env->held_keys & (1 << Key_Map))
 		render_mini_map(env->frame, &env->map, &env->player);
 	else
+	{
+		render_mini_map(&env->mini_map, &env->map, &env->player);
 		draw_screen(env->frame, &env->player, env);
+		cpy_img(env->frame, &env->mini_map);
+	}
 	mlx_put_image_to_window(env->mlx, env->win, env->frame->img, 0, 0);
 	do_mouse_stuff(env);
 	return (0);
