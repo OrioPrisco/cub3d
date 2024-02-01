@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:29:17 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/30 15:11:59 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/01 13:26:28 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	init_env(t_env *env)
 	if (!env->win)
 		return (2);
 	if (init_img(env, &env->frame1, WIDTH, HEIGHT)
-		|| init_img(env, &env->frame2, WIDTH, HEIGHT))
+		|| init_img(env, &env->frame2, WIDTH, HEIGHT)
+		|| init_img(env, &env->mini_map, WIDTH / 10, HEIGHT / 10))
 		return (1);
 	return (0);
 }
@@ -59,12 +60,13 @@ void	destroy_env(t_env *env)
 		mlx_destroy_image(env->mlx, env->frame1.img);
 	if (env->frame2.img)
 		mlx_destroy_image(env->mlx, env->frame2.img);
+	if (env->mini_map.img)
+		mlx_destroy_image(env->mlx, env->mini_map.img);
 	i = 0;
 	while (i < env->graphics.textures.size)
 	{
-		image = ((t_img *)env->graphics.textures.data) + i;
+		image = ((t_img *)env->graphics.textures.data) + i++;
 		mlx_destroy_image(env->mlx, image->img);
-		i++;
 	}
 	vector_clear(&env->graphics.textures);
 	if (env->win)
