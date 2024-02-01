@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:27:52 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/11 17:08:37 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/01 13:36:34 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ void	cpy_img(t_img *dest, const t_img *src)
 		x = 0;
 		while (x < dest->width && x < src->width)
 		{
-			*(int *)(src->data + (y * src->line_length + x
-						* (src->bits_per_pixel / 8))) = *(int *)(dest->data
-					+ (y * dest->line_length + x * (dest->bits_per_pixel / 8)));
+			*(int *)(dest->data + (y * dest->line_length + x
+						* (dest->bits_per_pixel / 8))) = *(int *)(src->data
+					+ (y * src->line_length + x * (src->bits_per_pixel / 8)));
 			x++;
 		}
 		y++;
