@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:36:45 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/30 13:05:08 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/02 15:28:05 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char	char_at_map(const t_map *map, int y, int x)
 }
 
 void	render_mini_map(t_img *mini,
-			const t_map *map, const t_player *player)
+			const t_map *map, const t_player *player, double blocks)
 {
 	int	i;
 	int	j;
@@ -46,10 +46,11 @@ void	render_mini_map(t_img *mini,
 		while (j < mini->width)
 		{
 			my_mlx_pixel_put(mini, j, i, char_to_color(char_at_map(map,
-						((float)i - mini->height / 2)
-						/ mini->height * map->height + player->pos.y,
-						((float)j - mini->width / 2)
-						/ mini->width * map->width + player->pos.x)));
+						(((double)i) / mini->height - .5)
+						* blocks / 2 + player->pos.y,
+						(((double)j) / mini->width - .5)
+						* blocks / 2 * mini->width / mini->height
+						+ player->pos.x)));
 			j++;
 		}
 	}
