@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:09:40 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/01 13:36:54 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2024/02/02 15:28:22 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ int	my_loop_hook(t_env *env)
 	handle_held_keys(env);
 	switch_frame(env);
 	if (env->held_keys & (1 << Key_Map))
-		render_mini_map(env->frame, &env->map, &env->player);
+		render_mini_map(env->frame, &env->map, &env->player, env->map.width);
 	else
 	{
-		render_mini_map(&env->mini_map, &env->map, &env->player);
+		render_mini_map(&env->mini_map, &env->map, &env->player, 12);
 		draw_screen(env->frame, &env->player, env);
 		cpy_img(env->frame, &env->mini_map);
 	}
