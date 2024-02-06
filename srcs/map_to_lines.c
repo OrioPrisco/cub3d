@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:31:32 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/06 17:22:32 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/06 18:13:21 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,18 @@ typedef struct s_params {
 static bool	add_lines(const t_map *map, t_vectors out,
 	t_line line, t_params params)
 {
+	t_point	correct_end;
+
+	correct_end = point_add_vec2d
+		(line.end, (t_vec2d){-params.dir.x, -params.dir.y});
 	if (!params.bonus
-		|| need_line(line, map, params.dir, params.pointing[0]))
+		|| need_line((t_line){line.start, correct_end},
+		map, params.dir, params.pointing[0]))
 		if (add_line(out, params.offset[0], line, params.texture_id[0]))
 			return (1);
 	if (!params.bonus
-		|| need_line(line, map, params.dir, params.pointing[1]))
+		|| need_line((t_line){line.start, correct_end},
+		map, params.dir, params.pointing[1]))
 		if (add_line(out, params.offset[1],
 				(t_line){line.end, line.start}, params.texture_id[1]))
 			return (1);

@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:00:19 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/06 17:05:31 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/06 17:38:09 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ static bool	contains_playable_space(t_line line, const t_map *map, t_vec2d dir)
 
 	point = line.start;
 	while (point.y >= 0 && point.x >= 0
-		&& point.x < map->width && point.y < map->height)
+		&& point.x < map->width && point.y < map->height
+		&& is_between(point.x, line.start.x, line.end.x)
+		&& is_between(point.y, line.start.y, line.end.y))
 	{
 		if (ft_strchr("0NSWEBD", map->map[(int)point.y][(int)point.x]))
 			return (1);
