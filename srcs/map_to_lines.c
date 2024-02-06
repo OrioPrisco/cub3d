@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:31:32 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/30 15:17:26 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/06 17:22:32 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static bool	map_to_lines_impl(const t_map *map, t_vector *lines,
 		&& start.x < map->width && start.y < map->height)
 	{
 		start = point_add_vec2d(start, vec2d_mul(params.dir,
-					ft_strspn_dir(map, start, params.dir, "NSWE0 ")));
+					ft_strspn_dir(map, start, params.dir, "NSWE0BD ")));
 		if (params.bonus)
 			span = ft_strspn_dir(map, start, params.dir, " 1");
 		else
