@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:33:21 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/31 12:57:52 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/02/06 13:08:19 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ typedef struct s_graphics {
 	t_vector	line_textures_id;
 	int			ceil_col;
 	int			floor_col;
-	char		*door_texture;
-	char		*animated_texture;
 }	t_graphics;
 
 typedef struct s_player {

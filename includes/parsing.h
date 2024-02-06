@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/30 18:47:59 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/02/06 15:40:53 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,20 @@
 # include <stddef.h>
 # include <stdbool.h>
 
+# define BONUS_DOOR "./textures/bonus/door.xpm"
+# define BONUS_ANIMATED "./textures/bonus/animated.xpm"
+
 typedef struct s_vector	t_vector;
 
 typedef struct s_textures
 {
-	char	*no_path;
-	char	*so_path;
-	char	*we_path;
-	char	*ea_path;
-	int		colors[2];
+	char		*no_path;
+	char		*so_path;
+	char		*we_path;
+	char		*ea_path;
+	const char	*door_texture;
+	const char	*animated_texture;
+	int			colors[2];
 }		t_textures;
 
 typedef struct s_player_info
@@ -68,7 +73,7 @@ bool		load_textures(t_vector *texture_out, const t_textures *textures,
 
 /* *** flood_fill.c *** */
 
-int			flood_fill(char **map, const t_player_info *player);
+int			flood_fill(char **map, const t_player_info *player, int bonus);
 
 /* *** find_player.c *** */
 

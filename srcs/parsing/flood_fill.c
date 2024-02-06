@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 17:19:48 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/29 13:41:33 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/02/06 15:53:45 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ typedef struct t_szt_point
 }	t_point_size_t;
 
 static int	fill(char **map, t_point_size_t p, const t_player_info *player,
-				const char to_fill)
+				const char *to_fill)
 {
 	if (p.y < 0 || p.y >= (long)player->max_y || p.x < 0
 		|| p.x >= (long)player->max_x)
-		return (1);
-	if (map[p.y][p.x] != to_fill)
+		return (print_error(0, CLOSED_MAP, "", 2));
+	if (!ft_strchr(to_fill, map[p.y][p.x]))
 	{
 		if (map[p.y][p.x] == 32)
 		{
@@ -51,14 +51,19 @@ static int	fill(char **map, t_point_size_t p, const t_player_info *player,
 	return (1);
 }
 
-int	flood_fill(char **map, const t_player_info *player)
+int	flood_fill(char **map, const t_player_info *player, int bonus)
 {
 	t_point_size_t	p;
 
 	p.y = player->y;
 	p.x = player->x;
 	map[p.y][p.x] = '0';
-	if (!fill(map, p, player, '0'))
+	if (bonus)
+	{
+		if (!fill(map, p, player, "0BD"))
+			return (0);
+	}
+	else if (!fill(map, p, player, "0"))
 		return (0);
 	return (1);
 }
