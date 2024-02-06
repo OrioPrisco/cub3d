@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:36:45 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/02/05 11:08:01 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2024/02/06 13:37:34 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "image.h"
 #include "map.h"
 #include "mini_map.h"
+#include "libft.h"
 #include <math.h>
 
 static int	char_to_color(char c)
@@ -55,8 +56,10 @@ void	render_mini_map(t_img *mini,
 					* mini->height / mini->width}, angle);
 			my_mlx_pixel_put(mini, j, i, char_to_color(char_at_map(map,
 						rotated.y + player->pos.y,
-						rotated.x + player->pos.x
-						)));
+						rotated.x + player->pos.x)));
+			if (ft_absint(j - mini->width / 2) + ft_absint
+				(i -3 - mini->height / 2) < 10 && i -3 < mini->height / 2)
+				my_mlx_pixel_put(mini, j, i, 0xFF0000);
 			j++;
 		}
 	}
