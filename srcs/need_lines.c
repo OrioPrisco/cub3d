@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:00:19 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/30 12:51:51 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/06 17:05:31 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "map.h"
 #include "libft.h"
 
-static bool	contains_zero_or_player(t_line line, const t_map *map, t_vec2d dir)
+static bool	contains_playable_space(t_line line, const t_map *map, t_vec2d dir)
 {
 	t_point	point;
 
@@ -22,7 +22,7 @@ static bool	contains_zero_or_player(t_line line, const t_map *map, t_vec2d dir)
 	while (point.y >= 0 && point.x >= 0
 		&& point.x < map->width && point.y < map->height)
 	{
-		if (ft_strchr("0NSWE", map->map[(int)point.y][(int)point.x]))
+		if (ft_strchr("0NSWEBD", map->map[(int)point.y][(int)point.x]))
 			return (1);
 		point = point_add_vec2d(point, dir);
 	}
@@ -35,7 +35,7 @@ bool	need_line(t_line line, const t_map *map, t_vec2d dir, t_vec2d facing)
 
 	line2 = (t_line)
 	{point_add_vec2d(line.start, facing), point_add_vec2d(line.end, facing)};
-	if (contains_zero_or_player(line2, map, dir))
+	if (contains_playable_space(line2, map, dir))
 		return (1);
 	return (0);
 }
