@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:02:39 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/02/06 17:21:22 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/02/06 18:10:27 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	init_cub_vector(t_vector *cub, const char *av_one)
 	{
 		tmp = ft_itoa(cub->size);
 		if (!tmp)
-			print_error(1, MALLOC_FAIL, "converting cub->size w/itos", 2);
+			print_error(1, MALLOC_FAIL, "converting cub->size w/ itoa", 2);
 		else
 			print_error(1, INVALID_SIZE, tmp, 2);
 		free(tmp);
