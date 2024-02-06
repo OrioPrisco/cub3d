@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 13:48:17 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/30 11:10:28 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/02/06 15:53:35 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,10 @@ character found in the map :"
 # define TOO_MANY_PLAYER "There are too many players found in the map.\nNumber \
 of player found : "
 # define MAP_EDGE "Player is on the edge of the map."
+# define CLOSED_MAP "Map is invalid, walls do not close"
 
 # define NO_WALL "Map is invalid.\nA hole in the wall was found here :"
+
+# define BONUS_XPM_ERR "Failed to read the bonus files."
 
 #endif
