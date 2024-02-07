@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 18:23:27 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/30 15:11:25 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/07 15:15:08 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include "math_utils.h"
 # include <stddef.h>
 
-typedef struct s_vector	t_vector;
+typedef struct s_vector		t_vector;
+typedef struct s_graphics	t_graphics;
 
 typedef struct s_map {
 	char	**map;
@@ -25,7 +26,7 @@ typedef struct s_map {
 }	t_map;
 
 bool	map_to_lines(const t_map *map, t_vector *out_lines,
-			t_vector *out_texture, bool bonus);
+			t_graphics *out_graphics, bool bonus);
 bool	need_line(t_line line, const t_map *map, t_vec2d dir, t_vec2d facing);
 
 #endif

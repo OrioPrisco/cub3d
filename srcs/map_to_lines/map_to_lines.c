@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:31:32 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/07 15:07:29 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/07 15:08:51 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libft.h"
 #include "math_utils.h"
 #include "map.h"
+#include "env.h"
 
 static size_t	ft_strspn_dir(const t_map *map, t_point point, t_vec2d dir,
 					const char *str)
@@ -119,7 +120,7 @@ static const t_params	g_params[] = {
 
 // assumes map is a rectangle
 bool	map_to_lines(const t_map *map, t_vector *out_lines,
-			t_vector *out_texture, bool bonus)
+			t_graphics *out_graphics, bool bonus)
 {
 	t_params	params;
 	size_t		i;
@@ -130,7 +131,8 @@ bool	map_to_lines(const t_map *map, t_vector *out_lines,
 	while (i < map->height)
 	{
 		params.start_point.y = i++;
-		if (map_to_lines_impl(map, out_lines, out_texture, params))
+		if (map_to_lines_impl
+			(map, out_lines, &out_graphics->line_textures_id, params))
 			return (1);
 	}
 	params = g_params[1];
@@ -139,7 +141,8 @@ bool	map_to_lines(const t_map *map, t_vector *out_lines,
 	while (i < map->width)
 	{
 		params.start_point.x = i++;
-		if (map_to_lines_impl(map, out_lines, out_texture, params))
+		if (map_to_lines_impl
+			(map, out_lines, &out_graphics->line_textures_id, params))
 			return (1);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:29:17 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/06 17:40:54 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/02/08 17:41:32 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ bool	load_into_env(t_env *env, const t_vector *cub,
 	if (!map_copy)
 		return (print_error(1, MALLOC_FAIL, "copying map.", 2));
 	if (map_to_lines(&(t_map){map_copy, player_info->max_x, player_info->max_y},
-		&env->lines, &env->graphics.line_textures_id, env->bonus))
+		&env->lines, &env->graphics, env->bonus))
 		return (free_tab(map_copy),
 			print_error(1, MALLOC_FAIL, "allocating map to line vector", 1));
 	env->map = (t_map){map_copy, player_info->max_x, player_info->max_y};
