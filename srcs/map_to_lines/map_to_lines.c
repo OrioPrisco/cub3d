@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:31:32 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/06 18:13:21 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/07 12:46:44 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,9 @@ static bool	add_lines(const t_map *map, t_vectors out,
 }
 
 //if a line is like 
-//"000111000"
+//"   111   "
 // the line generated will be
-//"000------"
+//"   ------"
 static bool	map_to_lines_impl(const t_map *map, t_vector *lines,
 				t_vector *textures, const t_params params)
 {
