@@ -27,6 +27,7 @@ int	init_env(t_env *env)
 	vector_init(&env->lines, sizeof(t_line));
 	vector_init(&env->graphics.textures, sizeof(t_img));
 	vector_init(&env->graphics.line_textures_id, sizeof(size_t));
+	vector_init(&env->graphics.doors, sizeof(t_door));
 	if (!env->mlx)
 		return (print_error(1, MLX_PB, "", 1));
 	env->win = mlx_new_window(env->mlx, WIDTH, HEIGHT, "Cub3d");
@@ -54,6 +55,7 @@ void	destroy_env(t_env *env)
 
 	vector_clear(&env->lines);
 	vector_clear(&env->graphics.line_textures_id);
+	vector_clear(&env->graphics.doors);
 	free_tab(env->map.map);
 	if (!env->mlx)
 		return ;
