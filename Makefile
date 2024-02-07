@@ -6,7 +6,7 @@
 #    By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2024/02/07 12:38:30 by OrioPrisc        ###   ########.fr        #
+#    Updated: 2024/02/07 16:35:57 by OrioPrisc        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC_COMMON				=	raycast.c \
 					vector_to_2dtab.c \
 					map_to_lines/map_to_lines.c \
 					map_to_lines/need_lines.c \
+					map_to_lines/map_to_lines_bonus.c \
 					mini_map/mini_map.c \
 					parsing/convert_cub_to_vector.c \
 					parsing/debug_print_cub.c \
