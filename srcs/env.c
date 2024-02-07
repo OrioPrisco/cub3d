@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:29:17 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/01 13:26:28 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2024/02/06 17:40:54 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include "parsing.h"
 #include "vector.h"
 #include "utils.h"
+#include "messages.h"
 
 int	init_env(t_env *env)
 {
@@ -27,14 +28,14 @@ int	init_env(t_env *env)
 	vector_init(&env->graphics.textures, sizeof(t_img));
 	vector_init(&env->graphics.line_textures_id, sizeof(size_t));
 	if (!env->mlx)
-		return (1);
+		return (print_error(1, MLX_PB, "", 1));
 	env->win = mlx_new_window(env->mlx, WIDTH, HEIGHT, "Cub3d");
 	if (!env->win)
-		return (2);
+		return (print_error(1, MLX_PB, "", 1));
 	if (init_img(env, &env->frame1, WIDTH, HEIGHT)
 		|| init_img(env, &env->frame2, WIDTH, HEIGHT)
 		|| init_img(env, &env->mini_map, WIDTH / 10, HEIGHT / 10))
-		return (1);
+		return (print_error(1, MLX_PB, "", 1));
 	return (0);
 }
 
@@ -92,13 +93,14 @@ bool	load_into_env(t_env *env, const t_vector *cub,
 	env->graphics.floor_col = textures->colors[0];
 	env->graphics.ceil_col = textures->colors[1];
 	if (load_textures(&env->graphics.textures, textures, env->mlx))
-		return (1);
+		return (print_error(1, MLX_PB, "while loading textures", 2));
 	map_copy = vector_to_2dtab(cub, player_info->max_x);
 	if (!map_copy)
-		return (1);
+		return (print_error(1, MALLOC_FAIL, "copying map.", 2));
 	if (map_to_lines(&(t_map){map_copy, player_info->max_x, player_info->max_y},
 		&env->lines, &env->graphics.line_textures_id, env->bonus))
-		return (free_tab(map_copy), 1);
+		return (free_tab(map_copy),
+			print_error(1, MALLOC_FAIL, "allocating map to line vector", 1));
 	env->map = (t_map){map_copy, player_info->max_x, player_info->max_y};
 	return (0);
 }

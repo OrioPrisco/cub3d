@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:24:35 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/06 15:41:16 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/02/06 16:58:30 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,11 @@ int	main(int ac, char **av)
 	env.bonus = BONUS;
 	if (env.bonus)
 		if (!check_bonus_xpm(&textures))
-			exit(1);
+			exit(EXIT_FAILURE);
 	exit_wrong_input(ac, av[1]);
 	init_cub_vector(&cub, av[1]);
 	if (!parse_cub(&cub, &p_info, &textures))
-		exit(1);
+		exit(EXIT_FAILURE);
 	calculate_angles(WIDTH, env.angles, 90, 1);
 	if (init_env(&env)
 		|| load_into_env(&env, &cub, &textures, &p_info))

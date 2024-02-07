@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 13:48:17 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/02/06 15:53:35 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/02/06 17:39:50 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ the first 6 lines after clearing empty lines."
 
 # define TEXT_MALLOC_FAIL "Malloc failed in texture_utils fn resulting \
 in program malfunction."
+# define MALLOC_FAIL "Malloc failed"
 
 # define INV_CHAR "Invalid character found in the map.\nFirst invalid \
 character found in the map :"
@@ -66,5 +67,7 @@ of player found : "
 # define NO_WALL "Map is invalid.\nA hole in the wall was found here :"
 
 # define BONUS_XPM_ERR "Failed to read the bonus files."
+
+# define MLX_PB "Mlx encountered a problem"
 
 #endif
