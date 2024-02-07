@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:31:32 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/07 15:08:51 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/07 16:51:47 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,5 +145,5 @@ bool	map_to_lines(const t_map *map, t_vector *out_lines,
 			(map, out_lines, &out_graphics->line_textures_id, params))
 			return (1);
 	}
-	return (0);
+	return (bonus && map_to_bonus(map, out_graphics, out_lines));
 }
