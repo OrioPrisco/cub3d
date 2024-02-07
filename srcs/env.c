@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:29:17 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/08 17:41:32 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/08 17:42:12 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,9 @@ void	destroy_env(t_env *env)
 	free_tab(env->map.map);
 	if (!env->mlx)
 		return ;
-	if (env->frame1.img)
-		mlx_destroy_image(env->mlx, env->frame1.img);
-	if (env->frame2.img)
-		mlx_destroy_image(env->mlx, env->frame2.img);
-	if (env->mini_map.img)
-		mlx_destroy_image(env->mlx, env->mini_map.img);
+	destroy_img(env->mlx, &env->frame1);
+	destroy_img(env->mlx, &env->frame2);
+	destroy_img(env->mlx, &env->mini_map);
 	i = 0;
 	while (i < env->graphics.textures.size)
 	{
