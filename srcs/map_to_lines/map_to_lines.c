@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:31:32 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/07 12:46:44 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/07 15:07:29 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ bool	map_to_lines(const t_map *map, t_vector *out_lines,
 	{
 		params.start_point.y = i++;
 		if (map_to_lines_impl(map, out_lines, out_texture, params))
-			return (vector_clear(out_lines), vector_clear(out_texture), 1);
+			return (1);
 	}
 	params = g_params[1];
 	params.bonus = bonus;
@@ -140,7 +140,7 @@ bool	map_to_lines(const t_map *map, t_vector *out_lines,
 	{
 		params.start_point.x = i++;
 		if (map_to_lines_impl(map, out_lines, out_texture, params))
-			return (vector_clear(out_lines), vector_clear(out_texture), 1);
+			return (1);
 	}
 	return (0);
 }
