@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:03:44 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/23 17:52:21 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/08 13:44:26 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ t_point	orth_correct(t_line line, t_point point)
 	t_vec2d	correction_vec;
 
 	len = orth_distance(line, point);
-	line_vec = (t_vec2d){line.end.x - line.start.x, line.end.y - line.start.y};
+	line_vec = vec2d_to(line.start, line.end);
 	line_vec = vec2d_mul(vec2d_to_unit(line_vec), len);
 	projected = point_add_vec2d(line.start, line_vec);
-	correction_vec = (t_vec2d){projected.x - point.x, projected.y - point.y};
+	correction_vec = vec2d_to(point, projected);
 	correction_vec = vec2d_mul(vec2d_to_unit(correction_vec),
 			sqrt(vec2d_len2(correction_vec)) + STEP / 10);
 	return (point_add_vec2d(point, correction_vec));
@@ -55,8 +55,7 @@ void	move_player(t_player *player, const t_vector *lines, bool bonus,
 		{
 			projected = orth_correct(((t_line *)lines->data)[hit],
 					point_add_vec2d(player->pos, vec));
-			corrected = (t_vec2d)
-			{projected.x - player->pos.x, projected.y - player->pos.y};
+			corrected = vec2d_to(player->pos, projected);
 			return (move_player(player, lines, bonus, corrected));
 		}
 	}
