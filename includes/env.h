@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:33:21 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/07 17:29:44 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/08 14:09:16 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ typedef struct s_player_info	t_player_info;
 
 typedef struct s_door {
 	size_t	line_id;
-	double	curr_angle;
 	size_t	timer;
+	bool	interacted;
+	bool	opened;
 }	t_door;
 
 typedef struct s_graphics {
