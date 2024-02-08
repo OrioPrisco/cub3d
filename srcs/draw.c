@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users.nor  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 18:20:04 by OrioPrisco        #+#    #+#             */
-/*   Updated: 2024/01/16 14:04:52 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/08 17:31:25 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ typedef struct s_bs2 {
 	t_line	look;
 }	t_bs2;
 
-//TODO : color using texture, ceiling and floor color
 static void	draw_column(t_column column, t_bs2 bs2, const t_vector *lines,
 			const t_graphics *graphics)
 {
