@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:09:40 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/08 14:49:04 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/08 17:56:50 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static void	do_mouse_stuff(t_env *env)
 //TODO : only draw after something changes
 int	my_loop_hook(t_env *env)
 {
+	animate_sprite(env);
 	handle_held_keys(env);
 	switch_frame(env);
 	tick_doors(env);

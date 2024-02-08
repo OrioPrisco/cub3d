@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_to_lines_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
+/*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 12:33:01 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/08 17:51:26 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/08 18:21:31 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,13 @@ bool	add_door(const t_map *map, t_graphics *graphics_out,
 bool	add_sprite(const t_map *map, t_graphics *graphics_out,
 		t_vector *lines_out, t_point point)
 {
+	t_line	sprite;
+
+	sprite = (t_line){{point.x, point.y + .5}, {point.x + 1, point.y + .5}};
 	(void)map;
 	// TODO put in sprites instead
-	return (vector_append(lines_out, &(t_line){point, {point.x +1, point.y}})
+	return (vector_append(&graphics_out->sprites_id, &lines_out->size)
+		|| vector_append(lines_out, &sprite)
 		|| vector_append(&graphics_out->line_textures_id, &(size_t){3}));
 }
 

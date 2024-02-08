@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: OrioPrisco <47635210+OrioPrisco@users.nor  +#+  +:+       +#+        */
+/*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 23:59:19 by OrioPrisco        #+#    #+#             */
-/*   Updated: 2024/02/08 15:29:50 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/08 17:58:42 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,6 @@ int		quit_prg(t_env *env);
 void	register_hooks(t_env *env);
 void	tick_doors(t_env *env);
 void	door_interact(t_env *env);
+
+void	animate_sprite(t_env *env);
 #endif
