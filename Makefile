@@ -6,7 +6,7 @@
 #    By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2024/02/08 13:06:38 by OrioPrisc        ###   ########.fr        #
+#    Updated: 2024/02/08 13:42:05 by OrioPrisc        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC_COMMON				=	raycast.c \
 					draw.c \
 					deal_key.c \
 					hooks.c \
+					door.c \
 					collision.c \
 					utils.c \
 					vector_to_2dtab.c \

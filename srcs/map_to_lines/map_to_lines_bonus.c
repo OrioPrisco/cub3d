@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 12:33:01 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/07 17:25:07 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/08 14:23:29 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,16 @@ typedef struct s_params {
 bool	add_door(const t_map *map, t_graphics *graphics_out,
 		t_vector *lines_out, t_point point)
 {
+	t_line	door;
+
+	door = (t_line){{point.x, point.y + .5}, {point.x + 1, point.y + .5}};
 	(void)map;
-	// TODO put in doors instead
-	return (vector_append(lines_out, &(t_line){{point.x, point.y + .5}, {point.x + 1, point.y + .5}})
-		|| vector_append(&graphics_out->line_textures_id, &(size_t){3}));
+	// TODO use door texture
+	return (0
+		|| vector_append(&graphics_out->doors, &(t_door){lines_out->size, 0, 0, 0})
+		|| vector_append(lines_out, &door)
+		|| vector_append(&graphics_out->line_textures_id, &(size_t){3})
+		);
 }
 
 bool	add_sprite(const t_map *map, t_graphics *graphics_out,
