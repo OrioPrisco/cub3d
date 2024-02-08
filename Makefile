@@ -6,7 +6,7 @@
 #    By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2024/02/07 17:54:59 by OrioPrisc        ###   ########.fr        #
+#    Updated: 2024/02/08 13:06:38 by OrioPrisc        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ CC				=	cc
 SRC_COMMON				=	raycast.c \
 					math_utils.c \
 					vec2d.c \
+					vec2d_2.c \
 					env.c \
 					image.c \
 					image2.c \
