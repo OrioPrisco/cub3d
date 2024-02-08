@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:29:17 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/08 17:42:12 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/08 18:04:45 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	init_env(t_env *env)
 	vector_init(&env->graphics.textures, sizeof(t_img));
 	vector_init(&env->graphics.line_textures_id, sizeof(size_t));
 	vector_init(&env->graphics.doors, sizeof(t_door));
+	vector_init(&env->graphics.sprites_id, sizeof(size_t));
 	if (!env->mlx)
 		return (print_error(1, MLX_PB, "", 1));
 	env->win = mlx_new_window(env->mlx, WIDTH, HEIGHT, "Cub3d");
@@ -56,6 +57,7 @@ void	destroy_env(t_env *env)
 	vector_clear(&env->lines);
 	vector_clear(&env->graphics.line_textures_id);
 	vector_clear(&env->graphics.doors);
+	vector_clear(&env->graphics.sprites_id);
 	free_tab(env->map.map);
 	if (!env->mlx)
 		return ;

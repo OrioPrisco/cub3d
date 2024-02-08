@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:33:21 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/08 14:09:16 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/08 18:34:09 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_graphics {
 	t_vector	textures;
 	t_vector	line_textures_id;
 	t_vector	doors;
+	t_vector	sprites_id;
 	int			ceil_col;
 	int			floor_col;
 }	t_graphics;
@@ -72,6 +73,7 @@ typedef struct s_env
 	t_held_keys		held_keys;
 	double			angles[WIDTH];
 	bool			bonus;
+	int				timer;
 	t_map			map;
 }	t_env;
 
