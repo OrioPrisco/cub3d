@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 12:33:01 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/08 14:23:29 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/08 17:51:26 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ static bool	map_to_bonus_impl(const t_map *map, t_graphics *graphics_out,
 	ft_strcpy(ignore, "?NSWE01 ");
 	ignore[0] = params.ignore;
 	y = 0;
-	while (y >= 0 && y < map->height)
+	while (y < map->height)
 	{
 		x = 0;
-		while (x >= 0 && x < map->width)
+		while (x < map->width)
 		{
 			if (map->map[y][x] == params.check)
 				if (params.add_fct
