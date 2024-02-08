@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:51:37 by OrioPrisco        #+#    #+#             */
-/*   Updated: 2024/01/30 10:19:25 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/02/08 15:30:23 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int	on_keypress(int key, t_env *env)
 	}
 	if (key == XK_Escape)
 		quit_prg(env);
+	if (key == XK_f)
+		door_interact(env);
 	return (0);
 }
 
