@@ -6,7 +6,7 @@
 #    By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2024/02/07 16:35:57 by OrioPrisc        ###   ########.fr        #
+#    Updated: 2024/02/07 17:54:59 by OrioPrisc        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,7 +111,7 @@ compile_commands.json : $(COMMANDS) Makefile
 	@echo "]" >> compile_commands.json
 
 clean: | $(SUBMODULES)
-	rm -f $(OBJS) $(DEPENDS) $(COMMANDS)
+	rm -f $(OBJS_BONUS) $(OBJS) $(DEPENDS) $(COMMANDS)
 	for lib in $(shell dirname $(LIBS)); do \
 		make -C $$lib clean; \
 	done
