@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:23:59 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/02/09 14:56:48 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/09 15:03:08 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,13 @@ void	free_textures(t_textures *textures)
 }
 
 bool	load_textures(t_vector *texture_out, const t_textures *textures,
-			void *mlx)
+			void *mlx, bool bonus)
 {
 	return (0
 		|| load_texture(texture_out, textures->no_path, mlx)
 		|| load_texture(texture_out, textures->so_path, mlx)
 		|| load_texture(texture_out, textures->we_path, mlx)
 		|| load_texture(texture_out, textures->ea_path, mlx)
+		|| (bonus && load_texture(texture_out, textures->door_texture, mlx))
 	);
 }
