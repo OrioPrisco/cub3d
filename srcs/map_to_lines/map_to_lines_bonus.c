@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 12:33:01 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/09 15:23:34 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/09 15:35:22 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ bool	add_door(const t_map *map, t_graphics *graphics_out,
 	t_line	door;
 
 	door = (t_line){{point.x, point.y + .5}, {point.x + 1, point.y + .5}};
-	(void)map;
+	if (char_at_map(map, point.x, point.y - 1, ' ') == '1'
+		&& char_at_map(map, point.x, point.y + 1, ' ') == '1')
+		door = (t_line){{point.x + .5, point.y}, {point.x + .5, point.y + 1}};
 	return (0
 		|| vector_append(&graphics_out->doors,
 			&(t_door){lines_out->size, 0, 0, 0})
