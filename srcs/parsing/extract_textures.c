@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:23:59 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/01/30 11:13:30 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/02/09 14:56:48 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,25 +90,10 @@ void	free_textures(t_textures *textures)
 bool	load_textures(t_vector *texture_out, const t_textures *textures,
 			void *mlx)
 {
-	t_img	tmp;
-
-	if (0
-		|| (ft_bzero(&tmp, sizeof(tmp)), 0)
-		|| load_xpm(mlx, textures->no_path, &tmp)
-		|| vector_append(texture_out, &tmp)
-		|| (ft_bzero(&tmp, sizeof(tmp)), 0)
-		|| load_xpm(mlx, textures->so_path, &tmp)
-		|| vector_append(texture_out, &tmp)
-		|| (ft_bzero(&tmp, sizeof(tmp)), 0)
-		|| load_xpm(mlx, textures->we_path, &tmp)
-		|| vector_append(texture_out, &tmp)
-		|| (ft_bzero(&tmp, sizeof(tmp)), 0)
-		|| load_xpm(mlx, textures->ea_path, &tmp)
-		|| vector_append(texture_out, &tmp))
-	{
-		if (tmp.img)
-			mlx_destroy_image(mlx, tmp.img);
-		return (1);
-	}
-	return (0);
+	return (0
+		|| load_texture(texture_out, textures->no_path, mlx)
+		|| load_texture(texture_out, textures->so_path, mlx)
+		|| load_texture(texture_out, textures->we_path, mlx)
+		|| load_texture(texture_out, textures->ea_path, mlx)
+	);
 }
