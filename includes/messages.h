@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 13:48:17 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/02/06 17:39:50 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/02/09 15:12:48 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ the first 6 lines after clearing empty lines."
 Please check if there is a valid format for F line and no invalid line in \
 the first 6 lines after clearing empty lines."
 
-# define NO_MISSING "Line containing path to NO texture is missing."
-# define SO_MISSING "Line containing path to SO texture is missing."
-# define WE_MISSING "Line containing path to WE texture is missing."
-# define EA_MISSING "Line containing path to EA texture is missing."
+# define NO_MISSING "Line containing path to NO texture is missing or invalid."
+# define SO_MISSING "Line containing path to SO texture is missing or invalid."
+# define WE_MISSING "Line containing path to WE texture is missing or invalid."
+# define EA_MISSING "Line containing path to EA texture is missing or invalid."
 
 # define TEXT_MALLOC_FAIL "Malloc failed in texture_utils fn resulting \
 in program malfunction."
