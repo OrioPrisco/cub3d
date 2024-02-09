@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:29:17 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/08 18:04:45 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/02/09 15:16:10 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ bool	load_into_env(t_env *env, const t_vector *cub,
 		env->player.look = (t_vec2d){1, 0};
 	env->graphics.floor_col = textures->colors[0];
 	env->graphics.ceil_col = textures->colors[1];
-	if (load_textures(&env->graphics.textures, textures, env->mlx))
+	if (load_textures(&env->graphics.textures, textures, env->mlx, env->bonus))
 		return (print_error(1, MLX_PB, "while loading textures", 2));
 	map_copy = vector_to_2dtab(cub, player_info->max_x);
 	if (!map_copy)
