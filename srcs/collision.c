@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:03:44 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/08 13:44:26 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/09 12:53:35 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_point	orth_correct(t_line line, t_point point)
 
 // orth project the end of the vector onto the hit surface
 // and try again
-void	move_player(t_player *player, const t_vector *lines, bool bonus,
+t_vec2d	move_player(t_player *player, const t_vector *lines, bool bonus,
 			t_vec2d vec)
 {
 	t_point	collision;
@@ -45,7 +45,7 @@ void	move_player(t_player *player, const t_vector *lines, bool bonus,
 	t_vec2d	corrected;
 
 	if (!(vec.x || vec.y))
-		return ;
+		return ((t_vec2d){0, 0});
 	ray = (t_line){player->pos, point_add_vec2d(player->pos, vec)};
 	hit = ray_lines_intersect(&collision, lines->data, ray, lines->size);
 	if (hit != -1 && bonus)
@@ -59,5 +59,5 @@ void	move_player(t_player *player, const t_vector *lines, bool bonus,
 			return (move_player(player, lines, bonus, corrected));
 		}
 	}
-	player->pos = point_add_vec2d(player->pos, vec);
+	return (vec);
 }
