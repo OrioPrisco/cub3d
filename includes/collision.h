@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:04:37 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/01/25 14:34:32 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/09 12:53:50 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 typedef struct s_player	t_player;
 typedef struct s_vector	t_vector;
 
-void	move_player(t_player *player, const t_vector *lines, bool bonus,
+t_vec2d	move_player(t_player *player, const t_vector *lines, bool bonus,
 			t_vec2d vec);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:51:37 by OrioPrisco        #+#    #+#             */
-/*   Updated: 2024/02/09 12:43:57 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/09 13:11:34 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	on_keyrelease(int key, t_env *env)
 void	handle_held_keys(t_env *env)
 {
 	t_vec2d		dir;
+	t_vec2d		movement;
 	t_player	*player;
 
 	player = &env->player;
@@ -89,5 +90,6 @@ void	handle_held_keys(t_env *env)
 		dir = point_add_vec2d(dir, (t_vec2d){-player->look.y, player->look.x});
 	if (dir.x || dir.y)
 		dir = vec2d_mul(vec2d_to_unit(dir), STEP);
-	move_player(player, &env->lines, env->bonus, dir);
+	movement = move_player(player, &env->lines, env->bonus, dir);
+	player->pos = point_add_vec2d(player->pos, movement);
 }
