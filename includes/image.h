@@ -6,15 +6,17 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:34:02 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/07 17:47:54 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/09 14:54:13 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef IMAGE_H
 # define IMAGE_H
-# include "stddef.h"
+# include <stddef.h>
+# include <stdbool.h>
 
 typedef struct s_env	t_env;
+typedef struct s_vector	t_vector;
 
 typedef struct s_img
 {
@@ -43,4 +45,5 @@ int				init_img(t_env *env, t_img *img, int width, int height);
 int				load_xpm(void *mlx, const char *file, t_img *img);
 int				get_pixel(const t_img *img, int x, int y);
 void			destroy_img(void *mlx, t_img *img);
+bool			load_texture(t_vector *vec, const char *path, void *mlx);
 #endif
