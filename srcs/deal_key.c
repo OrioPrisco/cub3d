@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:51:37 by OrioPrisco        #+#    #+#             */
-/*   Updated: 2024/02/08 15:30:23 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/09 12:43:57 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,22 +70,24 @@ int	on_keyrelease(int key, t_env *env)
 
 void	handle_held_keys(t_env *env)
 {
-	t_vec2d	dir;
+	t_vec2d		dir;
+	t_player	*player;
 
+	player = &env->player;
 	dir = (t_vec2d){0, 0};
 	if (env->held_keys & ((1 << Key_Rot_Left) | (1 << Key_Rot_Left_alt)))
-		env->player.look = vec2d_rotate(env->player.look, -M_PI / 180);
+		player->look = vec2d_rotate(player->look, -M_PI / 180);
 	if (env->held_keys & ((1 << Key_Rot_Right) | (1 << Key_Rot_Right_alt)))
-		env->player.look = vec2d_rotate(env->player.look, M_PI / 180);
+		player->look = vec2d_rotate(player->look, M_PI / 180);
 	if (env->held_keys & ((1 << Key_Up) | (1 << Key_Up_alt)))
-		dir = point_add_vec2d(dir, env->player.look);
+		dir = point_add_vec2d(dir, player->look);
 	if (env->held_keys & ((1 << Key_Down) | (1 << Key_Down_alt)))
-		dir = point_add_vec2d(dir, vec2d_rotate(env->player.look, M_PI));
+		dir = point_add_vec2d(dir, (t_vec2d){-player->look.x, -player->look.y});
 	if (env->held_keys & (1 << Key_Left))
-		dir = point_add_vec2d(dir, vec2d_rotate(env->player.look, -M_PI / 2));
+		dir = point_add_vec2d(dir, (t_vec2d){player->look.y, -player->look.x});
 	if (env->held_keys & (1 << Key_Right))
-		dir = point_add_vec2d(dir, vec2d_rotate(env->player.look, M_PI / 2));
+		dir = point_add_vec2d(dir, (t_vec2d){-player->look.y, player->look.x});
 	if (dir.x || dir.y)
 		dir = vec2d_mul(vec2d_to_unit(dir), STEP);
-	move_player(&env->player, &env->lines, env->bonus, dir);
+	move_player(player, &env->lines, env->bonus, dir);
 }
