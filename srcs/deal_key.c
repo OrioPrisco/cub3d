@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "env.h"
+#include "map.h"
 #include <X11/keysym.h>
 #undef __STRICT_ANSI__
 #include "math.h"
@@ -91,5 +92,7 @@ void	handle_held_keys(t_env *env)
 	if (dir.x || dir.y)
 		dir = vec2d_mul(vec2d_to_unit(dir), STEP);
 	movement = move_player(player, &env->lines, env->bonus, dir);
-	player->pos = point_add_vec2d(player->pos, movement);
+	if (!env->bonus || char_at_map(&env->map, player->pos.x + movement.x,
+			player->pos.y + movement.y, ' ') != '1')
+		player->pos = point_add_vec2d(player->pos, movement);
 }
