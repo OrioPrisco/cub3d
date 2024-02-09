@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:12:37 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/08 15:41:01 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/09 13:40:06 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	tick_door(t_door *door, t_line *door_line)
 	if (door->timer)
 	{
 		door_vec = vec2d_to(door_line->start, door_line->end);
-		door_vec = vec2d_rotate(door_vec, -dir * (M_PI / 2) / ANIM_LEN);
+		door_vec = vec2d_rotate(door_vec, -dir * (M_PI / 2 - 0.01) / ANIM_LEN);
 		door_line->end = point_add_vec2d(door_line->start, door_vec);
 		door->timer--;
 		if (!door->timer)
