@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 12:33:01 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/09 15:21:32 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/09 15:23:34 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ typedef bool			t_adder(const t_map*, t_graphics*, t_vector*, t_point);
 
 typedef struct s_params {
 	char		check;
-	char		ignore;
 	t_adder		*add_fct;
 }	t_params;
 
@@ -53,8 +52,8 @@ bool	add_sprite(const t_map *map, t_graphics *graphics_out,
 }
 
 static const t_params	g_params[] = {
-{'D', 'B', add_door}, // Door
-{'B', 'D', add_sprite}, // Sprite
+{'D', add_door}, // Door
+{'B', add_sprite}, // Sprite
 };
 
 static bool	map_to_bonus_impl(const t_map *map, t_graphics *graphics_out,
@@ -63,10 +62,7 @@ static bool	map_to_bonus_impl(const t_map *map, t_graphics *graphics_out,
 {
 	size_t	y;
 	size_t	x;
-	char	ignore[9];
 
-	ft_strcpy(ignore, "?NSWE01 ");
-	ignore[0] = params.ignore;
 	y = 0;
 	while (y < map->height)
 	{
