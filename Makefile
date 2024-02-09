@@ -6,7 +6,7 @@
 #    By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2024/02/08 17:59:49 by mpeulet          ###   ########.fr        #
+#    Updated: 2024/02/09 12:58:07 by OrioPrisc        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC_COMMON				=	raycast.c \
 					collision.c \
 					sprites.c \
 					utils.c \
+					map.c \
 					vector_to_2dtab.c \
 					map_to_lines/map_to_lines.c \
 					map_to_lines/need_lines.c \

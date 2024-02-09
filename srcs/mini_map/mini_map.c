@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:36:45 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/02/08 16:53:51 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/09 12:58:34 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,6 @@ static int	char_to_color(char c)
 	return (0xFF00);
 }
 
-static char	char_at_map(const t_map *map, int y, int x)
-{
-	if (x < 0 || y < 0 || (size_t)x >= map->width || (size_t)y >= map->height)
-		return (' ');
-	return (map->map[y][x]);
-}
-
 void	render_mini_map(t_img *mini,
 			const t_map *map, const t_player *player, double blocks)
 {
@@ -57,8 +50,8 @@ void	render_mini_map(t_img *mini,
 					(((double)i) / mini->height - .5) * blocks
 					* mini->height / mini->width}, angle);
 			my_mlx_pixel_put(mini, j, i, char_to_color(char_at_map(map,
-						rotated.y + player->pos.y,
-						rotated.x + player->pos.x)));
+						rotated.x + player->pos.x,
+						rotated.y + player->pos.y, ' ')));
 			if (ft_absint(j - mini->width / 2) + ft_absint
 				(i -3 - mini->height / 2) < 10 && i -3 < mini->height / 2)
 				my_mlx_pixel_put(mini, j, i, 0xFF0000);
