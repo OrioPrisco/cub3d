@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:51:37 by OrioPrisco        #+#    #+#             */
-/*   Updated: 2024/02/12 12:41:03 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/12 12:45:50 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,13 @@ static void	handle_movement(t_env *env, t_vec2d dir)
 		return ;
 	dir = vec2d_mul(vec2d_to_unit(dir), STEP);
 	if (!env->bonus)
-		player->pos = point_add_vec2d(player->pos, dir);
-	movement = move_player(player, &env->lines, env->bonus, dir);
-	if (!env->bonus || char_at_map(&env->map, player->pos.x + movement.x,
+		return ((void)(player->pos = point_add_vec2d(player->pos, dir)));
+	movement = move_player(player, &env->lines, dir);
+	if (char_at_map(&env->map, player->pos.x + movement.x,
 			player->pos.y + movement.y, ' ') != '1')
 		player->pos = point_add_vec2d(player->pos, movement);
 }
+
 void	handle_held_keys(t_env *env)
 {
 	t_vec2d		dir;
