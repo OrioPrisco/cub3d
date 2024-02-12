@@ -6,12 +6,15 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 17:28:31 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/02/08 18:32:10 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/02/12 13:25:22 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
 #include "hooks.h"
+
+#define ANIM_SPEED 100
+#define ANIM_FRAMES 4
 
 void	animate_sprite(t_env *env)
 {
@@ -23,16 +26,9 @@ void	animate_sprite(t_env *env)
 	{
 		pos = ((size_t *)env->graphics.sprites_id.data)[i];
 		env->timer++;
-		if (env->timer <= 100)
-			((size_t *)env->graphics.line_textures_id.data)[pos] = 0;
-		else if (env->timer <= 200)
-			((size_t *)env->graphics.line_textures_id.data)[pos] = 1;
-		else if (env->timer <= 300)
-			((size_t *)env->graphics.line_textures_id.data)[pos] = 2;
-		else if (env->timer <= 400)
-			((size_t *)env->graphics.line_textures_id.data)[pos] = 3;
-		else if (env->timer <= 500)
-			env->timer = 0;
+		env->timer %= ANIM_SPEED * ANIM_FRAMES;
+		((size_t *)env->graphics.line_textures_id.data)[pos]
+			= env->timer / ANIM_SPEED;
 		i++;
 	}
 }
