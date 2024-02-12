@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 12:33:01 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/09 15:35:22 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/12 12:48:53 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,11 @@ static bool	map_to_bonus_impl(const t_map *map, t_graphics *graphics_out,
 }
 
 bool	map_to_bonus(const t_map *map, t_graphics *graphics_out,
-			t_vector *lines_out)
+			t_vector *lines_out, size_t	*solid_lines)
 {
 	if (map_to_bonus_impl(map, graphics_out, lines_out, g_params[0]))
 		return (1);
+	*solid_lines = lines_out->size;
 	if (map_to_bonus_impl(map, graphics_out, lines_out, g_params[1]))
 		return (1);
 	return (0);
