@@ -6,15 +6,16 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 17:28:31 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/02/12 14:35:42 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/12 14:54:00 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
 #include "hooks.h"
+#include "env.h"
 
-#define ANIM_SPEED 100
+#define ANIM_SPEED 500
 #define ANIM_FRAMES 4
+#define ANIM_OFFSET 5
 
 void	animate_sprite(t_env *env, double angle)
 {
@@ -35,7 +36,7 @@ void	animate_sprite(t_env *env, double angle)
 		env->timer++;
 		env->timer %= ANIM_SPEED * ANIM_FRAMES;
 		((size_t *)env->graphics.line_textures_id.data)[spr->line_id]
-			= env->timer / ANIM_SPEED;
+			= ANIM_OFFSET + (env->timer / ANIM_SPEED);
 		i++;
 	}
 }

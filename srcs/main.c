@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:24:35 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/06 16:58:30 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/02/12 13:44:52 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,15 @@ static int	parse_cub(t_vector *cub, t_player_info *player,
 static int	check_bonus_xpm(t_textures *textures)
 {
 	textures->door_texture = BONUS_DOOR;
-	textures->animated_texture = BONUS_ANIMATED;
+	textures->sprite0 = BONUS_SPRITE0;
+	textures->sprite1 = BONUS_SPRITE1;
+	textures->sprite2 = BONUS_SPRITE2;
+	textures->sprite3 = BONUS_SPRITE3;
 	if (!is_file_readable(textures->door_texture)
-		|| !is_file_readable(textures->animated_texture))
+		|| !is_file_readable(textures->sprite0)
+		|| !is_file_readable(textures->sprite1)
+		|| !is_file_readable(textures->sprite2)
+		|| !is_file_readable(textures->sprite3))
 		return (print_error(0, BONUS_XPM_ERR, "", 1));
 	return (1);
 }
