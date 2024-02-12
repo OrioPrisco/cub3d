@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 12:33:01 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/12 14:21:51 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/12 14:36:18 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,9 @@ bool	add_sprite(const t_map *map, t_graphics *graphics_out,
 	line = (t_line){{point.x, point.y + .5}, {point.x + 1, point.y + .5}};
 	sprite = (t_sprite){lines_out->size, {point.x + .5, point.y + .5}};
 	(void)map;
-	// TODO put in sprites instead
 	return (vector_append(&graphics_out->sprites, &sprite)
 		|| vector_append(lines_out, &line)
-		|| vector_append(&graphics_out->line_textures_id, &(size_t){3}));
+		|| vector_append(&graphics_out->line_textures_id, &(size_t){5}));
 }
 
 static const t_params	g_params[] = {

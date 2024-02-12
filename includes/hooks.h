@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 23:59:19 by OrioPrisco        #+#    #+#             */
-/*   Updated: 2024/02/08 17:58:42 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/02/12 14:24:56 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ void	register_hooks(t_env *env);
 void	tick_doors(t_env *env);
 void	door_interact(t_env *env);
 
-void	animate_sprite(t_env *env);
+void	animate_sprite(t_env *env, double angle);
 #endif

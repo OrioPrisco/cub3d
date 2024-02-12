@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:09:40 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/08 17:56:50 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/02/12 14:29:22 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <X11/X.h>
 #include <stdlib.h>
 #include "mini_map.h"
+#include <math.h>
 
 //TODO : tweak angle ? a bit twitchy at small movements
 // but feel pretty nice at big movements
@@ -41,7 +42,10 @@ static void	do_mouse_stuff(t_env *env)
 //TODO : only draw after something changes
 int	my_loop_hook(t_env *env)
 {
-	animate_sprite(env);
+	double	angle;
+
+	angle = atan2(env->player.look.x, -env->player.look.y);
+	animate_sprite(env, angle);
 	handle_held_keys(env);
 	switch_frame(env);
 	tick_doors(env);
