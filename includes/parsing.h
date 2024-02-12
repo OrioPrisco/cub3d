@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/02/09 15:15:46 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/12 13:45:19 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@
 # include <stdbool.h>
 
 # define BONUS_DOOR "./textures/bonus/door.xpm"
-# define BONUS_ANIMATED "./textures/bonus/animated.xpm"
+# define BONUS_SPRITE0 "./textures/bonus/red_lamp_off.xpm"
+# define BONUS_SPRITE1 "./textures/bonus/red_lamp_on.xpm"
+# define BONUS_SPRITE2 "./textures/bonus/red_lamp_top_off.xpm"
+# define BONUS_SPRITE3 "./textures/bonus/red_lamp_top_on.xpm"
 
 typedef struct s_vector	t_vector;
 
@@ -28,7 +31,10 @@ typedef struct s_textures
 	char		*we_path;
 	char		*ea_path;
 	const char	*door_texture;
-	const char	*animated_texture;
+	const char	*sprite0;
+	const char	*sprite1;
+	const char	*sprite2;
+	const char	*sprite3;
 	int			colors[2];
 }		t_textures;
 

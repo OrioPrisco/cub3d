@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 18:20:04 by OrioPrisco        #+#    #+#             */
-/*   Updated: 2024/02/08 18:32:24 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/02/09 15:53:21 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,9 @@ static void	draw_skybox(t_img *image, int ceil_col, int floor_col)
 	while (i < image->height)
 	{
 		if (i * 2 > image->height)
-			col = ceil_col;
-		else
 			col = floor_col;
+		else
+			col = ceil_col;
 		img_put_graph_line(image, (t_graph_line){0, i, image->width, col});
 		i++;
 	}
