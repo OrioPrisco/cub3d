@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:51:37 by OrioPrisco        #+#    #+#             */
-/*   Updated: 2024/02/09 13:11:34 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/12 12:41:03 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,25 @@ int	on_keyrelease(int key, t_env *env)
 	return (0);
 }
 
+static void	handle_movement(t_env *env, t_vec2d dir)
+{
+	t_vec2d		movement;
+	t_player	*player;
+
+	player = &env->player;
+	if (!dir.x && !dir.y)
+		return ;
+	dir = vec2d_mul(vec2d_to_unit(dir), STEP);
+	if (!env->bonus)
+		player->pos = point_add_vec2d(player->pos, dir);
+	movement = move_player(player, &env->lines, env->bonus, dir);
+	if (!env->bonus || char_at_map(&env->map, player->pos.x + movement.x,
+			player->pos.y + movement.y, ' ') != '1')
+		player->pos = point_add_vec2d(player->pos, movement);
+}
 void	handle_held_keys(t_env *env)
 {
 	t_vec2d		dir;
-	t_vec2d		movement;
 	t_player	*player;
 
 	player = &env->player;
@@ -89,10 +104,5 @@ void	handle_held_keys(t_env *env)
 		dir = point_add_vec2d(dir, (t_vec2d){player->look.y, -player->look.x});
 	if (env->held_keys & (1 << Key_Right))
 		dir = point_add_vec2d(dir, (t_vec2d){-player->look.y, player->look.x});
-	if (dir.x || dir.y)
-		dir = vec2d_mul(vec2d_to_unit(dir), STEP);
-	movement = move_player(player, &env->lines, env->bonus, dir);
-	if (!env->bonus || char_at_map(&env->map, player->pos.x + movement.x,
-			player->pos.y + movement.y, ' ') != '1')
-		player->pos = point_add_vec2d(player->pos, movement);
+	handle_movement(env, dir);
 }
