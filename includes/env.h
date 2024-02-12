@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:33:21 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/12 12:48:04 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/12 13:27:02 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,16 @@ typedef struct s_door {
 	bool	opened;
 }	t_door;
 
+typedef struct s_sprite {
+	size_t	line_id;
+	t_point	center;
+}	t_sprite;
+
 typedef struct s_graphics {
 	t_vector	textures;
 	t_vector	line_textures_id;
 	t_vector	doors;
-	t_vector	sprites_id;
+	t_vector	sprites;
 	int			ceil_col;
 	int			floor_col;
 }	t_graphics;
