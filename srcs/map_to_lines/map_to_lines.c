@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:31:32 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/07 16:51:47 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/12 13:12:19 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,7 @@ static const t_params	g_params[] = {
 };
 
 // assumes map is a rectangle
-bool	map_to_lines(const t_map *map, t_vector *out_lines,
-			t_graphics *out_graphics, bool bonus)
+bool	map_to_lines(const t_map *map, t_env *out, bool bonus)
 {
 	t_params	params;
 	size_t		i;
@@ -132,7 +131,7 @@ bool	map_to_lines(const t_map *map, t_vector *out_lines,
 	{
 		params.start_point.y = i++;
 		if (map_to_lines_impl
-			(map, out_lines, &out_graphics->line_textures_id, params))
+			(map, &out->lines, &out->graphics.line_textures_id, params))
 			return (1);
 	}
 	params = g_params[1];
@@ -142,8 +141,9 @@ bool	map_to_lines(const t_map *map, t_vector *out_lines,
 	{
 		params.start_point.x = i++;
 		if (map_to_lines_impl
-			(map, out_lines, &out_graphics->line_textures_id, params))
+			(map, &out->lines, &out->graphics.line_textures_id, params))
 			return (1);
 	}
-	return (bonus && map_to_bonus(map, out_graphics, out_lines));
+	return (bonus && map_to_bonus
+		(map, &out->graphics, &out->lines, &out->solid_lines));
 }

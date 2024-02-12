@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:33:21 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/08 18:34:09 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/02/12 12:48:04 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_env
 	t_img			mini_map;
 	t_player		player;
 	t_vector		lines;
+	size_t			solid_lines;
 	t_graphics		graphics;
 	t_held_keys		held_keys;
 	double			angles[WIDTH];
