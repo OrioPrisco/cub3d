@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:36:45 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/02/09 12:58:34 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/12 15:00:44 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static int	char_to_color(char c)
 		return (0xFF);
 	if (c == 'D')
 		return (0x753b09);
+	if (c == 'B')
+		return (0xffe000);
 	return (0xFF00);
 }
 
