@@ -1,10 +1,10 @@
-NO ./textures/testNO.xpm
-SO ./textures/testSO.xpm
-WE ./textures/testWE.xpm
-EA ./textures/testEA.xpm
+NO ./textures/bonus/door.xpm
+SO ./textures/bonus/DEEP_DIAMOND.xpm
+WE ./textures/bonus/NETHER_GOLD.xpm
+EA ./textures/bonus/NETHER_GOLD.xpm
 
-F 220,100,0
-C 225,30,0
+F 115,30,45
+C 115,30,45
 
 111
 101
