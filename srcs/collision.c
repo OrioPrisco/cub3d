@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:03:44 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/09 12:53:35 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/12 12:45:14 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ t_point	orth_correct(t_line line, t_point point)
 
 // orth project the end of the vector onto the hit surface
 // and try again
-t_vec2d	move_player(t_player *player, const t_vector *lines, bool bonus,
-			t_vec2d vec)
+t_vec2d	move_player(t_player *player, const t_vector *lines, t_vec2d vec)
 {
 	t_point	collision;
 	t_line	ray;
@@ -48,7 +47,7 @@ t_vec2d	move_player(t_player *player, const t_vector *lines, bool bonus,
 		return ((t_vec2d){0, 0});
 	ray = (t_line){player->pos, point_add_vec2d(player->pos, vec)};
 	hit = ray_lines_intersect(&collision, lines->data, ray, lines->size);
-	if (hit != -1 && bonus)
+	if (hit != -1)
 	{
 		if (is_between(collision.x, ray.start.x, ray.end.x)
 			&& is_between(collision.y, ray.start.y, ray.end.y))
@@ -56,7 +55,7 @@ t_vec2d	move_player(t_player *player, const t_vector *lines, bool bonus,
 			projected = orth_correct(((t_line *)lines->data)[hit],
 					point_add_vec2d(player->pos, vec));
 			corrected = vec2d_to(player->pos, projected);
-			return (move_player(player, lines, bonus, corrected));
+			return (move_player(player, lines, corrected));
 		}
 	}
 	return (vec);
