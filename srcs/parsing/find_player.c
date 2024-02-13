@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:38:23 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/02/06 13:48:12 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/02/13 18:45:51 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 static int	find_player_utils(const t_vector *c,
 				t_player_info *player, size_t nb_player)
 {
-	if (nb_player == 0)
+	if (player->nb_player == 0)
 		return (print_error(0, NO_PLAYER_FOUND, "", 1));
-	if (nb_player > 1)
+	if (player->nb_player > 1)
 	{
 		print_error(0, TOO_MANY_PLAYER, "", 1);
 		return (ft_dprintf(2, "%d\n", nb_player), 0);
@@ -39,6 +39,7 @@ static void	find_player_utils_update(const t_vector *c,
 	player->facing = ((char **)c->data)[i][j];
 	player->y = i;
 	player->x = j;
+	player->nb_player++;
 }
 
 int	find_player(const t_vector *c, t_player_info *player, const char *valid)
@@ -46,10 +47,8 @@ int	find_player(const t_vector *c, t_player_info *player, const char *valid)
 	size_t	i;
 	size_t	j;
 	size_t	len;
-	size_t	nb_player;
 
 	i = -1;
-	nb_player = 0;
 	while (++i < c->size)
 	{
 		j = -1;
@@ -59,12 +58,14 @@ int	find_player(const t_vector *c, t_player_info *player, const char *valid)
 			if (!ft_strchr(valid, ((char **)c->data)[i][j]))
 				return (print_error(0, INV_CHAR, &((char **)c->data)[i][j], 3));
 			if (ft_strchr("NSWE", ((char **)c->data)[i][j]))
-				(find_player_utils_update(c, player, i, j), nb_player++);
-			if (player->x + 1 == len)
-				return (print_error(0, MAP_EDGE, "", 1));
+			{
+				find_player_utils_update(c, player, i, j);
+				if (player->x + 1 == len)
+					return (print_error(0, MAP_EDGE, "", 1));
+			}
 			if (len > player->max_x)
 				player->max_x = len;
 		}
 	}
-	return (find_player_utils(c, player, nb_player));
+	return (find_player_utils(c, player, player->nb_player));
 }

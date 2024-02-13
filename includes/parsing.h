@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:55:08 by mpeulet           #+#    #+#             */
-/*   Updated: 2024/02/12 13:45:19 by mpeulet          ###   ########.fr       */
+/*   Updated: 2024/02/13 18:44:12 by mpeulet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_player_info
 	size_t	x;
 	size_t	max_x;
 	size_t	max_y;
+	size_t	nb_player;
 }	t_player_info;
 
 /* *** convert_cub_to_vector.c *** */
