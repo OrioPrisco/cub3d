@@ -6,7 +6,7 @@
 #    By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2024/02/09 12:58:07 by OrioPrisc        ###   ########.fr        #
+#    Updated: 2024/02/13 18:54:57 by mpeulet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,8 +44,8 @@ SRC_COMMON				=	raycast.c \
 
 ALL_SRC = $(SRC_COMMON) main.c
 
-NAME			=	cub3d
-NAME_BONUS		=	cub3d_bonus
+NAME			=	cub3D
+NAME_BONUS		=	cub3D_bonus
 
 OBJ_FOLDER		=	objs/
 
