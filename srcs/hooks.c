@@ -6,7 +6,7 @@
 /*   By: mpeulet <mpeulet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:09:40 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2024/02/12 14:29:22 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2024/02/13 14:04:17 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,6 @@ void	register_hooks(t_env *env)
 	mlx_hook(env->win, KeyPress, KeyPressMask, &on_keypress, env);
 	mlx_hook(env->win, KeyRelease, KeyReleaseMask, &on_keyrelease, env);
 	mlx_loop_hook(env->mlx, my_loop_hook, env);
+	mlx_mouse_move(
+		env->mlx, env->win, env->frame->width / 2, env->frame->height / 2);
 }
