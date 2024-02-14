@@ -1,6 +1,6 @@
 objs/
-cub3d
-cub3d_bonus
+cub3D
+cub3D_bonus
 compile_commands.json
 *.swp
 *.swo
